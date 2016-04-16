@@ -36,16 +36,6 @@ namespace Assets.Scripts
 
     }
 
-    public class DeckSettings : ScriptableObject
-    {
-        public List<CardSettings> CardsInDeck;
-
-        [Serializable]
-        public class CardSettings
-        {
-            public GameObject Prefab;
-            public float Chance;
-        }
-    }
+    
 
 }
