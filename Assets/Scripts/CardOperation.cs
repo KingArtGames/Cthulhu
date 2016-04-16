@@ -6,6 +6,22 @@ using UnityEngine;
 
 public class CardOperation : CustomYieldInstruction
 {
+    public static CardOperation DoneSuccess
+    {
+        get
+        {
+            return new CardOperation() { Done = true, OperationResult = Result.Success };
+        }
+    }
+
+    public static CardOperation DoneFailure
+    {
+        get
+        {
+            return new CardOperation() { Done = true, OperationResult = Result.Failure };
+        }
+    }
+
     public enum Result
     {
         Success, Failure

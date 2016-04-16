@@ -13,30 +13,27 @@ public enum CardLifecycleStep
 
 public class BaseCard
 {
-    private Dictionary<CardLifecycleStep, List<ILifecycleStepExecutor>> _executors = new Dictionary<CardLifecycleStep, List<ILifecycleStepExecutor>>();
+    private Dictionary<CardLifecycleStep, List<Func<Field.DeckLocation, CardOperation>>> _executors = new Dictionary<CardLifecycleStep, List<Func<Field.DeckLocation, CardOperation>>>();
 
-    public string Name { get; set; }
 
-    public void AddLifecycleStepExecutor(CardLifecycleStep step, ILifecycleStepExecutor executor)
+    public void RegisterLivecycleStepExecutor(CardLifecycleStep step, Func<Field.DeckLocation, CardOperation> func)
     {
         if (!_executors.ContainsKey(step))
         {
-            _executors.Add(step, new List<ILifecycleStepExecutor>());
+            _executors.Add(step, new List<Func<Field.DeckLocation, CardOperation>> ());
         }
-        _executors[step].Add(executor);
+        _executors[step].Add(func);
     }
-
     public IEnumerable<CardOperation> ExecuteLifecycleStep(CardLifecycleStep step, Field.DeckLocation deckLocation)
     {
         if (_executors.ContainsKey(step))
             yield break;
         foreach (var executor in _executors[step])
-            yield return executor.Execute(deckLocation);
+            yield return executor.Invoke(deckLocation);
         
     }
 
-    public BaseCard(string name)
+    public BaseCard()
     {
-        Name = name;
     }
 }

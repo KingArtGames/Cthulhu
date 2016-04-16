@@ -23,7 +23,7 @@ namespace Assets.Scripts
         {
             yield return null;
 
-            BaseCard card = new BaseCard("Test1");
+            BaseCard card = new BaseCard();
             yield return field.AddCard(card, Field.DeckLocation.HandPlayer);
 
             Debug.Log(field);
