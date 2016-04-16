@@ -34,6 +34,11 @@ public class Field
         
     }
 
+    public BaseDeck GetDeck(DeckLocation loc)
+    {
+        return _decks[loc];
+    }
+
     private void CreateLocation(DeckLocation location)
     {
         _decks.Add(location, new BaseDeck(location, coroutines));

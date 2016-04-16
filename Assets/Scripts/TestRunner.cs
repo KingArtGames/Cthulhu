@@ -26,11 +26,11 @@ namespace Assets.Scripts
             BaseCard card = new BaseCard();
             yield return field.AddCard(card, Field.DeckLocation.HandPlayer);
 
-            Debug.Log(field);
+            /*Debug.Log(field);
 
             yield return field.MoveCard(card, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
 
-            Debug.Log(field);
+            Debug.Log(field);*/
         }
 
     }

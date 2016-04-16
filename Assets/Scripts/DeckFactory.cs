@@ -22,8 +22,8 @@ namespace Assets.Scripts
                     if(roll <= 0)
                     {
                         BaseCard baseCard = new BaseCard();
-                        GameObject prefab = GameObject.Instantiate(card.Prefab);
-                        foreach (AbstractCardBehaviour executor in prefab.GetComponents<AbstractCardBehaviour>())
+                        baseCard.Prefab = GameObject.Instantiate(card.Prefab);
+                        foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponents<AbstractCardBehaviour>())
                             executor.Initialize(baseCard);
                     }
                 }
