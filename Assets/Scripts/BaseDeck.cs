@@ -39,6 +39,11 @@ namespace Assets.Scripts
             }
         }
 
+        public void CreateCard(BaseCard card)
+        {
+            _cards.Add(card);
+        }
+
         public CardOperation AddCard(BaseCard card, int index)
         {
             CardOperation op = new CardOperation();

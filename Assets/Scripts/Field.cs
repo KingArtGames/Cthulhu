@@ -22,7 +22,6 @@ public class Field
 
     private Dictionary<DeckLocation, BaseDeck> _decks = new Dictionary<DeckLocation, BaseDeck>();
 
-    
 
     [Inject]
     public CoroutineService coroutines;
@@ -32,6 +31,11 @@ public class Field
         foreach (DeckLocation item in Enum.GetValues(typeof(DeckLocation)))
             CreateLocation(item);
         
+    }
+    
+    public BaseDeck GetDeck(DeckLocation location)
+    {
+        return _decks[location];
     }
 
     private void CreateLocation(DeckLocation location)

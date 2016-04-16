@@ -17,7 +17,7 @@ namespace Assets.Scripts
             _container = container;
         }
 
-        public void FillDeck(ref BaseDeck deck, int numCards, DeckSettings settings)
+        public void FillDeck(BaseDeck deck, int numCards, DeckSettings settings)
         {
             float chanceSum = settings.CardsInDeck.Sum(c => c.Chance);
             for (int i = 0; i < numCards; i++)
@@ -28,12 +28,7 @@ namespace Assets.Scripts
                     roll -= card.Chance;
                     if(roll <= 0)
                     {
-                        BaseCard baseCard = new BaseCard();
-                        GameObject prefab = GameObject.Instantiate(card.Prefab);
-                        _container.InjectGameObject(prefab);
-                        
-                        foreach (AbstractCardBehaviour executor in prefab.GetComponents<AbstractCardBehaviour>())
-                            executor.Initialize(baseCard);
+                        deck.CreateCard(CardFactory.BuildCard(card.Prefab, _container));
                     }
                 }
             }
@@ -44,11 +39,13 @@ namespace Assets.Scripts
     public class DeckSettings : ScriptableObject
     {
         public List<CardSettings> CardsInDeck;
+
+        [Serializable]
+        public class CardSettings
+        {
+            public GameObject Prefab;
+            public float Chance;
+        }
     }
 
-    public class CardSettings :ScriptableObject
-    {
-        public GameObject Prefab;
-        public float Chance;
-    }
 }

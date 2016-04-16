@@ -85,6 +85,46 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44031421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 44031423}
+  - 114: {fileID: 44031422}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &44031422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 44031421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4fb5e237a312344808e0050a7cea1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDeck: {fileID: 11400000, guid: 3a7531bcf72f33e48b3bcc438c784649, type: 2}
+--- !u!4 &44031423
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 44031421}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!4 &157989424 stripped
 Transform:
   m_PrefabParentObject: {fileID: 440078, guid: 707f447087f5bb941b5ea36072137af3, type: 2}
@@ -209,6 +249,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 572981963}
   - 114: {fileID: 572981962}
+  - 114: {fileID: 572981964}
   m_Layer: 0
   m_Name: '## Main ##'
   m_TagString: Untagged
@@ -239,6 +280,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &572981964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 572981961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyInjectWhenActive: 0
+  ParentNewObjectsUnderRoot: 1
+  Installers:
+  - {fileID: 572981962}
 --- !u!4 &632094632 stripped
 Transform:
   m_PrefabParentObject: {fileID: 440078, guid: 707f447087f5bb941b5ea36072137af3, type: 2}

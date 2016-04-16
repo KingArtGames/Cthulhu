@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Zenject;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -11,6 +13,9 @@ namespace Assets.Scripts.CardBehaviours
         public int maxRounds;
 
         private int rounds;
+
+        [Inject]
+        public Field fieldOfPayne;
 
         public override void Initialize(BaseCard owner)
         {
@@ -35,11 +40,23 @@ namespace Assets.Scripts.CardBehaviours
 
                 if(rounds <= 0)
                 {
-                    //EXPLODE!!!!!
+                    CardOperation result = new CardOperation();
+                    StartCoroutine(Explosion(result));
+                    return result;
                 }
             }
 
             return CardOperation.DoneSuccess;
+        }
+
+        private IEnumerator Explosion(CardOperation op)
+        {
+            //play animation / SFX
+
+            //Deal DMG
+
+            op.Complete(CardOperation.Result.Failure);
+            yield break;
         }
     }
 }
