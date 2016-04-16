@@ -2,19 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
+using Assets.Scripts;
 
 public interface IDeck
 {
-    int GetMaxSize();
-    int GetCurrentSize();
+    int CurrentSize { get; }
+    IEnumerable<ICard> Cards { get; }
+
     IEnumerable<ICard> GetCards();
 
-    void RemoveCard(ICard card);
-    void AddCard(ICard card, int index);
+    CardOperation RemoveCard(ICard card);
+    CardOperation AddCard(ICard card, int index);
     ICard GetCardAtIndex(int index);
 
-    void CardAdded(ICard card);
-    void CardRemoved(ICard card);
-
-    IObservable<ICard> GetRemovedCardStream();
 }
