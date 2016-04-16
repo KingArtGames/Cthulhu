@@ -3,12 +3,6 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public interface ICard
-{
-    void AddLifecycleStepExecutor(CardLifecycleStep step, ILifecycleStepExecutor executor);
-    IEnumerable<CardOperation> ExecuteLifecycleStep(CardLifecycleStep step, Field.DeckLocation deckLocation);
-}
-
 public enum CardLifecycleStep
 {
     Add,
@@ -17,7 +11,7 @@ public enum CardLifecycleStep
     RoundEnd
 }
 
-public class BaseCard : ICard
+public class BaseCard
 {
     private Dictionary<CardLifecycleStep, List<ILifecycleStepExecutor>> _executors = new Dictionary<CardLifecycleStep, List<ILifecycleStepExecutor>>();
 

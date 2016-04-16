@@ -9,18 +9,18 @@ using Zenject;
 
 namespace Assets.Scripts
 {
-    public class BaseDeck : IDeck
+    public class BaseDeck
     {
         private readonly Field.DeckLocation _location;
         private ICoroutineService _coroutines;
 
-        private List<ICard> _cards;
+        private List<BaseCard> _cards;
 
         public BaseDeck(Field.DeckLocation locations, ICoroutineService coroutines)
         {
             _location = locations;
             _coroutines = coroutines;
-            _cards = new List<ICard>();
+            _cards = new List<BaseCard>();
         }
 
         public int CurrentSize
@@ -31,7 +31,7 @@ namespace Assets.Scripts
             }
         }
 
-        public IEnumerable<ICard> Cards
+        public IEnumerable<BaseCard> Cards
         {
             get
             {
@@ -39,14 +39,14 @@ namespace Assets.Scripts
             }
         }
 
-        public CardOperation AddCard(ICard card, int index)
+        public CardOperation AddCard(BaseCard card, int index)
         {
             CardOperation op = new CardOperation();
             _coroutines.RunAsync(AddCardAsync(card, index, op));
             return op;
         }
 
-        private IEnumerator AddCardAsync(ICard card, int index, CardOperation op)
+        private IEnumerator AddCardAsync(BaseCard card, int index, CardOperation op)
         {
             foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Add, _location))
             {
@@ -62,24 +62,24 @@ namespace Assets.Scripts
             op.Complete(CardOperation.Result.Success);
         }
 
-        public ICard GetCardAtIndex(int index)
+        public BaseCard GetCardAtIndex(int index)
         {
             return _cards[index];
         }
 
-        public IEnumerable<ICard> GetCards()
+        public IEnumerable<BaseCard> GetCards()
         {
             return _cards;
         }
 
-        public CardOperation RemoveCard(ICard card)
+        public CardOperation RemoveCard(BaseCard card)
         {
             CardOperation op = new CardOperation();
             _coroutines.RunAsync(RemoveCardAsync(card, op));
             return op;
         }
 
-        private IEnumerator RemoveCardAsync(ICard card, CardOperation op)
+        private IEnumerator RemoveCardAsync(BaseCard card, CardOperation op)
         {
             foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Remove, _location))
             {

@@ -20,7 +20,7 @@ public class Field
         DiscardPlayer
     }
 
-    private Dictionary<DeckLocation, IDeck> _decks = new Dictionary<DeckLocation, IDeck>();
+    private Dictionary<DeckLocation, BaseDeck> _decks = new Dictionary<DeckLocation, BaseDeck>();
 
     
 
@@ -40,19 +40,19 @@ public class Field
     }
     
 
-    internal CardOperation AddCard(ICard card, DeckLocation to)
+    internal CardOperation AddCard(BaseCard card, DeckLocation to)
     {
         return _decks[to].AddCard(card, 0);
     }
 
-    public CardOperation MoveCard(ICard card, DeckLocation from, DeckLocation to)
+    public CardOperation MoveCard(BaseCard card, DeckLocation from, DeckLocation to)
     {
         CardOperation op = new CardOperation();
         coroutines.RunAsync(MoveCardAsync(card, from, to, op));
         return op;
     }
 
-    private IEnumerator MoveCardAsync(ICard card, DeckLocation from, DeckLocation to, CardOperation op)
+    private IEnumerator MoveCardAsync(BaseCard card, DeckLocation from, DeckLocation to, CardOperation op)
     {
         yield return null;
 
