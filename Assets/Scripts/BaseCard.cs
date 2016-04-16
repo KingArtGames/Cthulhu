@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public enum CardLifecycleStep
 {
+    Create,
     Add,
     Remove,
     RoundBegin,

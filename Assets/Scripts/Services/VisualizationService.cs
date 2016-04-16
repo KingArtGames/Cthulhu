@@ -9,7 +9,7 @@ namespace Assets.Scripts.Services
 {
     public class VisualizationService
     {
-        private List<AbstractDeckVisualizer> _visualizers;
+        private List<AbstractDeckVisualizer> _visualizers = new List<AbstractDeckVisualizer>();
 
         public void RegisterDeckVisualizer(AbstractDeckVisualizer visualizer)
         {

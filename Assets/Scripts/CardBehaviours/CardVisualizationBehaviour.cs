@@ -14,6 +14,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public override void Initialize(BaseCard owner)
         {
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnCardAdded);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnCardAdded);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnCardRemoved);
         }

@@ -10,8 +10,18 @@ namespace Assets.Scripts
 {
     public class TestRunner : MonoBehaviour
     {
+        public DeckSettings PlayerDeck;
+
         [Inject]
         public Field field;
+
+        [Inject]
+        public DeckFactory factory;
+
+        public void Start()
+        {
+            Debug.Log("Howdy");
+        }
 
         [PostInject]
         public void Completed()
@@ -23,14 +33,11 @@ namespace Assets.Scripts
         {
             yield return null;
 
-            BaseCard card = new BaseCard();
-            yield return field.AddCard(card, Field.DeckLocation.HandPlayer);
+            factory.FillDeck(field.GetDeck(Field.DeckLocation.HandPlayer), 10, PlayerDeck);
 
-            /*Debug.Log(field);
-
-            yield return field.MoveCard(card, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
-
-            Debug.Log(field);*/
+            
+            Debug.Log(field);
+            
         }
 
     }

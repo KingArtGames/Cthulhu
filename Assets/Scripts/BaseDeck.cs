@@ -12,7 +12,8 @@ namespace Assets.Scripts
     public class BaseDeck
     {
         private readonly Field.DeckLocation _location;
-        private CoroutineService _coroutines;
+
+        public CoroutineService _coroutines;
 
         private List<BaseCard> _cards;
 
@@ -38,6 +39,30 @@ namespace Assets.Scripts
                 return _cards;
             }
         }
+
+        public CardOperation CreateCard(BaseCard card)
+        {
+            CardOperation op = new CardOperation();
+            _coroutines.RunAsync(CreateCardAsync(card, op));
+            return op;
+        }
+
+        public IEnumerator CreateCardAsync(BaseCard card, CardOperation op) { 
+
+            foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Create, _location))
+            {
+                yield return item;
+                if (item.OperationResult != CardOperation.Result.Success)
+                {
+                    op.Complete(item.OperationResult);
+                    yield break;
+                }
+            }
+            _cards.Add(card);
+
+            op.Complete(CardOperation.Result.Success);
+        }
+
 
         public CardOperation AddCard(BaseCard card, int index)
         {

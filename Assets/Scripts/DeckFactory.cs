@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts
 {
     public class DeckFactory
     {
+        private readonly DiContainer _container;
 
-        public void FillDeck(ref BaseDeck deck, int numCards, DeckSettings settings)
+        public DeckFactory(DiContainer container)
+        {
+            _container = container;
+        }
+
+        public void FillDeck(BaseDeck deck, int numCards, DeckSettings settings)
         {
             float chanceSum = settings.CardsInDeck.Sum(c => c.Chance);
             for (int i = 0; i < numCards; i++)
@@ -21,10 +28,7 @@ namespace Assets.Scripts
                     roll -= card.Chance;
                     if(roll <= 0)
                     {
-                        BaseCard baseCard = new BaseCard();
-                        baseCard.Prefab = GameObject.Instantiate(card.Prefab);
-                        foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponents<AbstractCardBehaviour>())
-                            executor.Initialize(baseCard);
+                        deck.CreateCard(CardFactory.BuildCard(card.Prefab, _container));
                     }
                 }
             }
@@ -32,14 +36,6 @@ namespace Assets.Scripts
 
     }
 
-    public class DeckSettings : ScriptableObject
-    {
-        public List<CardSettings> CardsInDeck;
-    }
+    
 
-    public class CardSettings :ScriptableObject
-    {
-        public GameObject Prefab;
-        public float Chance;
-    }
 }

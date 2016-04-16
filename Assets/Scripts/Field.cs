@@ -22,26 +22,26 @@ public class Field
 
     private Dictionary<DeckLocation, BaseDeck> _decks = new Dictionary<DeckLocation, BaseDeck>();
 
-    
 
-    [Inject]
-    public CoroutineService coroutines;
+    public CoroutineService Coroutines;
 
     public Field(CoroutineService coroutines)
     {
+        Coroutines = coroutines;
+
         foreach (DeckLocation item in Enum.GetValues(typeof(DeckLocation)))
             CreateLocation(item);
         
     }
-
-    public BaseDeck GetDeck(DeckLocation loc)
+    
+    public BaseDeck GetDeck(DeckLocation location)
     {
-        return _decks[loc];
+        return _decks[location];
     }
 
     private void CreateLocation(DeckLocation location)
     {
-        _decks.Add(location, new BaseDeck(location, coroutines));
+        _decks.Add(location, new BaseDeck(location, Coroutines));
     }
     
 
@@ -53,7 +53,7 @@ public class Field
     public CardOperation MoveCard(BaseCard card, DeckLocation from, DeckLocation to)
     {
         CardOperation op = new CardOperation();
-        coroutines.RunAsync(MoveCardAsync(card, from, to, op));
+        Coroutines.RunAsync(MoveCardAsync(card, from, to, op));
         return op;
     }
 
