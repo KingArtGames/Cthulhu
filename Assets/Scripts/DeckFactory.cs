@@ -4,11 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.Scripts
 {
     public class DeckFactory
     {
+        private readonly DiContainer _container;
+
+        public DeckFactory(DiContainer container)
+        {
+            _container = container;
+        }
 
         public void FillDeck(ref BaseDeck deck, int numCards, DeckSettings settings)
         {
@@ -23,6 +30,8 @@ namespace Assets.Scripts
                     {
                         BaseCard baseCard = new BaseCard();
                         GameObject prefab = GameObject.Instantiate(card.Prefab);
+                        _container.InjectGameObject(prefab);
+                        
                         foreach (AbstractCardBehaviour executor in prefab.GetComponents<AbstractCardBehaviour>())
                             executor.Initialize(baseCard);
                     }
