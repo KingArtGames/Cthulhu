@@ -4,35 +4,32 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Assets.Scripts
+public class CardOperation : CustomYieldInstruction
 {
-    public class CardOperation : CustomYieldInstruction
+    public enum Result
     {
-        public enum Result
-        {
-            Success, Failure
-        }
+        Success, Failure
+    }
 
-        public override bool keepWaiting
+    public override bool keepWaiting
+    {
+        get
         {
-            get
-            {
-                return !Done;
-            }
+            return !Done;
         }
+    }
 
-        public bool Done { get; private set; }
-        public Result OperationResult { get; private set; }
+    public bool Done { get; private set; }
+    public Result OperationResult { get; private set; }
 
-        public CardOperation()
-        {
-            Done = false;
-        }
+    public CardOperation()
+    {
+        Done = false;
+    }
 
-        public void Complete(Result result)
-        {
-            OperationResult = result;
-            Done = true;
-        }
+    public void Complete(Result result)
+    {
+        OperationResult = result;
+        Done = true;
     }
 }

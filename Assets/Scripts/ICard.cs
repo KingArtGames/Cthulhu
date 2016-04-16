@@ -1,31 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public interface ICard
 {
-    void OnDrawn();
-    void OnPlay();
-    void OnDestroy();
+    void AddLifecycleStepExecutor(CardLifecycleStep step, ILifecycleStepExecutor executor);
+    IEnumerable<CardOperation> ExecuteLifecycleStep(CardLifecycleStep step, Field.DeckLocation deckLocation);
+}
+
+public enum CardLifecycleStep
+{
+    Add,
+    Remove,
+    RoundBegin,
+    RoundEnd
 }
 
 public class BaseCard : ICard
 {
+    private Dictionary<CardLifecycleStep, List<ILifecycleStepExecutor>> _executors = new Dictionary<CardLifecycleStep, List<ILifecycleStepExecutor>>();
+
     public string Name { get; set; }
 
-    public void OnDestroy()
+    public void AddLifecycleStepExecutor(CardLifecycleStep step, ILifecycleStepExecutor executor)
     {
-        throw new NotImplementedException();
+        if (!_executors.ContainsKey(step))
+        {
+            _executors.Add(step, new List<ILifecycleStepExecutor>());
+        }
+        _executors[step].Add(executor);
     }
 
-    public void OnDrawn()
+    public IEnumerable<CardOperation> ExecuteLifecycleStep(CardLifecycleStep step, Field.DeckLocation deckLocation)
     {
-        throw new NotImplementedException();
-    }
-
-    public void OnPlay()
-    {
-        throw new NotImplementedException();
+        if (_executors.ContainsKey(step))
+            yield break;
+        foreach (var executor in _executors[step])
+            yield return executor.Execute(deckLocation);
+        
     }
 
     public BaseCard(string name)

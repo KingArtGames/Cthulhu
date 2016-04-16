@@ -11,12 +11,14 @@ namespace Assets.Scripts
 {
     public class BaseDeck : IDeck
     {
+        private readonly Field.DeckLocation _location;
         private ICoroutineService _coroutines;
 
         private List<ICard> _cards;
 
-        public BaseDeck(ICoroutineService coroutines)
+        public BaseDeck(Field.DeckLocation locations, ICoroutineService coroutines)
         {
+            _location = locations;
             _coroutines = coroutines;
             _cards = new List<ICard>();
         }
@@ -46,11 +48,18 @@ namespace Assets.Scripts
 
         private IEnumerator AddCardAsync(ICard card, int index, CardOperation op)
         {
-            yield return null;
+            foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Add, _location))
+            {
+                yield return item;
+                if (item.OperationResult != CardOperation.Result.Success)
+                {
+                    op.Complete(item.OperationResult);
+                    yield break;
+                }
+            }
 
             _cards.Insert(index, card);
             op.Complete(CardOperation.Result.Success);
-            yield break;
         }
 
         public ICard GetCardAtIndex(int index)
@@ -72,7 +81,15 @@ namespace Assets.Scripts
 
         private IEnumerator RemoveCardAsync(ICard card, CardOperation op)
         {
-            yield return null;
+            foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Remove, _location))
+            {
+                yield return item;
+                if (item.OperationResult != CardOperation.Result.Success)
+                {
+                    op.Complete(item.OperationResult);
+                    yield break;
+                }
+            }
 
             _cards.Remove(card);
             op.Complete(CardOperation.Result.Success);

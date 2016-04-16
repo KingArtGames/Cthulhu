@@ -29,14 +29,15 @@ public class Field
 
     public Field(ICoroutineService coroutines)
     {
-        _decks.Add(DeckLocation.DrawPlayer, new BaseDeck(coroutines));
-        _decks.Add(DeckLocation.DrawEnemy, new BaseDeck(coroutines));
-        _decks.Add(DeckLocation.HandPlayer, new BaseDeck(coroutines));
-        _decks.Add(DeckLocation.FieldPlayer, new BaseDeck(coroutines));
-        _decks.Add(DeckLocation.FieldEnemy, new BaseDeck(coroutines));
-        _decks.Add(DeckLocation.DiscardPlayer, new BaseDeck(coroutines));
+        foreach (DeckLocation item in Enum.GetValues(typeof(DeckLocation)))
+            CreateLocation(item);
+        
     }
 
+    private void CreateLocation(DeckLocation location)
+    {
+        _decks.Add(location, new BaseDeck(location, coroutines));
+    }
     
 
     internal CardOperation AddCard(ICard card, DeckLocation to)
