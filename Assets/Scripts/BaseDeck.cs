@@ -12,11 +12,11 @@ namespace Assets.Scripts
     public class BaseDeck
     {
         private readonly Field.DeckLocation _location;
-        private ICoroutineService _coroutines;
+        private CoroutineService _coroutines;
 
         private List<BaseCard> _cards;
 
-        public BaseDeck(Field.DeckLocation locations, ICoroutineService coroutines)
+        public BaseDeck(Field.DeckLocation locations, CoroutineService coroutines)
         {
             _location = locations;
             _coroutines = coroutines;

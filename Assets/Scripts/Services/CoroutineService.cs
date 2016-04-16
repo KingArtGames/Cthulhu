@@ -7,12 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Services
 {
-    public interface ICoroutineService
-    {
-        void RunAsync(IEnumerator operation);
-    }
-
-    public class CoroutineService : MonoBehaviour, ICoroutineService
+    public class CoroutineService : MonoBehaviour
     {
         public void RunAsync(IEnumerator operation)
         {

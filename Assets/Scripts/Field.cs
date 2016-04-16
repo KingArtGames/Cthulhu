@@ -25,9 +25,9 @@ public class Field
     
 
     [Inject]
-    public ICoroutineService coroutines;
+    public CoroutineService coroutines;
 
-    public Field(ICoroutineService coroutines)
+    public Field(CoroutineService coroutines)
     {
         foreach (DeckLocation item in Enum.GetValues(typeof(DeckLocation)))
             CreateLocation(item);

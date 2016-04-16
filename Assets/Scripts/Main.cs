@@ -9,7 +9,7 @@ public class Main : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<TurnManager>().ToSingleGameObject<TurnManager>();
-        Container.Bind<ICoroutineService>().ToSingleGameObject<CoroutineService>();
+        Container.Bind<CoroutineService>().ToSingleGameObject<CoroutineService>();
         Container.Bind<Field>().ToSingle<Field>();
     }
 }
