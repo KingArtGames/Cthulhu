@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Zenject;
+using System;
 
-public class Card : MonoBehaviour {
+public class Card : ICard {
 
-    [Inject]
-    public TurnManager manager;
+    public void OnDestroy()
+    {
+        throw new NotImplementedException();
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void OnDrawn()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnPlay()
+    {
+        throw new NotImplementedException();
+    }
 }
