@@ -92,8 +92,8 @@ public class GameProcessor
                         if (op.OperationResult != CardOperation.Result.Success)
                             break;
                     }
-                    TriggerLifecycleStepDone();
                 }
+                TriggerLifecycleStepDone();
             }
 
 
@@ -121,8 +121,8 @@ public class GameProcessor
                         if (op.OperationResult != CardOperation.Result.Success)
                             break;
                     }
-                    TriggerLifecycleStepDone();
                 }
+                TriggerLifecycleStepDone();
             }
         }
     }

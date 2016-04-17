@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 437040}
   - 114: {fileID: 11440964}
-  - 114: {fileID: 11466696}
   m_Layer: 0
   m_Name: Foo
   m_TagString: Untagged
@@ -42,17 +41,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRounds: 2
   maxRounds: 5
---- !u!114 &11466696
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

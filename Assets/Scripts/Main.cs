@@ -7,6 +7,8 @@ using Assets.Scripts;
 
 public class Main : MonoInstaller
 {
+    public GameObject CardVisualization;
+
     public override void InstallBindings()
     {
         Container.Bind<TurnManager>().ToSingleGameObject<TurnManager>();
@@ -21,5 +23,6 @@ public class Main : MonoInstaller
         Container.Bind<WaitForEndOfLifecycleStep.Factory>().ToSingle();
         Container.Bind<BaseCard.Factory>().ToSingle();
         Container.Bind<BaseDeck.Factory>().ToSingle();
+        Container.Bind<GameObject>("CardVisualization").ToInstance<GameObject>(CardVisualization);
     }
 }

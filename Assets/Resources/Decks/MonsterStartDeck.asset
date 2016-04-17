@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: MonsterStartDeck
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Scripts:DeckSettings
   CardsInDeck:
-  - Prefab: {fileID: 164772, guid: 069d130c67854f9429d9905992e4b847, type: 2}
+  - Prefab: {fileID: 153450, guid: 5a7837aa4fd1636449dc534ee39fd8e0, type: 2}
     Chance: 1
