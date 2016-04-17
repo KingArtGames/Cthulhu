@@ -7,33 +7,42 @@ using UnityEngine;
 
 public class GameProcessor
 {
-    [Inject]
-    public Field field;
 
-    [Inject]
-    public DeckFactory factory;
+    public int PlayerCardsPerRound = 2;
+    public int EnemyCardsPerRound = 2;
+    public int StartHP = 30;
+    public int StartSanity = 30;
 
-    [Inject]
-    public CoroutineService async;
-
-    [Inject]
-    public PlayerInputHandler playerInput;
-
-    public int playerCardsPerRound = 2;
-    public int enemyCardsPerRound = 2;
+    private Field _field;
+    private DeckFactory _factory;
+    private CoroutineService _async;
+    private PlayerInputHandler _playerInput;
     private Coroutine _gameCoroutine;
+    private TokenService _tokens;
+
+    public GameProcessor(Field field, DeckFactory deckFactory, CoroutineService coroutines, PlayerInputHandler playerInput, TokenService tokens)
+    {
+        _field = field;
+        _factory = deckFactory;
+        _async = coroutines;
+        _playerInput = playerInput;
+        _tokens = tokens;
+    }
 
     public void StartNewGame(DeckSettings playerDeck, DeckSettings enemyDeck)
     {
-        factory.FillDeck(field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
-        factory.FillDeck(field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
+        _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
+        _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
 
-        _gameCoroutine = async.StartCoroutine(StartGame());
+        _tokens.AddTokens(TokenService.TokenType.health, StartHP);
+        _tokens.AddTokens(TokenService.TokenType.sanity, StartSanity);
+
+        _gameCoroutine = _async.StartCoroutine(StartGame());
     }
 
     public void GameOver()
     {
-        async.StopCoroutine(_gameCoroutine);
+        _async.StopCoroutine(_gameCoroutine);
         _gameCoroutine = null;
     }
 
@@ -43,7 +52,7 @@ public class GameProcessor
         {
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
-                foreach (BaseCard card in field.GetDeck(location).Cards)
+                foreach (BaseCard card in _field.GetDeck(location).Cards)
                 { 
                     foreach (CardOperation op in card.ExecuteLifecycleStep(CardLifecycleStep.RoundBegin, location))
                     {
@@ -53,23 +62,23 @@ public class GameProcessor
                     }
                 }
             }
-            for (int i = 0; i < enemyCardsPerRound; i++)
+            for (int i = 0; i < EnemyCardsPerRound; i++)
             {
-                CardOperation op = field.MoveCard(field.GetDeck(Field.DeckLocation.DrawEnemy).GetCardAtIndex(0), Field.DeckLocation.DrawEnemy, Field.DeckLocation.FieldEnemy);
+                CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawEnemy).GetCardAtIndex(0), Field.DeckLocation.DrawEnemy, Field.DeckLocation.FieldEnemy);
                 yield return op;
             }
 
-            for (int i = 0; i < playerCardsPerRound; i++)
+            for (int i = 0; i < PlayerCardsPerRound; i++)
             {
-                CardOperation op = field.MoveCard(field.GetDeck(Field.DeckLocation.DrawPlayer).GetCardAtIndex(0), Field.DeckLocation.DrawPlayer, Field.DeckLocation.HandPlayer);
+                CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawPlayer).GetCardAtIndex(0), Field.DeckLocation.DrawPlayer, Field.DeckLocation.HandPlayer);
                 yield return op;
             }
 
-            yield return playerInput.HandOverControl();
+            yield return _playerInput.HandOverControl();
 
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
-                foreach (BaseCard card in field.GetDeck(location).Cards)
+                foreach (BaseCard card in _field.GetDeck(location).Cards)
                 {
                     foreach (CardOperation op in card.ExecuteLifecycleStep(CardLifecycleStep.RoundEnd, location))
                     {
