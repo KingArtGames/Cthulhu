@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Scripts.CardBehaviours;
 using System.Collections.Generic;
 using Zenject;
+using Assets.Scripts.Services;
 
 class MoveFirstCardFromDeckToDeckCardBehaviour : AbstractCardBehaviour
 {
@@ -13,6 +14,8 @@ class MoveFirstCardFromDeckToDeckCardBehaviour : AbstractCardBehaviour
 
     [Inject]
     public Field fieldOfPayne;
+    [Inject]
+    public CoroutineService Async;
 
     public override void Initialize(BaseCard owner)
     {
@@ -24,7 +27,7 @@ class MoveFirstCardFromDeckToDeckCardBehaviour : AbstractCardBehaviour
         if (loc == deck)
         {
             CardOperation result = new CardOperation();
-            StartCoroutine(MoveFirstCard(result));
+            Async.RunAsync(MoveFirstCard(result));
             return result;
         }
 

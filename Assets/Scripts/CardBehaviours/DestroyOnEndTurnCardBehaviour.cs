@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Services;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Assets.Scripts.CardBehaviours
 
         [Inject]
         public Field fieldOfPayne;
+        [Inject]
+        public CoroutineService Async;
 
         public override void Initialize(BaseCard owner)
         {
@@ -34,7 +37,7 @@ namespace Assets.Scripts.CardBehaviours
                 if(rounds < 0)
                 {
                     CardOperation result = new CardOperation();
-                    StartCoroutine(Destroy(result, loc));
+                    Async.RunAsync(Destroy(result, loc));
                     return result;
                 }
             }
