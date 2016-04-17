@@ -31,21 +31,25 @@ namespace Assets.Scripts.Decks
 
         protected override void ReArrangeCards()
         {
-            offset = -0.055f * Deck.CurrentSize;
+            offset = -cardSpace / 2f;// * (cardSpace / Deck.CurrentSize);
+            if (Deck.CurrentSize % 2 == 0)
+                offset += (cardSpace / Deck.CurrentSize) / 2;
 
             for (int i = 0; i < Deck.CurrentSize; i++)
             {
                 GameObject cardGO = Deck.GetCardAtIndex(i).Prefab;
                 cardGO.SetActive(true);
                 cardGO.transform.parent = transform;
-                float posX = center.x + radius * Mathf.Sin(offset + (i * cardSpace) * Mathf.Deg2Rad);
-                float posY = center.y + radius * Mathf.Cos(offset + (i * cardSpace) * Mathf.Deg2Rad);
+                cardGO.transform.localPosition = Vector3.zero;
+                cardGO.transform.localRotation = Quaternion.identity;
+                //float posX = center.x + radius * Mathf.Sin(offset + (i * cardSpace) * Mathf.Deg2Rad);
+                //float posY = center.y + radius * Mathf.Cos(offset + (i * cardSpace) * Mathf.Deg2Rad);
 
-                cardGO.transform.localPosition = new Vector3(posX, (i * 0.1f), posY);
+                cardGO.transform.localPosition = new Vector3(offset + (cardSpace / Deck.CurrentSize) * i, 0, 0);
 
-                Vector2 direction = new Vector2(center.x - posX, center.y - posY);
+                //Vector2 direction = new Vector2(center.x - posX, center.y - posY);
 
-                cardGO.transform.Rotate(Vector3.up, -direction.x, Space.Self);
+                //cardGO.transform.Rotate(Vector3.up, direction.x, Space.Self);
             }
         }
     }

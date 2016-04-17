@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &145340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 489490}
+  - 33: {fileID: 3302188}
+  - 23: {fileID: 2347896}
+  - 64: {fileID: 6477962}
+  - 95: {fileID: 9519008}
+  m_Layer: 0
+  m_Name: Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &146096
 GameObject:
   m_ObjectHideFlags: 1
@@ -36,7 +55,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &191024
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -60,10 +79,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433642}
-  - 33: {fileID: 3351636}
-  - 64: {fileID: 6432510}
-  - 23: {fileID: 2394166}
-  - 95: {fileID: 9578206}
   - 114: {fileID: 11496508}
   m_Layer: 0
   m_Name: Card
@@ -78,19 +93,32 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193832}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 7.47, z: 0}
-  m_LocalScale: {x: -0.8, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22426262}
+  - {fileID: 489490}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2394166
+--- !u!4 &489490
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145340}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3333333, y: 0.5, z: 0.5}
+  m_Children:
+  - {fileID: 22426262}
+  m_Father: {fileID: 433642}
+  m_RootOrder: 0
+--- !u!23 &2347896
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193832}
+  m_GameObject: {fileID: 145340}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -111,32 +139,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3351636
+--- !u!33 &3302188
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193832}
+  m_GameObject: {fileID: 145340}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &6432510
+--- !u!64 &6477962
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193832}
+  m_GameObject: {fileID: 145340}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &9578206
+--- !u!95 &9519008
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193832}
+  m_GameObject: {fileID: 145340}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5dfed33408a0b544c8538a46579c22ee, type: 2}
@@ -261,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9578206}
+  animator: {fileID: 9519008}
   TitleLabel: {fileID: 11422808}
   DescriptionLabel: {fileID: 11403034}
 --- !u!222 &22208072
@@ -300,13 +328,13 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191024}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 1}
+  m_LocalScale: {x: 0.025, y: 0.025000002, z: 1}
   m_Children:
   - {fileID: 22497558}
   - {fileID: 22456376}
-  m_Father: {fileID: 433642}
+  m_Father: {fileID: 489490}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
