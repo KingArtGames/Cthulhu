@@ -51,7 +51,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public void UpdateImage()
         {
-            GetComponentInChildren<MeshRenderer>().material.mainTexture = _owner.Image;
+            GetComponentInChildren<SkinnedMeshRenderer>().material.mainTexture = _owner.Image;
         }
 
         public override void Initialize(BaseCard owner)

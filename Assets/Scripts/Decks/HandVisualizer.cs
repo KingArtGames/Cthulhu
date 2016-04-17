@@ -38,6 +38,7 @@ namespace Assets.Scripts.Decks
                 cardGO.transform.parent = transform;
                 cardGO.transform.localPosition = Vector3.zero;
                 cardGO.transform.localRotation = Quaternion.identity;
+                cardGO.transform.localScale = Vector3.one;
 
                 cardGO.transform.localPosition = new Vector3(offset + (cardSpace / Deck.CurrentSize) * i, 0, 0);
             }
