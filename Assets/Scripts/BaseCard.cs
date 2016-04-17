@@ -81,8 +81,12 @@ public class BaseCard
         string description = "";
         foreach (AbstractCardBehaviour executor in Prefab.GetComponentsInChildren<AbstractCardBehaviour>())
         {
-            description += executor.GetDescription();
-            description += Environment.NewLine;
+            string executorDescription = executor.GetDescription();
+            if (executorDescription != null)
+            {
+                description += executor.GetDescription();
+                description += Environment.NewLine;
+            }
         }
         description = description.TrimEnd(Environment.NewLine.ToCharArray());
         return description;

@@ -28,6 +28,13 @@ namespace Assets.Scripts.CardBehaviours
         public Text TitleLabel;
         public Text DescriptionLabel;
 
+        public void Update()
+        {
+            UpdateTitle();
+            UpdateDescription();
+            UpdateImage();
+        }
+
         public void UpdateTitle()
         {
             if(TitleLabel != null)

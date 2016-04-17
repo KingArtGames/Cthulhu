@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Revolver
-  Image: {fileID: 2800000, guid: 0598e1a501fd18b4fbe434e0eb9aa27e, type: 3}
+  Image: {fileID: 2800000, guid: 9f79c73af1a330b4badec92e1ce5280c, type: 3}
 --- !u!114 &11464210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +113,10 @@ Prefab:
       propertyPath: Title
       value: Revolver
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 9f79c73af1a330b4badec92e1ce5280c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163858}
