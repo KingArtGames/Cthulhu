@@ -48,4 +48,9 @@ class MoveFirstCardFromDeckToDeckCardBehaviour : AbstractCardBehaviour
         }
         yield break;
     }
+
+    public override string GetDescription()
+    {
+        return "[" + step.ToString() + "] in [" + deck + "]: Move card " + fromDeck.ToString() + "[0] to " + toDeck;
+    }
 }

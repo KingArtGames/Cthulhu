@@ -16,27 +16,27 @@ namespace Assets.Scripts.Decks
         public Vector2 center = new Vector2(0, 0);
 
         public float cardSpace = 10;
-        private IDisposable _countChangedSubscription;
+        
 
         public override void Initialize()
         {
             base.Initialize();
-            _countChangedSubscription = Deck.Cards.ObserveCountChanged(true).Subscribe(_ => ReArrangeCards());
+            
         }
 
-        public void OnDestroy()
+        public override CardOperation RefreshVisualization()
         {
-            if (_countChangedSubscription != null)
-                _countChangedSubscription.Dispose();
-        }        
+            return CardOperation.DoneSuccess;
+        }
 
-        private void ReArrangeCards()
+        protected override void ReArrangeCards()
         {
             offset = -0.055f * Deck.CurrentSize;
 
             for (int i = 0; i < Deck.CurrentSize; i++)
             {
                 GameObject cardGO = Deck.GetCardAtIndex(i).Prefab;
+                cardGO.SetActive(true);
                 cardGO.transform.parent = transform;
                 float posX = center.x + radius * Mathf.Sin(offset + (i * cardSpace) * Mathf.Deg2Rad);
                 float posY = center.y + radius * Mathf.Cos(offset + (i * cardSpace) * Mathf.Deg2Rad);
@@ -47,11 +47,6 @@ namespace Assets.Scripts.Decks
 
                 cardGO.transform.Rotate(Vector3.up, -direction.x, Space.Self);
             }
-        }
-
-        public override CardOperation RefreshVisualization()
-        {
-            return CardOperation.DoneSuccess;
         }
     }
 }

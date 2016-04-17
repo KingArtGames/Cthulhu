@@ -17,3 +17,4 @@ public class CommentMonoBehaviourEditor : Editor
         GUI.color = oldColor;
     }
 }
+ 
