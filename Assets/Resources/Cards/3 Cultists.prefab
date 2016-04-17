@@ -1,89 +1,88 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &111892
+--- !u!1 &153450
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 495578}
-  - 114: {fileID: 11474050}
-  - 114: {fileID: 11462098}
-  - 114: {fileID: 11408240}
-  - 114: {fileID: 11455896}
+  - 4: {fileID: 445172}
+  - 114: {fileID: 11493410}
+  - 114: {fileID: 11454026}
+  - 114: {fileID: 11435298}
+  - 114: {fileID: 11442496}
   m_Layer: 0
-  m_Name: Ghoul
+  m_Name: 3 Cultists
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &495578
+--- !u!4 &445172
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
+  m_GameObject: {fileID: 153450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11408240
+--- !u!114 &11435298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
+  m_GameObject: {fileID: 153450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4e7a69590a4650478937e7ffe725c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededTokens: 03000000
---- !u!114 &11455896
+  neededTokens: 02000000020000000200000002000000
+--- !u!114 &11442496
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
+  m_GameObject: {fileID: 153450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
---- !u!114 &11462098
+--- !u!114 &11454026
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
+  m_GameObject: {fileID: 153450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54451499645782e4ab9dd46cb934ae4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeToCard: {fileID: 142892, guid: fbcc2534229297c43ae81f9f7b876c86, type: 2}
+  executeStep: 3
+  executeLocation: 4
+--- !u!114 &11493410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8765612bfa6629d4a872b6f707051f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tokenType: 1
-  numTokens: -2
-  executeSteps: 01000000
-  executeLocations: 04000000
---- !u!114 &11474050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8765612bfa6629d4a872b6f707051f02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tokenType: 0
-  numTokens: -1
-  executeSteps: 04000000
+  numTokens: -7
+  executeSteps: 03000000
   executeLocations: 04000000
 --- !u!1001 &100100000
 Prefab:
@@ -98,7 +97,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: neededTokens.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeLocations.Array.size
@@ -106,25 +105,49 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: numTokens
-      value: -2
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeSteps.Array.data[0]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeLocations.Array.data[0]
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: executeStep
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: executeLocation
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: changeToCard
+      value: 
+      objectReference: {fileID: 142892, guid: fbcc2534229297c43ae81f9f7b876c86, type: 2}
+    - target: {fileID: 0}
       propertyPath: tokenType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: neededTokens.Array.data[0]
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: neededTokens.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: neededTokens.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: neededTokens.Array.data[3]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 111892}
+  m_RootGameObject: {fileID: 153450}
   m_IsPrefabParent: 1
