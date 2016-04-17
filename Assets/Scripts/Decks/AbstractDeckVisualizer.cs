@@ -20,7 +20,6 @@ namespace Assets.Scripts.Decks
 
         protected BaseDeck Deck;
         public Field.DeckLocation DeckLocation;
-        public GameObject CardPrefab;
 
         private IDisposable _countChangedSubscription;
 
