@@ -31,13 +31,7 @@ public class GameProcessor
 
     public void StartNewGame(DeckSettings playerDeck, DeckSettings enemyDeck)
     {
-        _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
-        _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
-
-        _tokens.AddTokens(TokenService.TokenType.health, StartHP);
-        _tokens.AddTokens(TokenService.TokenType.sanity, StartSanity);
-
-        _gameCoroutine = _async.StartCoroutine(StartGame());
+        _gameCoroutine = _async.StartCoroutine(StartGame(playerDeck, enemyDeck));
     }
 
     public void GameOver()
@@ -46,8 +40,36 @@ public class GameProcessor
         _gameCoroutine = null;
     }
 
-    private IEnumerator StartGame()
+    public CardOperation UseCard(BaseCard card)
     {
+        CardOperation op = new CardOperation();
+        _async.RunAsync(UseCardAsync(card, op));
+        return op;
+    }
+
+    private IEnumerator UseCardAsync(BaseCard card, CardOperation op)
+    {
+        foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Remove, card.CurrentLocation))
+        {
+            yield return item;
+            if (item.OperationResult != CardOperation.Result.Success)
+            {
+                op.Complete(item.OperationResult);
+                yield break;
+            }
+        }
+        op.Complete(CardOperation.Result.Success);
+        yield break;
+    }
+
+    private IEnumerator StartGame(DeckSettings playerDeck, DeckSettings enemyDeck)
+    {
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
+
+        _tokens.AddTokens(TokenService.TokenType.health, StartHP);
+        _tokens.AddTokens(TokenService.TokenType.sanity, StartSanity);
+
         while (true)
         {
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
@@ -73,7 +95,7 @@ public class GameProcessor
                 CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawPlayer).GetCardAtIndex(0), Field.DeckLocation.DrawPlayer, Field.DeckLocation.HandPlayer);
                 yield return op;
             }
-
+            
             yield return _playerInput.HandOverControl();
 
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))

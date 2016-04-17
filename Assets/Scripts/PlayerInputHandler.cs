@@ -2,6 +2,14 @@
 
 public class PlayerInputHandler
 {
+    public bool HasControl
+    {
+        get
+        {
+            return _currentWaitForPlayerDoneOP != null;
+        }
+    }
+
     private WaitForPlayerInputDone _currentWaitForPlayerDoneOP;
 
     public WaitForPlayerInputDone HandOverControl()

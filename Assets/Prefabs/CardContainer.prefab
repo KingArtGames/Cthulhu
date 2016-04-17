@@ -8,6 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498784}
+  - 64: {fileID: 6442584}
+  - 114: {fileID: 11447084}
   m_Layer: 0
   m_Name: CardContainer
   m_TagString: Untagged
@@ -26,7 +28,6 @@ GameObject:
   - 33: {fileID: 3357748}
   - 64: {fileID: 6491408}
   - 23: {fileID: 2340974}
-  - 114: {fileID: 11449732}
   - 95: {fileID: 9576126}
   m_Layer: 0
   m_Name: Card
@@ -93,6 +94,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173472}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &6442584
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &6491408
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -122,19 +135,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11449732
+--- !u!114 &11447084
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173472}
+  m_GameObject: {fileID: 164772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3838c1d4805e4e48aac967e4306c0c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9576126}
-  Selected: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

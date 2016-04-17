@@ -15,13 +15,13 @@ namespace Assets.Scripts
 
         public CoroutineService _coroutines;
 
-        private List<BaseCard> _cards;
+        private ReactiveCollection<BaseCard> _cards;
 
         public BaseDeck(Field.DeckLocation locations, CoroutineService coroutines)
         {
             _location = locations;
             _coroutines = coroutines;
-            _cards = new List<BaseCard>();
+            _cards = new ReactiveCollection<BaseCard>();
         }
 
         public int CurrentSize
@@ -32,7 +32,7 @@ namespace Assets.Scripts
             }
         }
 
-        public IEnumerable<BaseCard> Cards
+        public ReactiveCollection<BaseCard> Cards
         {
             get
             {
@@ -40,10 +40,29 @@ namespace Assets.Scripts
             }
         }
 
-        public void CreateCard(BaseCard card)
+        public CardOperation CreateCard(BaseCard card)
         {
-            card.ExecuteLifecycleStep(CardLifecycleStep.Create, _location);
+            CardOperation op = new CardOperation();
+            _coroutines.RunAsync(CreateCardAsync(card, op));
+            return op;
+        }
+
+        private IEnumerator CreateCardAsync(BaseCard card, CardOperation op)
+        {
+            foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Create, _location))
+            {
+                yield return item;
+                if (item.OperationResult != CardOperation.Result.Success)
+                {
+                    op.Complete(item.OperationResult);
+                    yield break;
+                }
+            }
+
+            card.CurrentLocation = _location;
             _cards.Add(card);
+            op.Complete(CardOperation.Result.Success);
+            yield break;
         }
 
         public CardOperation AddCard(BaseCard card, int index)
@@ -65,6 +84,7 @@ namespace Assets.Scripts
                 }
             }
 
+            card.CurrentLocation = _location;
             _cards.Insert(index, card);
             op.Complete(CardOperation.Result.Success);
         }

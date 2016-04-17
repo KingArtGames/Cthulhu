@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -15,19 +16,30 @@ namespace Assets.Scripts.Decks
         public Field field;
 
         [Inject]
-        public VisualizationService visualization;
+        public VisualizationService Visualization;
 
-        protected BaseDeck _deck;
+        protected BaseDeck Deck;
         public Field.DeckLocation DeckLocation;
         public GameObject CardPrefab;
 
-        [PostInject]
-        public void Initialize()
-        {
-            visualization.RegisterDeckVisualizer(this);
+        private IDisposable _countChangedSubscription;
 
+        [PostInject]
+        virtual public void Initialize()
+        {
+            Deck = field.GetDeck(DeckLocation);
+            Visualization.RegisterDeckVisualizer(this);
+            _countChangedSubscription = Deck.Cards.ObserveCountChanged(true).Subscribe(_ => ReArrangeCards());
         }
 
-        public abstract void RefreshVisualization();
+        public void OnDestroy()
+        {
+            if (_countChangedSubscription != null)
+                _countChangedSubscription.Dispose();
+        }
+
+        public abstract CardOperation RefreshVisualization();
+
+        protected abstract void ReArrangeCards();
     }
 }
