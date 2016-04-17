@@ -17,5 +17,6 @@ public class Main : MonoInstaller
         Container.Bind<GameProcessor>().ToSingle();
         Container.Bind<PlayerInputHandler>().ToSingle();
         Container.Bind<TokenService>().ToSingle();
+        Container.Bind<CardFactory>().ToSingle();
     }
 }
