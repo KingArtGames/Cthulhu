@@ -14,6 +14,8 @@ namespace Assets.Scripts.CardBehaviours
 
         private int rounds;
 
+        private bool _initialized = false;
+
         [Inject]
         public Field fieldOfPayne;
 
@@ -22,6 +24,7 @@ namespace Assets.Scripts.CardBehaviours
             rounds = UnityEngine.Random.Range(minRounds, maxRounds);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundBegin, OnRoundBegin);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnRemove);
+            _initialized = true;
         }
 
         private CardOperation OnRemove(Field.DeckLocation loc)
@@ -57,6 +60,20 @@ namespace Assets.Scripts.CardBehaviours
 
             op.Complete(CardOperation.Result.Failure);
             yield break;
+        }
+
+        public override string GetDescription()
+        {
+            string description = "[" + CardLifecycleStep.RoundBegin.ToString() + ":";
+            if (_initialized)
+                description += minRounds + "-" + maxRounds;
+            else
+                description += rounds;
+            description += " in " + Field.DeckLocation.HandPlayer + "]: Explode";
+            description += Environment.NewLine;
+            description += "[" + Field.DeckLocation.HandPlayer + "] ↺";
+
+            return description;
         }
     }
 }

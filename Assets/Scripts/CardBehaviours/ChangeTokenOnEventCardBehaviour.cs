@@ -48,5 +48,26 @@ namespace Assets.Scripts.CardBehaviours
             op.Complete(CardOperation.Result.Success);
             yield break;
         }
+
+        public override string GetDescription()
+        {
+            string descriptionString = "[";
+            for (int i = 0; i < executeSteps.Count; i++)
+            {
+                if(i != 0)
+                    descriptionString += ",";
+                descriptionString += executeSteps[i].ToString();
+            }
+            descriptionString += "] in [";
+            for (int i = 0; i < executeLocations.Count; i++)
+            {
+                if (i != 0)
+                    descriptionString += ",";
+                descriptionString += executeLocations[i].ToString();
+            }
+            descriptionString += "]: " + tokenType.ToString() + numTokens.ToString("+#;-#;0");
+
+            return descriptionString;
+        }
     }
 }

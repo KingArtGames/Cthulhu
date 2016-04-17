@@ -13,7 +13,7 @@ namespace Assets.Scripts.CardBehaviours
 
         private int rounds;
 
-        private BaseCard card;
+        private BaseCard card = null;
 
         [Inject]
         public Field fieldOfPayne;
@@ -56,6 +56,18 @@ namespace Assets.Scripts.CardBehaviours
 
             op.Complete(CardOperation.Result.Success);
             yield break;
+        }
+
+        public override string GetDescription()
+        {
+            string description = "[" + CardLifecycleStep.RoundEnd.ToString() + ":";
+            if (card == null)
+                description += afterXRounds;
+            else
+                description += rounds;
+            description += "]: DestroyCard";
+
+            return description;
         }
     }
 }
