@@ -14,3 +14,5 @@ MonoBehaviour:
   CardsInDeck:
   - Prefab: {fileID: 153450, guid: 5a7837aa4fd1636449dc534ee39fd8e0, type: 2}
     Chance: 1
+  - Prefab: {fileID: 111892, guid: 2fc25ef5e6379d0448667ecbffa0de0e, type: 2}
+    Chance: 1
