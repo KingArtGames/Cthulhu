@@ -5,10 +5,11 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts.CardBehaviours
 {
-    class CreateTokenOnPlayCardBehaviour : AbstractCardBehaviour
+    class ChangeTokenOnEventCardBehaviour : AbstractCardBehaviour
     {
         public TokenService.TokenType tokenType;
         public int numTokens = 0;
+        public List<CardLifecycleStep> executeSteps = new List<CardLifecycleStep>();
         public List<Field.DeckLocation> executeLocations = new List<Field.DeckLocation>();
 
         [Inject]
@@ -18,10 +19,13 @@ namespace Assets.Scripts.CardBehaviours
 
         public override void Initialize(BaseCard owner)
         {
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnAdd);
+            foreach (CardLifecycleStep step in executeSteps)
+            {
+                owner.RegisterLivecycleStepExecutor(step, OnEvent);
+            }
         }
 
-        private CardOperation OnAdd(Field.DeckLocation loc)
+        private CardOperation OnEvent(Field.DeckLocation loc)
         {
             if (executeLocations.Contains(loc))
             {
