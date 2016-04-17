@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using Zenject;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameProcessor
 {
@@ -17,8 +18,11 @@ public class GameProcessor
     private DeckFactory _factory;
     private CoroutineService _async;
     private PlayerInputHandler _playerInput;
+
+
     private Coroutine _gameCoroutine;
     private TokenService _tokens;
+    private List<Action> _lifecycleStepEndedListener = new List<Action>();
 
     public GameProcessor(Field field, DeckFactory deckFactory, CoroutineService coroutines, PlayerInputHandler playerInput, TokenService tokens)
     {
@@ -62,8 +66,14 @@ public class GameProcessor
         yield break;
     }
 
+    public void AddLifecycleStepEndedListener(Action listener)
+    {
+        _lifecycleStepEndedListener.Add(listener);
+    }
+
     private IEnumerator StartGame(DeckSettings playerDeck, DeckSettings enemyDeck)
     {
+        yield return null;
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
 
@@ -75,15 +85,18 @@ public class GameProcessor
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
                 foreach (BaseCard card in _field.GetDeck(location).Cards)
-                { 
+                {
                     foreach (CardOperation op in card.ExecuteLifecycleStep(CardLifecycleStep.RoundBegin, location))
                     {
                         yield return op;
                         if (op.OperationResult != CardOperation.Result.Success)
                             break;
                     }
+                    TriggerLifecycleStepDone();
                 }
             }
+
+
             for (int i = 0; i < EnemyCardsPerRound; i++)
             {
                 CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawEnemy).GetCardAtIndex(0), Field.DeckLocation.DrawEnemy, Field.DeckLocation.FieldEnemy);
@@ -95,7 +108,7 @@ public class GameProcessor
                 CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawPlayer).GetCardAtIndex(0), Field.DeckLocation.DrawPlayer, Field.DeckLocation.HandPlayer);
                 yield return op;
             }
-            
+
             yield return _playerInput.HandOverControl();
 
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
@@ -108,8 +121,16 @@ public class GameProcessor
                         if (op.OperationResult != CardOperation.Result.Success)
                             break;
                     }
+                    TriggerLifecycleStepDone();
                 }
             }
         }
+    }
+
+    public void TriggerLifecycleStepDone()
+    {
+        foreach (Action listener in _lifecycleStepEndedListener)
+            listener.Invoke();
+        _lifecycleStepEndedListener.Clear();
     }
 }

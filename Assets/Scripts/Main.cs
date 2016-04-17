@@ -18,5 +18,8 @@ public class Main : MonoInstaller
         Container.Bind<PlayerInputHandler>().ToSingle();
         Container.Bind<TokenService>().ToSingle();
         Container.Bind<CardFactory>().ToSingle();
+        Container.Bind<WaitForEndOfLifecycleStep.Factory>().ToSingle();
+        Container.Bind<BaseCard.Factory>().ToSingle();
+        Container.Bind<BaseDeck.Factory>().ToSingle();
     }
 }

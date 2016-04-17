@@ -25,14 +25,19 @@ public class Field
 
 
     public CoroutineService Coroutines;
+    private BaseDeck.Factory _baseDeckFactory;
 
-    public Field(CoroutineService coroutines)
+    public Field(CoroutineService coroutines, BaseDeck.Factory baseDeckFactory)
     {
         Coroutines = coroutines;
+        _baseDeckFactory = baseDeckFactory;
+    }
 
+    [PostInject]
+    public void Initialize()
+    {
         foreach (DeckLocation item in Enum.GetValues(typeof(DeckLocation)))
             CreateLocation(item);
-        
     }
     
     public BaseDeck GetDeck(DeckLocation location)
@@ -42,7 +47,7 @@ public class Field
 
     private void CreateLocation(DeckLocation location)
     {
-        _decks.Add(location, new BaseDeck(location, Coroutines));
+        _decks.Add(location, _baseDeckFactory.Create(location));
     }
     
 

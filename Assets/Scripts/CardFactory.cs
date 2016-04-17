@@ -11,18 +11,20 @@ namespace Assets.Scripts
 {
     public class CardFactory
     {
+        private BaseCard.Factory _baseCardFactory;
         private DiContainer _container;
         private CoroutineService _coroutines;
 
-        public CardFactory(DiContainer container, CoroutineService coroutines)
+        public CardFactory(DiContainer container, CoroutineService coroutines, BaseCard.Factory baseCardFactory)
         {
             _container = container;
             _coroutines = coroutines;
+            _baseCardFactory = baseCardFactory;
         }
 
         public BaseCard BuildCard(GameObject prefab)
         {
-            BaseCard baseCard = new BaseCard(this);
+            BaseCard baseCard = _baseCardFactory.Create();
             InitializeCardPrefab(baseCard, prefab);
 
             return baseCard;

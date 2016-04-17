@@ -3,6 +3,8 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.Services;
+using Zenject;
 
 public enum CardLifecycleStep
 {
@@ -20,12 +22,16 @@ public class BaseCard
 
     public GameObject Prefab;
     private CardFactory _cardFactory;
+    private CoroutineService _coroutines;
+    private WaitForEndOfLifecycleStep.Factory _waitForEndOfLifecycleStepFactory;
 
     public Field.DeckLocation CurrentLocation { get; set; }
 
-    public BaseCard(CardFactory cardFactory)
+    public BaseCard(CardFactory cardFactory, CoroutineService coroutines, WaitForEndOfLifecycleStep.Factory waitForEndOfLifecycleStepFactory)
     {
-        _cardFactory = cardFactory;   
+        _cardFactory = cardFactory;
+        _coroutines = coroutines;
+        _waitForEndOfLifecycleStepFactory = waitForEndOfLifecycleStepFactory;
     }
 
     public void RegisterLivecycleStepExecutor(CardLifecycleStep step, Func<Field.DeckLocation, CardOperation> func)
@@ -47,12 +53,21 @@ public class BaseCard
 
     public void Replace(GameObject newPrefab)
     {
+        _coroutines.RunAsync(ReplaceAsync(newPrefab));
+    }
+
+    private IEnumerator ReplaceAsync(GameObject newPrefab)
+    {
+        yield return _waitForEndOfLifecycleStepFactory.Create();
         _executors.Clear();
         GameObject.Destroy(Prefab);
         _cardFactory.InitializeCardPrefab(this, newPrefab);
     }
+
     public override string ToString()
     {
         return Prefab.name;
     }
+
+    public class Factory : Factory<BaseCard> { }
 }
