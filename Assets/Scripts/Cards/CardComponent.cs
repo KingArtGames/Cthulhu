@@ -27,7 +27,7 @@ public class CardComponent : MonoBehaviour, IClickable
 	
 	}
 
-    public void OnClick()
+    public void OnLeftClick()
     {
         if (!Selected)
         {
@@ -39,7 +39,10 @@ public class CardComponent : MonoBehaviour, IClickable
             animator.SetTrigger("Deselect");
             _selected = false;
         }
-        
+    }
+
+    public void OnRightClick()
+    {
 
     }
 }

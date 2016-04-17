@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 498460}
   - 114: {fileID: 11489710}
+  - 114: {fileID: 11494276}
   - 114: {fileID: 11462324}
   - 114: {fileID: 11431628}
-  - 114: {fileID: 11444130}
   m_Layer: 0
   m_Name: DamageSpell
   m_TagString: Untagged
@@ -43,18 +43,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   afterXRounds: 0
---- !u!114 &11444130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Comment: 'missing: purple tokens'
+  Async: {fileID: 0}
 --- !u!114 &11462324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,6 +59,7 @@ MonoBehaviour:
   numTokens: -2
   executeSteps: 01000000
   executeLocations: 03000000
+  Async: {fileID: 0}
 --- !u!114 &11489710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,6 +73,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Fire
   Image: {fileID: 2800000, guid: 516eb9da8873bdf4a8ea0e2c0513f89b, type: 3}
+--- !u!114 &11494276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8765612bfa6629d4a872b6f707051f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tokenType: 4
+  numTokens: 5
+  executeSteps: 01000000
+  executeLocations: 03000000
+  Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -100,11 +106,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: tokenType
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: numTokens
-      value: -2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeSteps.Array.data[0]

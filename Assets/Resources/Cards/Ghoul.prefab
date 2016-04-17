@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 495578}
   - 114: {fileID: 11466698}
   - 114: {fileID: 11474050}
-  - 114: {fileID: 11479334}
+  - 114: {fileID: 11485992}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Untagged
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Ghoul
-  Image: {fileID: 2800000, guid: 0598e1a501fd18b4fbe434e0eb9aa27e, type: 3}
+  Image: {fileID: 2800000, guid: 2ca088b167b08a740957ba39d7c3a821, type: 3}
 --- !u!114 &11474050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,7 +58,8 @@ MonoBehaviour:
   numTokens: -1
   executeSteps: 04000000
   executeLocations: 04000000
---- !u!114 &11479334
+  Async: {fileID: 0}
+--- !u!114 &11485992
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -66,10 +67,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 111892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
+  m_Script: {fileID: 11500000, guid: b4e7a69590a4650478937e7ffe725c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Comment: 'missing: kill on use if enough tokens'
+  neededTokens: 03000000
+  Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -79,6 +81,10 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: executeSteps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: neededTokens.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
@@ -100,6 +106,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Title
       value: Ghoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 2ca088b167b08a740957ba39d7c3a821, type: 3}
+    - target: {fileID: 0}
+      propertyPath: neededTokens.Array.data[0]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

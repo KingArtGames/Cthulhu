@@ -54,7 +54,7 @@ public class GameProcessor
 
     private IEnumerator UseCardAsync(BaseCard card, CardOperation op)
     {
-        foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Remove, card.CurrentLocation))
+        foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Use, card.CurrentLocation))
         {
             yield return item;
             if (item.OperationResult != CardOperation.Result.Success)

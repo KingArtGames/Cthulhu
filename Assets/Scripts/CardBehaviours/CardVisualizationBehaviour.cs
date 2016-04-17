@@ -17,6 +17,8 @@ namespace Assets.Scripts.CardBehaviours
         [Inject]
         public Field field;
 
+        [Inject]
+        public GameProcessor processor;
 
         [Inject]
         public PlayerInputHandler PlayerInput;
@@ -77,7 +79,7 @@ namespace Assets.Scripts.CardBehaviours
             get { return _selected; }
         }
 
-        public void OnClick()
+        public void OnLeftClick()
         {
             if (!PlayerInput.HasControl) return;
 
@@ -95,10 +97,16 @@ namespace Assets.Scripts.CardBehaviours
                         animator.SetTrigger("Deselect");
                         _selected = false;
                     }
-                break;
-
+                    break;
+                case Field.DeckLocation.FieldPlayer:
+                case Field.DeckLocation.FieldEnemy:
+                    processor.UseCard(_owner);
+                    break;
             }
-            
+        }
+
+        public void OnRightClick()
+        {
         }
 
         public void OnAnimationFinished()
@@ -109,9 +117,7 @@ namespace Assets.Scripts.CardBehaviours
                     CardOperation op = field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
                     animator.SetTrigger("Deselect");
                     break;
-
             }
-
         }
     }
 }
