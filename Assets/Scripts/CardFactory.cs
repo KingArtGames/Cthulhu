@@ -11,18 +11,22 @@ namespace Assets.Scripts
 {
     public class CardFactory
     {
+        private BaseCard.Factory _baseCardFactory;
         private DiContainer _container;
         private CoroutineService _coroutines;
+        [Inject("CardVisualization")]
+        public GameObject Visualization;
 
-        public CardFactory(DiContainer container, CoroutineService coroutines)
+        public CardFactory(DiContainer container, CoroutineService coroutines, BaseCard.Factory baseCardFactory)
         {
             _container = container;
             _coroutines = coroutines;
+            _baseCardFactory = baseCardFactory;
         }
 
         public BaseCard BuildCard(GameObject prefab)
         {
-            BaseCard baseCard = new BaseCard(this);
+            BaseCard baseCard = _baseCardFactory.Create();
             InitializeCardPrefab(baseCard, prefab);
 
             return baseCard;
@@ -31,7 +35,9 @@ namespace Assets.Scripts
         public void InitializeCardPrefab(BaseCard baseCard, GameObject prefab)
         {
             baseCard.Prefab = GameObject.Instantiate(prefab);
-            _container.InjectGameObject(baseCard.Prefab);
+            GameObject vis = GameObject.Instantiate(Visualization);
+            vis.transform.parent = baseCard.Prefab.transform;
+            _container.InjectGameObject(baseCard.Prefab, true);
             foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponentsInChildren<AbstractCardBehaviour>())
                 executor.Initialize(baseCard);
             baseCard.Prefab.SetActive(false);

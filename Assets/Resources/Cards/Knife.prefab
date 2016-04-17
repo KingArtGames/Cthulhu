@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 412714}
   - 114: {fileID: 11459878}
   - 114: {fileID: 11465110}
-  - 114: {fileID: 11400438}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -30,17 +29,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11400438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11459878
 MonoBehaviour:
   m_ObjectHideFlags: 1

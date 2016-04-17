@@ -16,11 +16,13 @@ namespace Assets.Scripts
         public CoroutineService _coroutines;
 
         private ReactiveCollection<BaseCard> _cards;
+        private GameProcessor _processor;
 
-        public BaseDeck(Field.DeckLocation locations, CoroutineService coroutines)
+        public BaseDeck(Field.DeckLocation locations, CoroutineService coroutines, GameProcessor processor)
         {
             _location = locations;
             _coroutines = coroutines;
+            _processor = processor;
             _cards = new ReactiveCollection<BaseCard>();
         }
 
@@ -87,6 +89,7 @@ namespace Assets.Scripts
             card.CurrentLocation = _location;
             _cards.Insert(index, card);
             op.Complete(CardOperation.Result.Success);
+            _processor.TriggerLifecycleStepDone();
         }
 
         public BaseCard GetCardAtIndex(int index)
@@ -125,7 +128,11 @@ namespace Assets.Scripts
 
             _cards.Remove(card);
             op.Complete(CardOperation.Result.Success);
+
+            _processor.TriggerLifecycleStepDone();
             yield break;
         }
+
+        public class Factory : Factory<Field.DeckLocation, BaseDeck> { }
     }
 }

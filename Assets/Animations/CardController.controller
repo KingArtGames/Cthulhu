@@ -135,7 +135,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Appear
+  m_Name: Deselected
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
@@ -148,7 +148,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0ee1cf9759f80834ca765afac1c590e4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6d045d69cbc6cc648b5ce8f7c407c3a0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -159,7 +159,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SelectedAndDisappear
+  m_Name: Selected
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

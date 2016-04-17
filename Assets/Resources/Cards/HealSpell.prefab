@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 417094}
   - 114: {fileID: 11470010}
   - 114: {fileID: 11489868}
-  - 114: {fileID: 11465804}
   m_Layer: 0
   m_Name: HealSpell
   m_TagString: Untagged
@@ -30,17 +29,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11465804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11470010
 MonoBehaviour:
   m_ObjectHideFlags: 1

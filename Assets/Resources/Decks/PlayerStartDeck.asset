@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PlayerStartDeck
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Scripts:DeckSettings
   CardsInDeck:
-  - Prefab: {fileID: 164772, guid: 069d130c67854f9429d9905992e4b847, type: 2}
-    Chance: 100
+  - Prefab: {fileID: 143372, guid: a6ce1c3fbbb32484782c3206b0baf606, type: 2}
+    Chance: 1

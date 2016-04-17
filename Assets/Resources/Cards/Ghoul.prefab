@@ -9,9 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 495578}
   - 114: {fileID: 11474050}
-  - 114: {fileID: 11462098}
-  - 114: {fileID: 11408240}
-  - 114: {fileID: 11455896}
+  - 114: {fileID: 11479334}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Untagged
@@ -31,45 +29,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11408240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e7a69590a4650478937e7ffe725c97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  neededTokens: 03000000
---- !u!114 &11455896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
---- !u!114 &11462098
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8765612bfa6629d4a872b6f707051f02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tokenType: 1
-  numTokens: -2
-  executeSteps: 01000000
-  executeLocations: 04000000
 --- !u!114 &11474050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,6 +44,18 @@ MonoBehaviour:
   numTokens: -1
   executeSteps: 04000000
   executeLocations: 04000000
+--- !u!114 &11479334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: 'missing: kill on use if enough tokens'
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -97,32 +68,20 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: neededTokens.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: executeLocations.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: numTokens
-      value: -2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeSteps.Array.data[0]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeLocations.Array.data[0]
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: tokenType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: neededTokens.Array.data[0]
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

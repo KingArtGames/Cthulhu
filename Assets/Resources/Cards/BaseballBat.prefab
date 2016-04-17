@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 412424}
   - 114: {fileID: 11489724}
   - 114: {fileID: 11475330}
-  - 114: {fileID: 11496602}
   m_Layer: 0
   m_Name: BaseballBat
   m_TagString: Untagged
@@ -57,17 +56,6 @@ MonoBehaviour:
   numTokens: 2
   executeSteps: 0100000003000000
   executeLocations: 03000000
---- !u!114 &11496602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

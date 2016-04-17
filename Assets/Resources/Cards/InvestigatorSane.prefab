@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 430484}
   - 114: {fileID: 11466742}
-  - 114: {fileID: 11476564}
   m_Layer: 0
   m_Name: InvestigatorSane
   m_TagString: Untagged
@@ -43,18 +42,6 @@ MonoBehaviour:
   compareType: 3
   compareValue: 15
   changeToCard: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
---- !u!114 &11476564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

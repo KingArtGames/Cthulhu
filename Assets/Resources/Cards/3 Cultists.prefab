@@ -11,7 +11,6 @@ GameObject:
   - 114: {fileID: 11493410}
   - 114: {fileID: 11454026}
   - 114: {fileID: 11435298}
-  - 114: {fileID: 11442496}
   m_Layer: 0
   m_Name: 3 Cultists
   m_TagString: Untagged
@@ -43,18 +42,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neededTokens: 02000000020000000200000002000000
---- !u!114 &11442496
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
 --- !u!114 &11454026
 MonoBehaviour:
   m_ObjectHideFlags: 1
