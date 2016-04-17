@@ -15,7 +15,7 @@ namespace Assets.Scripts
             BaseCard baseCard = new BaseCard();
             baseCard.Prefab = GameObject.Instantiate(prefab);
             container.InjectGameObject(baseCard.Prefab);
-            foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponents<AbstractCardBehaviour>())
+            foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponentsInChildren<AbstractCardBehaviour>())
                 executor.Initialize(baseCard);
             baseCard.Prefab.SetActive(false);
 

@@ -26,6 +26,7 @@ namespace Assets.Scripts.Decks
                 {
                     GameObject cardGO = Deck.GetCardAtIndex(cardIndex).Prefab;
                     cardGO.SetActive(true);
+                    cardGO.transform.rotation = slot.transform.rotation;
                     cardGO.transform.parent = slot.transform;
                     cardGO.transform.position = slot.transform.position;
                     cardIndex++;

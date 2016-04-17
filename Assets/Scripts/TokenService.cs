@@ -13,8 +13,24 @@ public class TokenService
         doom
     }
 
+    public ReactiveDictionary<TokenType, TokenStack> Tokens
+    {
+        get
+        {
+            return _tokens;
+        }
+    }
+
     private ReactiveDictionary<TokenType, TokenStack> _tokens = new ReactiveDictionary<TokenType, TokenStack>();
     
+    public TokenStack GetTokenStack(TokenType type)
+    {
+        if (!_tokens.ContainsKey(type))
+            _tokens.Add(type, new TokenStack());
+
+        return _tokens[type];
+    }
+
     public void AddTokens(TokenType type, int count)
     {
         if (!_tokens.ContainsKey(type))

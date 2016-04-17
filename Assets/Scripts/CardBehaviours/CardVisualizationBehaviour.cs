@@ -16,6 +16,10 @@ namespace Assets.Scripts.CardBehaviours
         [Inject]
         public Field field;
 
+
+        [Inject]
+        public PlayerInputHandler PlayerInput;
+
         public Animator animator;
 
         protected BaseCard _owner;
@@ -47,19 +51,38 @@ namespace Assets.Scripts.CardBehaviours
 
         public void OnClick()
         {
+            if (!PlayerInput.HasControl) return;
 
-            if (!Selected)
+            switch (_owner.CurrentLocation)
             {
-                animator.SetTrigger("Select");
-                _selected = true;
-                CardOperation op = field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
+                case Field.DeckLocation.HandPlayer:
+                    if (!Selected)
+                    {
+                        animator.SetTrigger("Select");
+                        _selected = true;
+                        
+                    }
+                    else
+                    {
+                        animator.SetTrigger("Deselect");
+                        _selected = false;
+                    }
+                break;
+
             }
-            else
-            {
-                animator.SetTrigger("Deselect");
-                _selected = false;
-            }
+            
         }
 
+        public void OnAnimationFinished()
+        {
+            switch (_owner.CurrentLocation)
+            {
+                case Field.DeckLocation.HandPlayer:
+                    CardOperation op = field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
+                    break;
+
+            }
+
+        }
     }
 }
