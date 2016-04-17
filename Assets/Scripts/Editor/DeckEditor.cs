@@ -11,4 +11,11 @@ public class DeckEditor : MonoBehaviour
         DeckSettings deck = ScriptableObject.CreateInstance<DeckSettings>();
         AssetDatabase.CreateAsset(deck, "Assets/Resources/Decks/NewDeck.asset");
     }
+
+    [MenuItem("CARDS/Create New Card!")]
+    public static void CreateNewCard()
+    {
+        PrefabUtility.CreatePrefab("Assets/Resources/Cards/NewCard.prefab", new GameObject());
+    }
+
 }
