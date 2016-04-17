@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.CardBehaviours;
 
 public enum CardLifecycleStep
 {
@@ -20,6 +21,8 @@ public class BaseCard
 
     public GameObject Prefab;
     private CardFactory _cardFactory;
+
+    public Texture2D Image;
 
     public Field.DeckLocation CurrentLocation { get; set; }
 
@@ -54,5 +57,16 @@ public class BaseCard
     public override string ToString()
     {
         return Prefab.name;
+    }
+    public string GetDescription()
+    {
+        string description = "";
+        foreach (AbstractCardBehaviour executor in Prefab.GetComponentsInChildren<AbstractCardBehaviour>())
+        {
+            description += executor.GetDescription();
+            description += Environment.NewLine;
+        }
+        description = description.TrimEnd(Environment.NewLine.ToCharArray());
+        return description;
     }
 }
