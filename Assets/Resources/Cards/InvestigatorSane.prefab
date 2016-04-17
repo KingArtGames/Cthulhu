@@ -43,6 +43,7 @@ MonoBehaviour:
   compareType: 3
   compareValue: 15
   changeToCard: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
+  Async: {fileID: 0}
 --- !u!114 &11477930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Investigator
-  Image: {fileID: 2800000, guid: 0598e1a501fd18b4fbe434e0eb9aa27e, type: 3}
+  Image: {fileID: 2800000, guid: 2ca088b167b08a740957ba39d7c3a821, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -79,6 +80,10 @@ Prefab:
       propertyPath: Title
       value: Investigator
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 2ca088b167b08a740957ba39d7c3a821, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138584}
