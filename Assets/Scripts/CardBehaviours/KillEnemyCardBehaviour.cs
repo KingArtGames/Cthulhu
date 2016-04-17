@@ -8,7 +8,7 @@ namespace Assets.Scripts.CardBehaviours
 {
     class KillEnemyCardBehaviour : AbstractCardBehaviour
     {
-        public List<TokenService.TokenType> neededTokens;
+        public List<TokenService.TokenType> neededTokens = new List<TokenService.TokenType>();
 
         [Inject]
         public Field fieldOfPayne;
