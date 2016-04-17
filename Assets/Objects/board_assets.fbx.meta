@@ -1,20 +1,49 @@
 fileFormatVersion: 2
-guid: 5f09ce57e18d68943926c4146dcc820e
-timeCreated: 1460822877
+guid: e79b66ad0c24c4345af0c114150850b1
+timeCreated: 1460897515
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Plane.059
+    100004: Plane.060
+    100006: Plane.061
+    100008: Plane.062
+    100010: Plane.063
+    100012: Plane.095
+    100014: Plane.096
     400000: //RootNode
-    4300000: Plane.002
-    7400000: Plane.002|spikes
-    7400002: Plane.002|test
-    7400004: Plane.002|test.001
-    9500000: //RootNode
-    13700000: //RootNode
+    400002: Plane.059
+    400004: Plane.060
+    400006: Plane.061
+    400008: Plane.062
+    400010: Plane.063
+    400012: Plane.095
+    400014: Plane.096
+    2300000: Plane.059
+    2300002: Plane.060
+    2300004: Plane.061
+    2300006: Plane.062
+    2300008: Plane.063
+    2300010: Plane.095
+    2300012: Plane.096
+    3300000: Plane.059
+    3300002: Plane.060
+    3300004: Plane.061
+    3300006: Plane.062
+    3300008: Plane.063
+    3300010: Plane.095
+    3300012: Plane.096
+    4300000: Plane.096
+    4300002: Plane.095
+    4300004: Plane.063
+    4300006: Plane.061
+    4300008: Plane.060
+    4300010: Plane.059
+    4300012: Plane.062
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -37,7 +66,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -71,7 +100,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

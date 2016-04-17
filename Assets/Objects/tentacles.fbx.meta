@@ -1,59 +1,17 @@
 fileFormatVersion: 2
-guid: 18b9a4de3efa4c54dae6a49dc1cbff89
-timeCreated: 1460846930
+guid: 96345cadf1d2cc34f86374d382890679
+timeCreated: 1460897514
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Armature
-    100002: BezierCurve.007
-    100004: Bone
-    100006: Bone.001
-    100008: Bone.002
-    100010: Bone.003
-    100012: Bone.004
-    100014: Bone.005
-    100016: Bone.006
-    100018: Bone.007
-    100020: Bone.008
-    100022: Bone.009
-    100024: Bone.010
-    100026: Bone.011
-    100028: Bone.012
-    100030: Bone.013
-    100032: Bone.014
-    100034: Bone.015
-    100036: Bone.016
-    100038: Bone.016_end
-    100040: //RootNode
-    400000: Armature
-    400002: BezierCurve.007
-    400004: Bone
-    400006: Bone.001
-    400008: Bone.002
-    400010: Bone.003
-    400012: Bone.004
-    400014: Bone.005
-    400016: Bone.006
-    400018: Bone.007
-    400020: Bone.008
-    400022: Bone.009
-    400024: Bone.010
-    400026: Bone.011
-    400028: Bone.012
-    400030: Bone.013
-    400032: Bone.014
-    400034: Bone.015
-    400036: Bone.016
-    400038: Bone.016_end
-    400040: //RootNode
-    4300000: BezierCurve.007
-    7400000: Armature|idle
-    7400002: BezierCurve.007|idle
-    9500000: //RootNode
-    13700000: BezierCurve.007
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: BezierCurve.002
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -110,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
