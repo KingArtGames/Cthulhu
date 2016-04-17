@@ -11,16 +11,20 @@ namespace Assets.Scripts.Decks
 
         public List<GameObject> FieldSlots;
 
-
-        public override void RefreshVisualization()
+        public override CardOperation RefreshVisualization()
         {
-            _deck = field.GetDeck(DeckLocation);
+            return CardOperation.DoneSuccess;
+        }
+
+        protected override void ReArrangeCards()
+        {
+            Deck = field.GetDeck(DeckLocation);
             int cardIndex = 0;
             foreach(GameObject slot in FieldSlots)
             {
-                if(cardIndex < _deck.CurrentSize)
+                if(cardIndex < Deck.CurrentSize)
                 {
-                    GameObject cardGO = _deck.GetCardAtIndex(cardIndex).Prefab;
+                    GameObject cardGO = Deck.GetCardAtIndex(cardIndex).Prefab;
                     cardGO.SetActive(true);
                     cardGO.transform.parent = slot.transform;
                     cardGO.transform.position = slot.transform.position;

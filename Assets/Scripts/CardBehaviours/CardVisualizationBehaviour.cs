@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Assets.Scripts.CardBehaviours
 {
-    class CardVisualizationBehaviour : AbstractCardBehaviour
+    class CardVisualizationBehaviour : AbstractCardBehaviour, IClickable
     {
         [Inject]
         public VisualizationService visualization;
@@ -25,20 +25,18 @@ namespace Assets.Scripts.CardBehaviours
             _owner = owner;
 
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnCardAdded);
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Added, OnCardAdded);
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Removed, OnCardRemoved);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnCardAdded);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnCardRemoved);
         }
 
         private CardOperation OnCardAdded(Field.DeckLocation loc)
         {
-            visualization.HandleCardMovement(loc);
-            return CardOperation.DoneSuccess;
+            return visualization.HandleCardMovement(loc);
         }
 
         private CardOperation OnCardRemoved(Field.DeckLocation loc)
         {
-            visualization.HandleCardMovement(loc);
-            return CardOperation.DoneSuccess;
+            return visualization.HandleCardMovement(loc);
         }
 
         private bool _selected;

@@ -9,9 +9,15 @@ namespace Assets.Scripts.Decks
     public class DrawVisualizer : AbstractDeckVisualizer
     {
         public GameObject CardStack;
-        public override void RefreshVisualization()
+
+        public override CardOperation RefreshVisualization()
         {
-            CardStack.transform.localScale = new Vector3(CardStack.transform.localScale.x, _deck.CurrentSize / 10, CardStack.transform.localScale.y);
+            return CardOperation.DoneSuccess;
+        }
+
+        protected override void ReArrangeCards()
+        {
+            CardStack.transform.localScale = new Vector3(CardStack.transform.localScale.x,( Deck.CurrentSize / 10f) * 10f, CardStack.transform.localScale.z);
         }
     }
 }
