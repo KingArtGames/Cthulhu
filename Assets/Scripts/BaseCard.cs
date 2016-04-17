@@ -51,4 +51,8 @@ public class BaseCard
         GameObject.Destroy(Prefab);
         _cardFactory.InitializeCardPrefab(this, newPrefab);
     }
+    public override string ToString()
+    {
+        return Prefab.name;
+    }
 }
