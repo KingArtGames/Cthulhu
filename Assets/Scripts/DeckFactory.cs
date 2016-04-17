@@ -12,13 +12,15 @@ namespace Assets.Scripts
 {
     public class DeckFactory
     {
+        private CardFactory _cardFactory;
         private readonly DiContainer _container;
         private CoroutineService _coroutines;
 
-        public DeckFactory(DiContainer container, CoroutineService coroutines)
+        public DeckFactory(DiContainer container, CoroutineService coroutines, CardFactory cardFactory)
         {
             _container = container;
             _coroutines = coroutines;
+            _cardFactory = cardFactory;
         }
 
         public CardOperation FillDeck(BaseDeck deck, int numCards, DeckSettings settings)
@@ -39,7 +41,7 @@ namespace Assets.Scripts
                     roll -= card.Chance;
                     if (roll <= 0)
                     {
-                        CardOperation createOp = deck.CreateCard(CardFactory.BuildCard(card.Prefab, _container));
+                        CardOperation createOp = deck.CreateCard(_cardFactory.BuildCard(card.Prefab));
                         yield return createOp;
                         if (createOp.OperationResult != CardOperation.Result.Success)
                         {

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CardBehaviours;
+using Assets.Scripts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,30 @@ namespace Assets.Scripts
 {
     public class CardFactory
     {
-        public static BaseCard BuildCard(GameObject prefab, DiContainer container)
+        private DiContainer _container;
+        private CoroutineService _coroutines;
+
+        public CardFactory(DiContainer container, CoroutineService coroutines)
         {
-            BaseCard baseCard = new BaseCard();
+            _container = container;
+            _coroutines = coroutines;
+        }
+
+        public BaseCard BuildCard(GameObject prefab)
+        {
+            BaseCard baseCard = new BaseCard(this);
+            InitializeCardPrefab(baseCard, prefab);
+
+            return baseCard;
+        }
+
+        public void InitializeCardPrefab(BaseCard baseCard, GameObject prefab)
+        {
             baseCard.Prefab = GameObject.Instantiate(prefab);
-            container.InjectGameObject(baseCard.Prefab);
+            _container.InjectGameObject(baseCard.Prefab);
             foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponents<AbstractCardBehaviour>())
                 executor.Initialize(baseCard);
             baseCard.Prefab.SetActive(false);
-
-            return baseCard;
         }
     }
 }
