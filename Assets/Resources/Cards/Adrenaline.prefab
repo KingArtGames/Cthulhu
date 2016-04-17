@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461000}
-  - 114: {fileID: 11422202}
+  - 114: {fileID: 11433704}
   - 114: {fileID: 11476344}
   m_Layer: 0
   m_Name: Adrenaline
@@ -29,7 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11422202
+--- !u!114 &11433704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,9 +37,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 161014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2efb89d3f57874280f0eee4558a8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Title: Adrenaline
+  Image: {fileID: 2800000, guid: 869c6f74b9b39d04cbcc75d57c624b7a, type: 3}
 --- !u!114 &11476344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,7 +60,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: Title
+      value: Adrenaline
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 869c6f74b9b39d04cbcc75d57c624b7a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161014}

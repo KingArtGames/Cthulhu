@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Zenject;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -16,6 +17,8 @@ namespace Assets.Scripts.CardBehaviours
         [Inject]
         public Field field;
 
+        [Inject]
+        public GameProcessor processor;
 
         [Inject]
         public PlayerInputHandler PlayerInput;
@@ -23,6 +26,33 @@ namespace Assets.Scripts.CardBehaviours
         public Animator animator;
 
         protected BaseCard _owner;
+
+        public Text TitleLabel;
+        public Text DescriptionLabel;
+
+        public void Update()
+        {
+            UpdateTitle();
+            UpdateDescription();
+            UpdateImage();
+        }
+
+        public void UpdateTitle()
+        {
+            if(TitleLabel != null)
+                TitleLabel.text = _owner.Title;
+        }
+
+        public void UpdateDescription()
+        {
+            if (DescriptionLabel != null)
+                DescriptionLabel.text = _owner.Description;
+        }
+
+        public void UpdateImage()
+        {
+            GetComponent<MeshRenderer>().material.mainTexture = _owner.Image;
+        }
 
         public override void Initialize(BaseCard owner)
         {
@@ -49,7 +79,7 @@ namespace Assets.Scripts.CardBehaviours
             get { return _selected; }
         }
 
-        public void OnClick()
+        public void OnLeftClick()
         {
             if (!PlayerInput.HasControl) return;
 
@@ -67,10 +97,16 @@ namespace Assets.Scripts.CardBehaviours
                         animator.SetTrigger("Deselect");
                         _selected = false;
                     }
-                break;
-
+                    break;
+                case Field.DeckLocation.FieldPlayer:
+                case Field.DeckLocation.FieldEnemy:
+                    processor.UseCard(_owner);
+                    break;
             }
-            
+        }
+
+        public void OnRightClick()
+        {
         }
 
         public void OnAnimationFinished()
@@ -81,9 +117,7 @@ namespace Assets.Scripts.CardBehaviours
                     CardOperation op = field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
                     animator.SetTrigger("Deselect");
                     break;
-
             }
-
         }
     }
 }

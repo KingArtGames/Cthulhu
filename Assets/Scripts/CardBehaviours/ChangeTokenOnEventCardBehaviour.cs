@@ -2,6 +2,7 @@
 using System.Collections;
 using Zenject;
 using System.Collections.Generic;
+using Assets.Scripts.Services;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -16,6 +17,8 @@ namespace Assets.Scripts.CardBehaviours
         public Field fieldOfPayne;
         [Inject]
         public TokenService tokenService;
+        [Inject]
+        public CoroutineService Async;
 
         public override void Initialize(BaseCard owner)
         {
@@ -30,7 +33,7 @@ namespace Assets.Scripts.CardBehaviours
             if (executeLocations.Contains(loc))
             {
                 CardOperation result = new CardOperation();
-                StartCoroutine(AddTokens(result, loc));
+                Async.RunAsync(AddTokens(result, loc));
                 return result;
             }
 

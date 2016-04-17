@@ -7,6 +7,7 @@ namespace Assets
 {
     public interface IClickable
     {
-        void OnClick();
+        void OnLeftClick();
+        void OnRightClick();
     }
 }

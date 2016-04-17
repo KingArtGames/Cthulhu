@@ -8,10 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445172}
+  - 114: {fileID: 11448308}
   - 114: {fileID: 11493410}
   - 114: {fileID: 11454026}
   - 114: {fileID: 11435298}
-  - 114: {fileID: 11442496}
   m_Layer: 0
   m_Name: 3 Cultists
   m_TagString: Untagged
@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neededTokens: 02000000020000000200000002000000
---- !u!114 &11442496
+  Async: {fileID: 0}
+--- !u!114 &11448308
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,10 +52,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 153450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2efb89d3f57874280f0eee4558a8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  Title: 3 Cultists
+  Image: {fileID: 2800000, guid: f8f39ded8b9ef3e418864216ccf29bf8, type: 3}
 --- !u!114 &11454026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,6 +71,7 @@ MonoBehaviour:
   changeToCard: {fileID: 142892, guid: fbcc2534229297c43ae81f9f7b876c86, type: 2}
   executeStep: 3
   executeLocation: 4
+  Async: {fileID: 0}
 --- !u!114 &11493410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +87,7 @@ MonoBehaviour:
   numTokens: -7
   executeSteps: 03000000
   executeLocations: 04000000
+  Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -147,6 +151,14 @@ Prefab:
       propertyPath: neededTokens.Array.data[3]
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Title
+      value: 3 Cultists
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 2800000, guid: f8f39ded8b9ef3e418864216ccf29bf8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153450}

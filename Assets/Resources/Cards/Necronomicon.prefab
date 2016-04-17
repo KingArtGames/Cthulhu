@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 483592}
+  - 114: {fileID: 11476982}
   - 114: {fileID: 11434962}
   - 114: {fileID: 11417904}
   - 114: {fileID: 11471230}
@@ -45,6 +46,7 @@ MonoBehaviour:
   deck: 3
   fromDeck: 5
   toDeck: 2
+  Async: {fileID: 0}
 --- !u!114 &11434962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,6 +62,7 @@ MonoBehaviour:
   numTokens: -5
   executeSteps: 01000000
   executeLocations: 03000000
+  Async: {fileID: 0}
 --- !u!114 &11471230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +75,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   afterXRounds: 0
+  Async: {fileID: 0}
+--- !u!114 &11476982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2efb89d3f57874280f0eee4558a8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: Necronomicon
+  Image: {fileID: 2800000, guid: 2ca088b167b08a740957ba39d7c3a821, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -119,6 +136,14 @@ Prefab:
       propertyPath: toDeck
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Title
+      value: Necronomicon
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 2ca088b167b08a740957ba39d7c3a821, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 178162}

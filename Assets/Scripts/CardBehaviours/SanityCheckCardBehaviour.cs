@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Zenject;
+using Assets.Scripts.Services;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -12,6 +13,8 @@ namespace Assets.Scripts.CardBehaviours
 
         [Inject]
         public TokenService tokenService;
+        [Inject]
+        public CoroutineService Async;
 
         private BaseCard _card;
 
@@ -25,7 +28,7 @@ namespace Assets.Scripts.CardBehaviours
         private CardOperation OnSanityChanged(Field.DeckLocation loc)
         {
             CardOperation result = new CardOperation();
-            StartCoroutine(SanityCheck(result));
+            Async.RunAsync(SanityCheck(result));
             return result;
         }
 
