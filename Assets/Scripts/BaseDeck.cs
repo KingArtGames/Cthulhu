@@ -40,29 +40,11 @@ namespace Assets.Scripts
             }
         }
 
-        public CardOperation CreateCard(BaseCard card)
+        public void CreateCard(BaseCard card)
         {
-            CardOperation op = new CardOperation();
-            _coroutines.RunAsync(CreateCardAsync(card, op));
-            return op;
-        }
-
-        public IEnumerator CreateCardAsync(BaseCard card, CardOperation op) { 
-
-            foreach (var item in card.ExecuteLifecycleStep(CardLifecycleStep.Create, _location))
-            {
-                yield return item;
-                if (item.OperationResult != CardOperation.Result.Success)
-                {
-                    op.Complete(item.OperationResult);
-                    yield break;
-                }
-            }
+            card.ExecuteLifecycleStep(CardLifecycleStep.Create, _location);
             _cards.Add(card);
-
-            op.Complete(CardOperation.Result.Success);
         }
-
 
         public CardOperation AddCard(BaseCard card, int index)
         {

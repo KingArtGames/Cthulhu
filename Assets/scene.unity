@@ -210,6 +210,7 @@ GameObject:
   - 4: {fileID: 572981963}
   - 114: {fileID: 572981962}
   - 114: {fileID: 572981964}
+  - 114: {fileID: 572981965}
   m_Layer: 0
   m_Name: '## Main ##'
   m_TagString: Untagged
@@ -228,8 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8932cc61652a22347ae1a6b6bedfd461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDeck: {fileID: 11400000, guid: 3a7531bcf72f33e48b3bcc438c784649, type: 2}
-  EnemyDeck: {fileID: 11400000, guid: 53eb05381ece6664c9dad5db149fa756, type: 2}
 --- !u!4 &572981963
 Transform:
   m_ObjectHideFlags: 0
@@ -257,6 +256,19 @@ MonoBehaviour:
   ParentNewObjectsUnderRoot: 1
   Installers:
   - {fileID: 572981962}
+--- !u!114 &572981965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 572981961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8626a1cd22f4eec45987eb3a9423cba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDeck: {fileID: 11400000, guid: 3a7531bcf72f33e48b3bcc438c784649, type: 2}
+  EnemyDeck: {fileID: 11400000, guid: 53eb05381ece6664c9dad5db149fa756, type: 2}
 --- !u!4 &632094632 stripped
 Transform:
   m_PrefabParentObject: {fileID: 440078, guid: 707f447087f5bb941b5ea36072137af3, type: 2}

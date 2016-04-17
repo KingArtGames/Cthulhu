@@ -28,7 +28,7 @@ public class BaseCard
     }
     public IEnumerable<CardOperation> ExecuteLifecycleStep(CardLifecycleStep step, Field.DeckLocation deckLocation)
     {
-        if (_executors.ContainsKey(step))
+        if (!_executors.ContainsKey(step))
             yield break;
         foreach (var executor in _executors[step])
             yield return executor.Invoke(deckLocation);
