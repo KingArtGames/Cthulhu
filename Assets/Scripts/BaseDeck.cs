@@ -99,6 +99,11 @@ namespace Assets.Scripts
             return _cards;
         }
 
+        public void Shuffle()
+        {
+            _cards = _cards.OrderBy(item => UnityEngine.Random.value).ToReactiveCollection();
+        }
+
         public CardOperation RemoveCard(BaseCard card)
         {
             CardOperation op = new CardOperation();

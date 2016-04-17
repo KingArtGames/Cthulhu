@@ -10,6 +10,7 @@ public class TokenService
         sanity,
         red,
         green,
+        purple,
         doom
     }
 
