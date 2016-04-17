@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets;
+using Zenject;
 
 public class CardComponent : MonoBehaviour, IClickable
 {
 
     public Animator animator;
+
+    [Inject]
+    public Field field;
 
     private bool _selected;
     public bool Selected

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Decks
         {
             foreach(Transform trans in transform)
             {
-                Destroy(trans.gameObject);
+                //Destroy(trans.gameObject);
             }
 
             _deck = field.GetDeck(DeckLocation);
@@ -30,6 +30,7 @@ namespace Assets.Scripts.Decks
             for (int i = 0; i < _deck.CurrentSize; i++)
             {
                 GameObject cardGO = _deck.GetCardAtIndex(i).Prefab;
+                cardGO.SetActive(true);
                 cardGO.transform.parent = transform;
                 float posX = center.x + radius * Mathf.Sin(offset + (i * cardSpace) * Mathf.Deg2Rad);
                 float posY = center.y + radius * Mathf.Cos(offset + (i * cardSpace) * Mathf.Deg2Rad);

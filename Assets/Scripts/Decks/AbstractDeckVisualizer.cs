@@ -29,5 +29,6 @@ namespace Assets.Scripts.Decks
         }
 
         public abstract void RefreshVisualization();
+
     }
 }
