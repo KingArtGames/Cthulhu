@@ -26,6 +26,8 @@ public class BaseCard
     private CoroutineService _coroutines;
     private WaitForEndOfLifecycleStep.Factory _waitForEndOfLifecycleStepFactory;
 
+    public string Title;
+    public string Description;
     public Texture2D Image;
 
     public Field.DeckLocation CurrentLocation { get; set; }
@@ -69,10 +71,11 @@ public class BaseCard
 
     public override string ToString()
     {
-        return Prefab.name;
+        return Title;
     }
 
     public class Factory : Factory<BaseCard> { }
+
     public string GetDescription()
     {
         string description = "";

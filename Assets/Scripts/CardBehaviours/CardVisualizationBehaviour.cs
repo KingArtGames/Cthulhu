@@ -30,15 +30,17 @@ namespace Assets.Scripts.CardBehaviours
 
         public void UpdateTitle()
         {
-            TitleLabel.text = _owner.ToString();
+            if(TitleLabel != null)
+                TitleLabel.text = _owner.Title;
         }
 
-        public void SetDescription(string description)
+        public void UpdateDescription()
         {
-            DescriptionLabel.text = _owner.GetDescription();
+            if (DescriptionLabel != null)
+                DescriptionLabel.text = _owner.Description;
         }
 
-        public void SetImage(Texture2D texture)
+        public void UpdateImage()
         {
             GetComponent<MeshRenderer>().material.mainTexture = _owner.Image;
         }
@@ -102,28 +104,6 @@ namespace Assets.Scripts.CardBehaviours
                     break;
 
             }
-
-        }
-
-        public void UpdateAll()
-        {
-            UpdateImage();
-            UpdateTitle();
-            UpdateDescription();
-        }
-
-        public void UpdateImage()
-        {
-
-        }
-
-        public void UpdateTitle()
-        {
-
-        }
-
-        public void UpdateDescription()
-        {
 
         }
     }

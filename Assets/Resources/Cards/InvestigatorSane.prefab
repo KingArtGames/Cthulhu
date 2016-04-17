@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430484}
+  - 114: {fileID: 11477930}
   - 114: {fileID: 11466742}
   m_Layer: 0
   m_Name: InvestigatorSane
@@ -42,6 +43,19 @@ MonoBehaviour:
   compareType: 3
   compareValue: 15
   changeToCard: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
+--- !u!114 &11477930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2efb89d3f57874280f0eee4558a8f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: Investigator
+  Image: {fileID: 2800000, guid: 0598e1a501fd18b4fbe434e0eb9aa27e, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -61,6 +75,10 @@ Prefab:
       propertyPath: changeToCard
       value: 
       objectReference: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Title
+      value: Investigator
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138584}
