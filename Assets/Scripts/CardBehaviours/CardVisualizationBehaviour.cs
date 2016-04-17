@@ -79,6 +79,7 @@ namespace Assets.Scripts.CardBehaviours
             {
                 case Field.DeckLocation.HandPlayer:
                     CardOperation op = field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
+                    animator.SetTrigger("Deselect");
                     break;
 
             }
