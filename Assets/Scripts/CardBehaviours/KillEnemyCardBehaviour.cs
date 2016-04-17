@@ -2,6 +2,7 @@
 using System.Collections;
 using Zenject;
 using System.Collections.Generic;
+using Assets.Scripts.Services;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -13,6 +14,8 @@ namespace Assets.Scripts.CardBehaviours
         public Field fieldOfPayne;
         [Inject]
         public TokenService tokenService;
+        [Inject]
+        public CoroutineService Async;
 
         BaseCard _card;
 
@@ -27,7 +30,7 @@ namespace Assets.Scripts.CardBehaviours
             if (loc == Field.DeckLocation.FieldEnemy)
             {
                 CardOperation result = new CardOperation();
-                StartCoroutine(TryKillEnemy(result));
+                Async.RunAsync(TryKillEnemy(result));
                 return result;
             }
 

@@ -5,6 +5,7 @@ using System.Collections;
 using Zenject;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GameProcessor
 {
@@ -84,7 +85,7 @@ public class GameProcessor
         {
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
-                foreach (BaseCard card in _field.GetDeck(location).Cards)
+                foreach (BaseCard card in _field.GetDeck(location).Cards.ToArray())
                 {
                     foreach (CardOperation op in card.ExecuteLifecycleStep(CardLifecycleStep.RoundBegin, location))
                     {
@@ -113,7 +114,7 @@ public class GameProcessor
 
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
-                foreach (BaseCard card in _field.GetDeck(location).Cards)
+                foreach (BaseCard card in _field.GetDeck(location).Cards.ToArray())
                 {
                     foreach (CardOperation op in card.ExecuteLifecycleStep(CardLifecycleStep.RoundEnd, location))
                     {
