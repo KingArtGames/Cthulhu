@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.Services;
 using Zenject;
+using Assets.Scripts.CardBehaviours;
 
 public enum CardLifecycleStep
 {
@@ -24,6 +25,10 @@ public class BaseCard
     private CardFactory _cardFactory;
     private CoroutineService _coroutines;
     private WaitForEndOfLifecycleStep.Factory _waitForEndOfLifecycleStepFactory;
+
+    public string Title;
+    public string Description;
+    public Texture2D Image;
 
     public Field.DeckLocation CurrentLocation { get; set; }
 
@@ -66,8 +71,20 @@ public class BaseCard
 
     public override string ToString()
     {
-        return Prefab.name;
+        return Title;
     }
 
     public class Factory : Factory<BaseCard> { }
+
+    public string GetDescription()
+    {
+        string description = "";
+        foreach (AbstractCardBehaviour executor in Prefab.GetComponentsInChildren<AbstractCardBehaviour>())
+        {
+            description += executor.GetDescription();
+            description += Environment.NewLine;
+        }
+        description = description.TrimEnd(Environment.NewLine.ToCharArray());
+        return description;
+    }
 }

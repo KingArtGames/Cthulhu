@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Zenject;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -23,6 +24,26 @@ namespace Assets.Scripts.CardBehaviours
         public Animator animator;
 
         protected BaseCard _owner;
+
+        public Text TitleLabel;
+        public Text DescriptionLabel;
+
+        public void UpdateTitle()
+        {
+            if(TitleLabel != null)
+                TitleLabel.text = _owner.Title;
+        }
+
+        public void UpdateDescription()
+        {
+            if (DescriptionLabel != null)
+                DescriptionLabel.text = _owner.Description;
+        }
+
+        public void UpdateImage()
+        {
+            GetComponent<MeshRenderer>().material.mainTexture = _owner.Image;
+        }
 
         public override void Initialize(BaseCard owner)
         {
