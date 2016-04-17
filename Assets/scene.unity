@@ -277,46 +277,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 440078, guid: 707f447087f5bb941b5ea36072137af3, type: 2}
   m_PrefabInternal: {fileID: 1360154371}
---- !u!1 &902252141
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 902252143}
-  - 114: {fileID: 902252142}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &902252142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 902252141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a4fb5e237a312344808e0050a7cea1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerDeck: {fileID: 11400000, guid: 3a7531bcf72f33e48b3bcc438c784649, type: 2}
---- !u!4 &902252143
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 902252141}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 489.25253, y: 311.4002, z: -582.86523}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1001 &916175045
 Prefab:
   m_ObjectHideFlags: 0

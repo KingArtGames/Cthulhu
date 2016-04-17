@@ -21,14 +21,12 @@ namespace Assets.Scripts.CardBehaviours
 
         private CardOperation OnCardAdded(Field.DeckLocation loc)
         {
-            visualization.HandleCardMovement(loc);
-            return CardOperation.DoneSuccess;
+            return visualization.HandleCardMovement(loc);
         }
 
         private CardOperation OnCardRemoved(Field.DeckLocation loc)
         {
-            visualization.HandleCardMovement(loc);
-            return CardOperation.DoneSuccess;
+            return visualization.HandleCardMovement(loc);
         }
 
 

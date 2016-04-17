@@ -9,7 +9,8 @@ public enum CardLifecycleStep
     Add,
     Remove,
     RoundBegin,
-    RoundEnd
+    RoundEnd,
+    Use
 }
 
 public class BaseCard
@@ -17,6 +18,7 @@ public class BaseCard
     private Dictionary<CardLifecycleStep, List<Func<Field.DeckLocation, CardOperation>>> _executors = new Dictionary<CardLifecycleStep, List<Func<Field.DeckLocation, CardOperation>>>();
 
     public GameObject Prefab;
+    public Field.DeckLocation CurrentLocation { get; set; }
 
     public void RegisterLivecycleStepExecutor(CardLifecycleStep step, Func<Field.DeckLocation, CardOperation> func)
     {

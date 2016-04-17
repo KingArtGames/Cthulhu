@@ -15,19 +15,19 @@ namespace Assets.Scripts.Decks
         public Field field;
 
         [Inject]
-        public VisualizationService visualization;
+        public VisualizationService Visualization;
 
-        protected BaseDeck _deck;
+        protected BaseDeck Deck;
         public Field.DeckLocation DeckLocation;
         public GameObject CardPrefab;
 
         [PostInject]
-        public void Initialize()
+        virtual public void Initialize()
         {
-            visualization.RegisterDeckVisualizer(this);
-
+            Deck = field.GetDeck(DeckLocation);
+            Visualization.RegisterDeckVisualizer(this);
         }
 
-        public abstract void RefreshVisualization();
+        public abstract CardOperation RefreshVisualization();
     }
 }
