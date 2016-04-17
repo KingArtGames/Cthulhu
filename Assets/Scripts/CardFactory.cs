@@ -13,11 +13,11 @@ namespace Assets.Scripts
         public static BaseCard BuildCard(GameObject prefab, DiContainer container)
         {
             BaseCard baseCard = new BaseCard();
-            GameObject instance = GameObject.Instantiate(prefab);
-            container.InjectGameObject(instance);
-            foreach (AbstractCardBehaviour executor in instance.GetComponents<AbstractCardBehaviour>())
+            baseCard.Prefab = GameObject.Instantiate(prefab);
+            container.InjectGameObject(baseCard.Prefab);
+            foreach (AbstractCardBehaviour executor in baseCard.Prefab.GetComponents<AbstractCardBehaviour>())
                 executor.Initialize(baseCard);
-            instance.SetActive(false);
+            baseCard.Prefab.SetActive(false);
 
             return baseCard;
         }

@@ -33,7 +33,7 @@ namespace Assets.Scripts
         {
             yield return null;
 
-            factory.FillDeck(field.GetDeck(Field.DeckLocation.DrawPlayer), 10, PlayerDeck);
+            factory.FillDeck(field.GetDeck(Field.DeckLocation.HandPlayer), 10, PlayerDeck);
 
             
             Debug.Log(field);

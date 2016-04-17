@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public enum CardLifecycleStep
 {
+    Create,
     Add,
     Remove,
     RoundBegin,
@@ -15,6 +16,7 @@ public class BaseCard
 {
     private Dictionary<CardLifecycleStep, List<Func<Field.DeckLocation, CardOperation>>> _executors = new Dictionary<CardLifecycleStep, List<Func<Field.DeckLocation, CardOperation>>>();
 
+    public GameObject Prefab;
 
     public void RegisterLivecycleStepExecutor(CardLifecycleStep step, Func<Field.DeckLocation, CardOperation> func)
     {
@@ -26,7 +28,7 @@ public class BaseCard
     }
     public IEnumerable<CardOperation> ExecuteLifecycleStep(CardLifecycleStep step, Field.DeckLocation deckLocation)
     {
-        if (_executors.ContainsKey(step))
+        if (!_executors.ContainsKey(step))
             yield break;
         foreach (var executor in _executors[step])
             yield return executor.Invoke(deckLocation);

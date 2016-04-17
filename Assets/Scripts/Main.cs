@@ -11,7 +11,10 @@ public class Main : MonoInstaller
     {
         Container.Bind<TurnManager>().ToSingleGameObject<TurnManager>();
         Container.Bind<CoroutineService>().ToSingleGameObject<CoroutineService>();
+        Container.Bind<VisualizationService>().ToSingle<VisualizationService>();
         Container.Bind<Field>().ToSingle<Field>();
         Container.Bind<DeckFactory>().ToSingle();
+        Container.Bind<GameProcessor>().ToSingle();
+        Container.Bind<PlayerInputHandler>().ToSingle();
     }
 }

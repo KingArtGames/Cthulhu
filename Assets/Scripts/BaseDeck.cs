@@ -12,7 +12,8 @@ namespace Assets.Scripts
     public class BaseDeck
     {
         private readonly Field.DeckLocation _location;
-        private CoroutineService _coroutines;
+
+        public CoroutineService _coroutines;
 
         private List<BaseCard> _cards;
 
@@ -41,6 +42,7 @@ namespace Assets.Scripts
 
         public void CreateCard(BaseCard card)
         {
+            card.ExecuteLifecycleStep(CardLifecycleStep.Create, _location);
             _cards.Add(card);
         }
 
