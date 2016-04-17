@@ -10,14 +10,8 @@ namespace Assets.Scripts.Decks
 {
     public class HandVisualizer : AbstractDeckVisualizer
     {
-
-        public float radius = 0.1f;
-        public float offset = -0.34f;
-        public Vector2 center = new Vector2(0, 0);
-
         public float cardSpace = 10;
         
-
         public override void Initialize()
         {
             base.Initialize();
@@ -31,8 +25,10 @@ namespace Assets.Scripts.Decks
 
         protected override void ReArrangeCards()
         {
-            offset = -cardSpace / 2f;// * (cardSpace / Deck.CurrentSize);
+            float offset = -cardSpace / 2f;
             if (Deck.CurrentSize % 2 == 0)
+                offset += (cardSpace / Deck.CurrentSize) / 2;
+            else
                 offset += (cardSpace / Deck.CurrentSize) / 2;
 
             for (int i = 0; i < Deck.CurrentSize; i++)
@@ -42,14 +38,8 @@ namespace Assets.Scripts.Decks
                 cardGO.transform.parent = transform;
                 cardGO.transform.localPosition = Vector3.zero;
                 cardGO.transform.localRotation = Quaternion.identity;
-                //float posX = center.x + radius * Mathf.Sin(offset + (i * cardSpace) * Mathf.Deg2Rad);
-                //float posY = center.y + radius * Mathf.Cos(offset + (i * cardSpace) * Mathf.Deg2Rad);
 
                 cardGO.transform.localPosition = new Vector3(offset + (cardSpace / Deck.CurrentSize) * i, 0, 0);
-
-                //Vector2 direction = new Vector2(center.x - posX, center.y - posY);
-
-                //cardGO.transform.Rotate(Vector3.up, direction.x, Space.Self);
             }
         }
     }
