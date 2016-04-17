@@ -12,7 +12,7 @@ public class InputHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -23,7 +23,10 @@ public class InputHandler : MonoBehaviour {
                     Component clickable = hit.transform.gameObject.GetComponent(typeof(IClickable));
                     if (clickable != null)
                     {
-                        (clickable as IClickable).OnClick();
+                        if (Input.GetMouseButtonDown(0))
+                            (clickable as IClickable).OnLeftClick();
+                        else
+                            (clickable as IClickable).OnRightClick();
                     }
                 }
         }
