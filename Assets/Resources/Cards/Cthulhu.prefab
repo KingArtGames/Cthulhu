@@ -1,86 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &163576
+--- !u!1 &155344
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 437252}
-  - 114: {fileID: 11481684}
-  - 114: {fileID: 11406702}
-  - 114: {fileID: 11486958}
-  - 114: {fileID: 11478916}
+  - 4: {fileID: 489154}
+  - 114: {fileID: 11437006}
+  - 114: {fileID: 11450882}
   m_Layer: 0
-  m_Name: Hobo
+  m_Name: Cthulhu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &437252
+--- !u!4 &489154
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163576}
+  m_GameObject: {fileID: 155344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11406702
+--- !u!114 &11437006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5820295b418e0147846cb710e74ca76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterXRounds: 3
-  Async: {fileID: 0}
---- !u!114 &11478916
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Comment: 'missing: image'
---- !u!114 &11481684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163576}
+  m_GameObject: {fileID: 155344}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb2efb89d3f57874280f0eee4558a8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Title: Hobo
-  Image: {fileID: 2800000, guid: 5927887709ff557429fe345d211f38a0, type: 3}
---- !u!114 &11486958
+  Title: Cthulhu
+  Image: {fileID: 2800000, guid: 388e3f712af979645a36e47d15dfae85, type: 3}
+--- !u!114 &11450882
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163576}
+  m_GameObject: {fileID: 155344}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Comment: 'missing: half sanity losses'
+  Comment: missing text
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -89,18 +62,14 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: afterXRounds
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: Title
-      value: Hobo
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: Image
       value: 
-      objectReference: {fileID: 2800000, guid: 5927887709ff557429fe345d211f38a0, type: 3}
+      objectReference: {fileID: 2800000, guid: 388e3f712af979645a36e47d15dfae85, type: 3}
+    - target: {fileID: 0}
+      propertyPath: Title
+      value: Cthulhu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 163576}
+  m_RootGameObject: {fileID: 155344}
   m_IsPrefabParent: 1
