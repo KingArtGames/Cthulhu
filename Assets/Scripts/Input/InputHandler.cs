@@ -2,15 +2,18 @@
 using System.Collections;
 using Assets;
 
-public class InputHandler : MonoBehaviour {
+public class InputHandler : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
@@ -23,15 +26,15 @@ public class InputHandler : MonoBehaviour {
                 {
                     if (Input.GetMouseButtonDown(0))
                         (clickable as IClickable).OnLeftClick();
-                    else
+                    else if (Input.GetMouseButtonDown(1))
                         (clickable as IClickable).OnRightClick();
                 }
-                else if (Input.GetMouseButtonDown(1))
+                else
                 {
                     CardPreview.SetEnabled(false);
                 }
             }
-            else if (Input.GetMouseButtonDown(1))
+            else
             {
                 CardPreview.SetEnabled(false);
             }
