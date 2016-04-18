@@ -18,14 +18,14 @@ namespace Assets.Scripts.UI
         public Text HealthText;
         public Text SanityText;
         public Text DoomText;
-        public Text RedTokensText;
+        public Text BlueTokensText;
         public Text GreenTokensText;
         public Text PurpleTokensText;
 
         private IDisposable _healthChangedSubscription;
         private IDisposable _sanityChangedSubscription;
         private IDisposable _doomChangedSubscription;
-        private IDisposable _redTokensChangedSubscription;
+        private IDisposable _blueTokensChangedSubscription;
         private IDisposable _greenTokensChangedSubscription;
         private IDisposable _purpleTokensChangedSubscription;
 
@@ -35,7 +35,7 @@ namespace Assets.Scripts.UI
             _healthChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.health).Count.Subscribe(_ => RefreshHealth());
             _sanityChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.sanity).Count.Subscribe(_ => RefreshSanity());
             _doomChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.doom).Count.Subscribe(_ => RefreshDoom());
-            _redTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.red).Count.Subscribe(_ => RefreshRedTokens());
+            _blueTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.blue).Count.Subscribe(_ => RefrehsBlueTokens());
             _greenTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.green).Count.Subscribe(_ => RefreshGreenTokens());
             _purpleTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.purple).Count.Subscribe(_ => RefreshPurpleTokens());
         }
@@ -52,17 +52,17 @@ namespace Assets.Scripts.UI
         {
             DoomText.text = "Doom: " + TokenService.Tokens[TokenService.TokenType.doom].Count;
         }
-        private void RefreshRedTokens()
+        private void RefrehsBlueTokens()
         {
-            RedTokensText.text = "Red: " + TokenService.Tokens[TokenService.TokenType.red].Count;
+            BlueTokensText.text = TokenService.Tokens[TokenService.TokenType.blue].Count.ToString();
         }
         private void RefreshGreenTokens()
         {
-            GreenTokensText.text = "Green: " + TokenService.Tokens[TokenService.TokenType.green].Count;
+            GreenTokensText.text = TokenService.Tokens[TokenService.TokenType.green].Count.ToString();
         }
         private void RefreshPurpleTokens()
         {
-            PurpleTokensText.text = "Purple: " + TokenService.Tokens[TokenService.TokenType.purple].Count;
+            PurpleTokensText.text = TokenService.Tokens[TokenService.TokenType.purple].Count.ToString();
         }
 
 
