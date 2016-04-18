@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11406000}
   - 114: {fileID: 11478338}
   - 114: {fileID: 11476794}
+  - 114: {fileID: 11431102}
   - 82: {fileID: 8246972}
   m_Layer: 0
   m_Name: Prophecy
@@ -118,6 +119,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Prophecy
   Image: {fileID: 2800000, guid: 55a455444c6a9f54681c0fd24990f4da, type: 3}
+  Async: {fileID: 0}
+--- !u!114 &11431102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5820295b418e0147846cb710e74ca76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterXRounds: 0
+  Async: {fileID: 0}
 --- !u!114 &11476794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,6 +167,7 @@ MonoBehaviour:
   executeSteps: 01000000
   executeLocations: 03000000
   AudioClip: {fileID: 0}
+  Animation: 
   Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

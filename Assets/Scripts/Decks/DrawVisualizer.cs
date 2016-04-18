@@ -31,6 +31,7 @@ namespace Assets.Scripts.Decks
             CardStack.transform.localPosition = new Vector3(0f, 0.5f * CardStack.transform.localScale.y, 0f);
             if (UpperCard != null)
             {
+                UpperCard.gameObject.SetActive(Deck.CurrentSize > 0);
                 UpperCard.transform.localPosition = new Vector3(0f, CardStack.transform.localScale.y, 0f);
             }
         }

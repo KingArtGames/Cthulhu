@@ -91,6 +91,8 @@ namespace Assets.Scripts.Decks
         {
             if (CardRemovedSound == null ||SoundSource == null)
             {
+                card.Prefab.SetActive(false);
+                card.Prefab.transform.parent = null;
                 op.Complete(CardOperation.Result.Success);
                 yield break;
             }
