@@ -8,6 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 
+public enum GamePhase
+{
+    Draw,
+    Player,
+    Enemy
+}
+
 public class GameProcessor
 {
 
@@ -27,6 +34,11 @@ public class GameProcessor
     private Coroutine _gameCoroutine;
     private TokenService _tokens;
     private List<Action> _lifecycleStepEndedListener = new List<Action>();
+    private List<Action> _gamePhaseChangedListener = new List<Action>();
+
+    private GamePhase _currentPhase;
+    public GamePhase Phase { get { return _currentPhase; } }
+    
 
     public GameProcessor(Field field, DeckFactory deckFactory, CoroutineService coroutines, PlayerInputHandler playerInput, TokenService tokens)
     {
@@ -75,6 +87,13 @@ public class GameProcessor
         _lifecycleStepEndedListener.Add(listener);
     }
 
+    public void AddGamePhaseChangedListener(Action listener)
+    {
+        _gamePhaseChangedListener.Add(listener);
+    }
+
+    
+
     private IEnumerator StartGame(DeckSettings playerDeck, DeckSettings enemyDeck, DeckSettings characterDeck, DeckSettings bossDeck)
     {
         yield return null;
@@ -90,6 +109,7 @@ public class GameProcessor
 
         while (true)
         {
+            _currentPhase = GamePhase.Draw;
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
                 foreach (BaseCard card in _field.GetDeck(location).Cards.ToArray())
@@ -101,9 +121,10 @@ public class GameProcessor
                             break;
                     }
                 }
+                
                 TriggerLifecycleStepDone();
             }
-
+            GamePhaseStarted();
 
             for (int i = 0; i < EnemyCardsPerRound; i++)
             {
@@ -129,7 +150,12 @@ public class GameProcessor
                 }
             }
 
+            _currentPhase = GamePhase.Player;
+            GamePhaseStarted();
             yield return _playerInput.HandOverControl();
+
+            _currentPhase = GamePhase.Enemy;
+            GamePhaseStarted();
 
             foreach (Field.DeckLocation location in Enum.GetValues(typeof(Field.DeckLocation)))
             {
@@ -168,5 +194,11 @@ public class GameProcessor
         foreach (Action listener in _lifecycleStepEndedListener)
             listener.Invoke();
         _lifecycleStepEndedListener.Clear();
+    }
+
+    public void GamePhaseStarted()
+    {
+        foreach (Action listener in _gamePhaseChangedListener)
+            listener.Invoke();
     }
 }

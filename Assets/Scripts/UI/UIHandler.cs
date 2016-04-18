@@ -15,12 +15,17 @@ namespace Assets.Scripts.UI
         [Inject]
         public TokenService TokenService;
 
+        [Inject]
+        public GameProcessor Processor;
+
         public Text HealthText;
         public Text SanityText;
         public Text DoomText;
         public Text BlueTokensText;
         public Text GreenTokensText;
         public Text PurpleTokensText;
+
+        public Text PhaseText;
 
         private IDisposable _healthChangedSubscription;
         private IDisposable _sanityChangedSubscription;
@@ -38,6 +43,25 @@ namespace Assets.Scripts.UI
             _blueTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.blue).Count.Subscribe(_ => RefrehsBlueTokens());
             _greenTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.green).Count.Subscribe(_ => RefreshGreenTokens());
             _purpleTokensChangedSubscription = TokenService.GetTokenStack(TokenService.TokenType.purple).Count.Subscribe(_ => RefreshPurpleTokens());
+
+            Processor.AddGamePhaseChangedListener(PhaseChanged);
+        }
+
+        private void PhaseChanged()
+        {
+            switch (Processor.Phase)
+            {
+                case GamePhase.Draw:
+                    PhaseText.text = "Draw Phase";
+                    break;
+                case GamePhase.Player:
+                    PhaseText.text = "Player Turn";
+                    break;
+                case GamePhase.Enemy:
+                    PhaseText.text = "Enemy Phase";
+                    break;
+            }
+            
         }
 
         private void RefreshHealth()
