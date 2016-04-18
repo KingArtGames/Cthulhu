@@ -4,20 +4,18 @@ using Zenject;
 using Assets.Scripts.Services;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.CardBehaviours
 {
-    class TokenWinConditionCardBehaviour : AbstractCardBehaviour
+    class NoCardWinConditionCardBehaviour : AbstractCardBehaviour
     {
-        public TokenService.TokenType tokenType;
-        public CompareType compareType;
-        public int compareValue;
-
         [Inject]
-        public TokenService tokenService;
+        public Field fieldOfPayne;
         [Inject]
         public CoroutineService Async;
 
+        public List<Field.DeckLocation> noCardLocations = new List<Field.DeckLocation>();
         public bool win = true;
 
         public Texture2D Image;
@@ -31,11 +29,11 @@ namespace Assets.Scripts.CardBehaviours
         public override void Initialize(BaseCard owner)
         {
             _card = owner;
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundEnd, OnEndTurn);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundBegin, OnStartTurn);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Use, OnUse);
         }
 
-        private CardOperation OnEndTurn(Field.DeckLocation loc)
+        private CardOperation OnStartTurn(Field.DeckLocation loc)
         {
             CardOperation result = new CardOperation();
             Async.RunAsync(WinCheck(result));
@@ -51,7 +49,12 @@ namespace Assets.Scripts.CardBehaviours
 
         private bool ConditionFulfilled()
         {
-            return Check(tokenService.GetTokenStack(tokenType).Count.Value, compareType, compareValue);
+            foreach (Field.DeckLocation loc in noCardLocations)
+            {
+                if (fieldOfPayne.GetDeck(loc).CurrentSize != 0)
+                    return false;
+            }
+            return true;
         }
 
         private IEnumerator WinCheck(CardOperation op)
@@ -111,12 +114,17 @@ namespace Assets.Scripts.CardBehaviours
             }
             else
             {
-                string descriptionString = "";
+                string descriptionString = "[";
+                foreach (Field.DeckLocation loc in noCardLocations)
+                {
+                    descriptionString += loc.ToString();
+                    descriptionString += ", ";
+                }
+                descriptionString = descriptionString.TrimEnd(new char[] { ',', ' ' }) + "] empty: ";
                 if (win)
-                    descriptionString += "WinCondition: ";
+                    descriptionString += "Win game";
                 else
-                    descriptionString += "LooseCondition: ";
-                descriptionString += tokenType.ToString() + ToString(compareType) + compareValue;
+                    descriptionString += "Loose game";
 
                 return descriptionString;
             }
