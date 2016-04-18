@@ -8,7 +8,7 @@ public class TokenService
     {
         health,
         sanity,
-        red,
+        blue,
         green,
         purple,
         doom
