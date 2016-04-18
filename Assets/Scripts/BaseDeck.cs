@@ -97,6 +97,16 @@ namespace Assets.Scripts
             return _cards[index];
         }
 
+        public BaseCard GetFirstCard()
+        {
+            return _cards[0];
+        }
+
+        public BaseCard GetLastCard()
+        {
+            return _cards[_cards.Count - 1];
+        }
+
         public IEnumerable<BaseCard> GetCards()
         {
             return _cards;

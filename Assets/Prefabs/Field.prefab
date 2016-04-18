@@ -58,6 +58,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &135384
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429594}
+  - 137: {fileID: 13767148}
+  m_Layer: 0
+  m_Name: card
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &135670
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +167,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410718}
-  - 114: {fileID: 11464046}
+  - 114: {fileID: 11452622}
   m_Layer: 0
   m_Name: DiscardPlayer
   m_TagString: Untagged
@@ -203,6 +219,22 @@ GameObject:
   - 4: {fileID: 470240}
   m_Layer: 0
   m_Name: Field
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &167492
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463668}
+  - 137: {fileID: 13756284}
+  m_Layer: 0
+  m_Name: card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,6 +353,7 @@ Transform:
   m_LocalScale: {x: 0.33333, y: 0.01, z: 0.5}
   m_Children:
   - {fileID: 404792}
+  - {fileID: 429594}
   m_Father: {fileID: 470240}
   m_RootOrder: 4
 --- !u!4 &410718
@@ -347,6 +380,7 @@ Transform:
   m_LocalScale: {x: 0.33333, y: 0.01, z: 0.5}
   m_Children:
   - {fileID: 421846}
+  - {fileID: 463668}
   m_Father: {fileID: 470240}
   m_RootOrder: 3
 --- !u!4 &415048
@@ -385,6 +419,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 404690}
   m_RootOrder: 1
+--- !u!4 &429594
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135384}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0.21, z: 0}
+  m_LocalScale: {x: 195.00195, y: 129.99994, z: 6499.997}
+  m_Children: []
+  m_Father: {fileID: 410452}
+  m_RootOrder: 1
 --- !u!4 &429878
 Transform:
   m_ObjectHideFlags: 1
@@ -422,6 +468,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 410718}
   m_RootOrder: 0
+--- !u!4 &463668
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167492}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0.21, z: 0}
+  m_LocalScale: {x: 195.00195, y: 129.99997, z: 6499.9985}
+  m_Children: []
+  m_Father: {fileID: 413566}
+  m_RootOrder: 1
 --- !u!4 &465184
 Transform:
   m_ObjectHideFlags: 1
@@ -705,7 +763,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -754,7 +812,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -835,6 +893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeckLocation: 1
   CardStack: {fileID: 156748}
+  UpperCard: {fileID: 429594}
 --- !u!114 &11445634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -874,7 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeckLocation: 2
   cardSpace: 30
---- !u!114 &11464046
+--- !u!114 &11452622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -882,7 +941,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 159066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed93812333d4ca4ca1d12418dbf2cbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 825aa45244cf10c43abcc5f383922734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DeckLocation: 5
@@ -939,6 +998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeckLocation: 0
   CardStack: {fileID: 145046}
+  UpperCard: {fileID: 463668}
 --- !u!114 &11473564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1044,6 +1104,80 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116044}
   m_Enabled: 1
+--- !u!137 &13756284
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167492}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6751c20306ffe7243972569cce567148, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 1
+  m_Mesh: {fileID: 4300000, guid: 4115c7af961cffb4db9d19353e69eff7, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 2.3283064e-10, z: 0}
+    m_Extent: {x: 0.0036136364, y: 0.004846154, z: 0.000044999997}
+  m_DirtyAABB: 0
+--- !u!137 &13767148
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135384}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6751c20306ffe7243972569cce567148, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 1
+  m_Mesh: {fileID: 4300000, guid: 4115c7af961cffb4db9d19353e69eff7, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 2.3283064e-10, z: 0}
+    m_Extent: {x: 0.0036136364, y: 0.004846154, z: 0.000044999997}
+  m_DirtyAABB: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
