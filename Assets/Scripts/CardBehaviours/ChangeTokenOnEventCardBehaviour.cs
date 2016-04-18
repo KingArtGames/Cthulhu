@@ -6,12 +6,14 @@ using Assets.Scripts.Services;
 
 namespace Assets.Scripts.CardBehaviours
 {
+    [RequireComponent(typeof(AudioSource))]
     class ChangeTokenOnEventCardBehaviour : AbstractCardBehaviour
     {
         public TokenService.TokenType tokenType;
         public int numTokens = 0;
         public List<CardLifecycleStep> executeSteps = new List<CardLifecycleStep>();
         public List<Field.DeckLocation> executeLocations = new List<Field.DeckLocation>();
+        public AudioClip AudioClip;
 
         [Inject]
         public Field fieldOfPayne;
@@ -42,9 +44,16 @@ namespace Assets.Scripts.CardBehaviours
 
         private IEnumerator AddTokens(CardOperation op, Field.DeckLocation loc)
         {
-            
-            //play animation / SFX
 
+            //play animation / SFX
+            if (AudioClip != null)
+            {
+                AudioSource source = GetComponent<AudioSource>();
+                source.clip = AudioClip;
+                source.Play();
+                while (source.isPlaying)
+                    yield return null;
+            }
             //
             tokenService.AddTokens(tokenType, numTokens);
 

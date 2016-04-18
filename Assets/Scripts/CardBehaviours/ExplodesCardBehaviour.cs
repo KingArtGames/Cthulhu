@@ -5,14 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Zenject;
+using UnityEngine;
 
 namespace Assets.Scripts.CardBehaviours
 {
+    [RequireComponent(typeof(AudioSource))]
     class ExplodesCardBehaviour : AbstractCardBehaviour
     {
         public int minRounds;
         public int maxRounds;
         public int Damage = 5;
+        public AudioClip ExplosionSound;
 
         private int rounds;
 
@@ -64,6 +67,8 @@ namespace Assets.Scripts.CardBehaviours
         {
             //play animation / SFX
 
+            if (ExplosionSound != null)
+                GetComponent<AudioSource>().PlayOneShot(ExplosionSound);
             Tokens.GetTokenStack(TokenService.TokenType.health).Remove(Damage);
 
             //Deal DMG
