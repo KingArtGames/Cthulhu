@@ -6,12 +6,15 @@ using Zenject;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 
 public class GameProcessor
 {
 
     public int PlayerCardsPerRound = 2;
     public int EnemyCardsPerRound = 2;
+    public int PlayerDeckSize = 10;
+    public int EnemyDeckSize = 10;
     public int StartHP = 30;
     public int StartSanity = 30;
 
@@ -75,8 +78,9 @@ public class GameProcessor
     private IEnumerator StartGame(DeckSettings playerDeck, DeckSettings enemyDeck, DeckSettings characterDeck, DeckSettings bossDeck)
     {
         yield return null;
-        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
-        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), PlayerDeckSize, playerDeck);
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), EnemyDeckSize, enemyDeck);
+        Debug.Log(_field);
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterPlayer), 1, characterDeck);
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterEnemy), 1, bossDeck);
 
@@ -104,14 +108,26 @@ public class GameProcessor
 
             for (int i = 0; i < EnemyCardsPerRound; i++)
             {
-                CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawEnemy).GetCardAtIndex(0), Field.DeckLocation.DrawEnemy, Field.DeckLocation.FieldEnemy);
-                yield return op;
+                if (_field.GetDeck(Field.DeckLocation.DrawEnemy).Cards.Count > 0)
+                {
+                    CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawEnemy).GetCardAtIndex(0), Field.DeckLocation.DrawEnemy, Field.DeckLocation.FieldEnemy);
+                    yield return op;
+                }
             }
 
             for (int i = 0; i < PlayerCardsPerRound; i++)
             {
-                CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawPlayer).GetCardAtIndex(0), Field.DeckLocation.DrawPlayer, Field.DeckLocation.HandPlayer);
-                yield return op;
+                if (_field.GetDeck(Field.DeckLocation.DrawPlayer).Cards.Count == 0)
+                {
+                    CardOperation reshuffleDeckOp = new CardOperation();
+                    _async.RunAsync(ReshufflePlayerDeck(reshuffleDeckOp));
+                    yield return reshuffleDeckOp;
+                }
+                if (_field.GetDeck(Field.DeckLocation.DrawPlayer).Cards.Count > 0)
+                {
+                    CardOperation op = _field.MoveCard(_field.GetDeck(Field.DeckLocation.DrawPlayer).GetCardAtIndex(0), Field.DeckLocation.DrawPlayer, Field.DeckLocation.HandPlayer);
+                    yield return op;
+                }
             }
 
             yield return _playerInput.HandOverControl();
@@ -130,6 +146,22 @@ public class GameProcessor
                 TriggerLifecycleStepDone();
             }
         }
+    }
+
+    private IEnumerator ReshufflePlayerDeck(CardOperation op)
+    {
+        BaseDeck playerDraw = _field.GetDeck(Field.DeckLocation.DrawPlayer);
+        if (playerDraw.Cards.Count > 0)
+        {
+            op.Complete(CardOperation.Result.Success);
+            yield break;
+        }
+
+        BaseDeck playerDiscard = _field.GetDeck(Field.DeckLocation.DiscardPlayer);
+        while (playerDiscard.Cards.Count > 0)
+            yield return _field.MoveCard(playerDiscard.GetCardAtIndex(0), Field.DeckLocation.DiscardPlayer, Field.DeckLocation.DrawPlayer);
+        playerDraw.Shuffle();
+        op.Complete(CardOperation.Result.Success);
     }
 
     public void TriggerLifecycleStepDone()
