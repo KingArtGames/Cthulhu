@@ -27,7 +27,7 @@ namespace Assets.Scripts.CardBehaviours
         [Inject]
         public PlayerInputHandler PlayerInput;
 
-        public Animator animator;
+        public Animation animation;
 
         protected BaseCard _owner;
 
