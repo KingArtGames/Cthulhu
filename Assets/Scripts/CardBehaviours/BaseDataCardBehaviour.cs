@@ -18,6 +18,9 @@ namespace Assets.Scripts.CardBehaviours
                 owner.RegisterLivecycleStepExecutor(step, OnEvent);
             }
             _card = owner;
+            _card.Title = Title;
+            _card.Description = _card.GetDescription();
+            _card.Image = Image;
         }
 
         private CardOperation OnEvent(Field.DeckLocation loc)
