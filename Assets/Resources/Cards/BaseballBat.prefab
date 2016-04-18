@@ -55,6 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   afterXRounds: 1
+  Async: {fileID: 0}
 --- !u!114 &11489724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,6 +71,9 @@ MonoBehaviour:
   numTokens: 2
   executeSteps: 0100000003000000
   executeLocations: 03000000
+  AudioClip: {fileID: 0}
+  Animation: 
+  Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

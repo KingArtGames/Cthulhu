@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Zenject;
+using Assets.Scripts.Services;
+using Assets.Scripts.Decks;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -8,6 +11,10 @@ namespace Assets.Scripts.CardBehaviours
     {
         public string Title;
         public Texture2D Image;
+        [Inject]
+        public CoroutineService Async;
+        [Inject]
+        public VisualizationService Visualization;
 
         private BaseCard _card;
 
@@ -17,6 +24,7 @@ namespace Assets.Scripts.CardBehaviours
             {
                 owner.RegisterLivecycleStepExecutor(step, OnEvent);
             }
+
             _card = owner;
             _card.Title = Title;
             _card.Description = _card.GetDescription();
@@ -25,12 +33,10 @@ namespace Assets.Scripts.CardBehaviours
 
         private CardOperation OnEvent(Field.DeckLocation loc)
         {
-            CardOperation result = new CardOperation();
             _card.Title = Title;
             _card.Description = _card.GetDescription();
             _card.Image = Image;
-            result.Complete(CardOperation.Result.Success);
-            return result;
+            return CardOperation.DoneSuccess;
         }
     }
 }

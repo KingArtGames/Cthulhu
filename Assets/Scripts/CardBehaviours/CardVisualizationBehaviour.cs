@@ -6,13 +6,17 @@ using System.Text;
 using UnityEngine;
 using Zenject;
 using UnityEngine.UI;
+using System.Collections;
+using Assets.Scripts.Decks;
 
 namespace Assets.Scripts.CardBehaviours
 {
     class CardVisualizationBehaviour : AbstractCardBehaviour, IClickable
     {
         [Inject]
-        public VisualizationService visualization;
+        public VisualizationService Visualization;
+        [Inject]
+        public CoroutineService Async;
 
         [Inject]
         public Field field;
@@ -58,25 +62,49 @@ namespace Assets.Scripts.CardBehaviours
         {
             _owner = owner;
 
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnCardAdded);
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnCardAdded);
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnCardRemoved);
+            //owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnCardAdded);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnAdded);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnRemoved);
         }
 
-        private CardOperation OnCardAdded(Field.DeckLocation loc)
+        private CardOperation OnAdded(Field.DeckLocation loc)
         {
-            return visualization.HandleCardMovement(loc);
+            CardOperation result = new CardOperation();
+            Async.RunAsync(OnAddedAsync(loc, result));
+            return result;
         }
 
-        private CardOperation OnCardRemoved(Field.DeckLocation loc)
+        private IEnumerator OnAddedAsync(Field.DeckLocation loc, CardOperation op)
         {
-            return visualization.HandleCardMovement(loc);
+            CardOperation result = Visualization.HandleCardAdded(loc, _owner);
+            yield return result;
+            if (result.OperationResult != CardOperation.Result.Success)
+            {
+                op.Complete(result.OperationResult);
+                yield break;
+            }
+            op.Complete(CardOperation.Result.Success);
+            yield break;
         }
 
-        private bool _selected;
-        public bool Selected
+        private CardOperation OnRemoved(Field.DeckLocation loc)
+        {   
+            CardOperation result = new CardOperation();
+            Async.RunAsync(OnRemovedAsync(loc, result));
+            return result;
+        }
+
+        private IEnumerator OnRemovedAsync(Field.DeckLocation loc, CardOperation op)
         {
-            get { return _selected; }
+            CardOperation result = Visualization.HandleCardRemoved(loc, _owner);
+            yield return result;
+            if (result.OperationResult != CardOperation.Result.Success)
+            {
+                op.Complete(result.OperationResult);
+                yield break;
+            }
+            op.Complete(CardOperation.Result.Success);
+            yield break;
         }
 
         public void OnLeftClick()
@@ -86,17 +114,7 @@ namespace Assets.Scripts.CardBehaviours
             switch (_owner.CurrentLocation)
             {
                 case Field.DeckLocation.HandPlayer:
-                    if (!Selected)
-                    {
-                        animator.SetTrigger("Select");
-                        _selected = true;
-                        
-                    }
-                    else
-                    {
-                        animator.SetTrigger("Deselect");
-                        _selected = false;
-                    }
+                    field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
                     break;
                 case Field.DeckLocation.FieldPlayer:
                 case Field.DeckLocation.FieldEnemy:
@@ -110,17 +128,6 @@ namespace Assets.Scripts.CardBehaviours
         public void OnRightClick()
         {
             CardPreview.ApplyCard(_owner);
-        }
-
-        public void OnAnimationFinished()
-        {
-            switch (_owner.CurrentLocation)
-            {
-                case Field.DeckLocation.HandPlayer:
-                    CardOperation op = field.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.FieldPlayer);
-                    animator.SetTrigger("Deselect");
-                    break;
-            }
         }
     }
 }

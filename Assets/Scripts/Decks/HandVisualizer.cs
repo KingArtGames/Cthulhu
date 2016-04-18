@@ -11,7 +11,15 @@ namespace Assets.Scripts.Decks
     public class HandVisualizer : AbstractDeckVisualizer
     {
         public float cardSpace = 10;
-        
+
+        protected override bool ShowOnAdd
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override void Initialize()
         {
             base.Initialize();
@@ -34,8 +42,6 @@ namespace Assets.Scripts.Decks
             for (int i = 0; i < Deck.CurrentSize; i++)
             {
                 GameObject cardGO = Deck.GetCardAtIndex(i).Prefab;
-                cardGO.SetActive(true);
-                cardGO.transform.parent = transform;
                 cardGO.transform.localPosition = Vector3.zero;
                 cardGO.transform.localRotation = Quaternion.identity;
                 cardGO.transform.localScale = Vector3.one;

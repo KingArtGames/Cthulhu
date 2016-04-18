@@ -78,10 +78,12 @@ public class Field
             yield return addOp;
 
             op.Complete(addOp.OperationResult);
+            yield break;
         }
         else
         {
             op.Complete(removeOp.OperationResult);
+            yield break;
         }
     }
 

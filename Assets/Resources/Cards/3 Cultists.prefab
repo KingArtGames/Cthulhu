@@ -88,6 +88,7 @@ MonoBehaviour:
   executeSteps: 03000000
   executeLocations: 04000000
   AudioClip: {fileID: 8300000, guid: 708ea34de2a8ea14399d6354d0478da8, type: 3}
+  Animation: 
   Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

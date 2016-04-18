@@ -3,10 +3,10 @@ using System.Collections;
 using Zenject;
 using System.Collections.Generic;
 using Assets.Scripts.Services;
+using System;
 
 namespace Assets.Scripts.CardBehaviours
 {
-    [RequireComponent(typeof(AudioSource))]
     class ChangeTokenOnEventCardBehaviour : AbstractCardBehaviour
     {
         public TokenService.TokenType tokenType;
@@ -14,6 +14,7 @@ namespace Assets.Scripts.CardBehaviours
         public List<CardLifecycleStep> executeSteps = new List<CardLifecycleStep>();
         public List<Field.DeckLocation> executeLocations = new List<Field.DeckLocation>();
         public AudioClip AudioClip;
+        public string Animation;
 
         [Inject]
         public Field fieldOfPayne;
@@ -44,19 +45,20 @@ namespace Assets.Scripts.CardBehaviours
 
         private IEnumerator AddTokens(CardOperation op, Field.DeckLocation loc)
         {
+            AudioSource source = GetComponentInChildren<AudioSource>();
+            Animator animator = GetComponentInChildren<Animator>();
 
-            //play animation / SFX
-            if (AudioClip != null)
+            if (source != null && AudioClip != null)
             {
-                AudioSource source = GetComponent<AudioSource>();
-                if (source != null)
-                {
-                    source.clip = AudioClip;
-                    source.Play();
-                    while (source.isPlaying)
-                        yield return null;
-                }
+                source.clip = AudioClip;
+                source.Play();
             }
+
+            //if (animator != null && !string.IsNullOrEmpty(Animation))
+            //    animator.Play(Animation);
+
+            while ((source != null && source.isPlaying))// || (animator != null && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
+                yield return null;
             //
             tokenService.AddTokens(tokenType, numTokens);
 

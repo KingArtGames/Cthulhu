@@ -46,6 +46,8 @@ MonoBehaviour:
   numTokens: 1
   executeSteps: 01000000
   executeLocations: 03000000
+  AudioClip: {fileID: 0}
+  Animation: 
   Async: {fileID: 0}
 --- !u!114 &11417600
 MonoBehaviour:
@@ -75,6 +77,8 @@ MonoBehaviour:
   numTokens: 1
   executeSteps: 01000000
   executeLocations: 03000000
+  AudioClip: {fileID: 0}
+  Animation: 
   Async: {fileID: 0}
 --- !u!114 &11489656
 MonoBehaviour:

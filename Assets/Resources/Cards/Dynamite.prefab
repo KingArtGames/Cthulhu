@@ -55,6 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRounds: 2
   maxRounds: 5
+  Damage: 5
+  ExplosionSound: {fileID: 0}
   Async: {fileID: 0}
 --- !u!114 &11454888
 MonoBehaviour:

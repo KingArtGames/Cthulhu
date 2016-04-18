@@ -124,8 +124,51 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8221194, guid: fbcc2534229297c43ae81f9f7b876c86, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbcc2534229297c43ae81f9f7b876c86, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &149109844
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433642, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0249d28bc8135f4438966404a3ec7ed9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &339460246
 Prefab:
@@ -332,9 +375,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445172, guid: 5a7837aa4fd1636449dc534ee39fd8e0, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8290310, guid: 5a7837aa4fd1636449dc534ee39fd8e0, type: 2}
+    - {fileID: 11176066, guid: 5a7837aa4fd1636449dc534ee39fd8e0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5a7837aa4fd1636449dc534ee39fd8e0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &903259419
@@ -542,7 +587,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495578, guid: 2fc25ef5e6379d0448667ecbffa0de0e, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fc25ef5e6379d0448667ecbffa0de0e, type: 2}
@@ -752,9 +797,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445172, guid: e5722137ff07a0744a44c51a5bc6f577, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8284482, guid: e5722137ff07a0744a44c51a5bc6f577, type: 2}
+    - {fileID: 11195928, guid: e5722137ff07a0744a44c51a5bc6f577, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e5722137ff07a0744a44c51a5bc6f577, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1477486210
@@ -962,9 +1009,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445172, guid: ee6c4caa2110d5a42b875ee65c488103, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11179376, guid: ee6c4caa2110d5a42b875ee65c488103, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ee6c4caa2110d5a42b875ee65c488103, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1881311701

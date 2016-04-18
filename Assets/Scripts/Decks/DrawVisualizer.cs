@@ -11,8 +11,12 @@ namespace Assets.Scripts.Decks
     {
         public GameObject CardStack;
 
-        protected override void OnCardAdded(CollectionAddEvent<BaseCard> addEvent)
+        protected override bool ShowOnAdd
         {
+            get
+            {
+                return false;
+            }
         }
 
         public override CardOperation RefreshVisualization()
@@ -22,7 +26,7 @@ namespace Assets.Scripts.Decks
 
         protected override void ReArrangeCards()
         {
-            CardStack.transform.localScale = new Vector3(CardStack.transform.localScale.x,( Deck.CurrentSize / 10f) * 10f, CardStack.transform.localScale.z);
+            CardStack.transform.localScale = new Vector3(CardStack.transform.localScale.x, (Deck.CurrentSize / 10f) * 10f, CardStack.transform.localScale.z);
         }
     }
 }

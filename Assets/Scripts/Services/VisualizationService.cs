@@ -48,5 +48,62 @@ namespace Assets.Scripts.Services
             op.Complete(CardOperation.Result.Success);
             yield break;
         }
+
+        public AbstractDeckVisualizer GetDeckVisualizer(Field.DeckLocation loc)
+        {
+            return _visualizers.FirstOrDefault(vis => vis.DeckLocation == loc);
+        }
+
+        public CardOperation HandleCardAdded(Field.DeckLocation loc, BaseCard card)
+        {
+            CardOperation op = new CardOperation();
+            _coroutines.RunAsync(HandleCardAddedAsync(loc, card, op));
+            return op;
+        }
+
+        private IEnumerator HandleCardAddedAsync(Field.DeckLocation loc, BaseCard card, CardOperation op)
+        {
+            foreach (AbstractDeckVisualizer visualizer in _visualizers)
+            {
+                if (visualizer.DeckLocation == loc)
+                {
+                    CardOperation visOp = visualizer.AddCard(card);
+                    yield return visOp;
+                    if (visOp.OperationResult != CardOperation.Result.Success)
+                    {
+                        op.Complete(visOp.OperationResult);
+                        yield break;
+                    }
+                }
+            }
+            op.Complete(CardOperation.Result.Success);
+            yield break;
+        }
+
+        public CardOperation HandleCardRemoved(Field.DeckLocation loc, BaseCard card)
+        {
+            CardOperation op = new CardOperation();
+            _coroutines.RunAsync(HandleCardRemovedAsync(loc, card, op));
+            return op;
+        }
+
+        private IEnumerator HandleCardRemovedAsync(Field.DeckLocation loc, BaseCard card, CardOperation op)
+        {
+            foreach (AbstractDeckVisualizer visualizer in _visualizers)
+            {
+                if (visualizer.DeckLocation == loc)
+                {
+                    CardOperation visOp = visualizer.RemoveCard(card);
+                    yield return visOp;
+                    if (visOp.OperationResult != CardOperation.Result.Success)
+                    {
+                        op.Complete(visOp.OperationResult);
+                        yield break;
+                    }
+                }
+            }
+            op.Complete(CardOperation.Result.Success);
+            yield break;
+        }
     }
 }
