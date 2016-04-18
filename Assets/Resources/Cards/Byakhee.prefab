@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11496334}
   - 114: {fileID: 11484620}
   - 114: {fileID: 11438458}
+  - 82: {fileID: 8221194}
   m_Layer: 0
   m_Name: Byakhee
   m_TagString: Untagged
@@ -31,6 +32,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8221194
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142892}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24310070, guid: acaa06e19137a8f46b9f6f69fda223bf,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11438458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Byakhee
-  Image: {fileID: 2800000, guid: 5927887709ff557429fe345d211f38a0, type: 3}
+  Image: {fileID: 2800000, guid: 859915363e4708948b3119f611d6b938, type: 3}
 --- !u!114 &11484620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,7 +161,6 @@ MonoBehaviour:
   executeSteps: 04000000
   executeLocations: 04000000
   AudioClip: {fileID: 8300000, guid: 708ea34de2a8ea14399d6354d0478da8, type: 3}
-  Animation: 
   Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -149,7 +224,11 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Image
       value: 
-      objectReference: {fileID: 2800000, guid: 5927887709ff557429fe345d211f38a0, type: 3}
+      objectReference: {fileID: 2800000, guid: 859915363e4708948b3119f611d6b938, type: 3}
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142892}

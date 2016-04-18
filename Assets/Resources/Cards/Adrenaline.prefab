@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 461000}
   - 114: {fileID: 11433704}
   - 114: {fileID: 11476344}
+  - 114: {fileID: 11430720}
+  - 114: {fileID: 11406300}
   m_Layer: 0
   m_Name: Adrenaline
   m_TagString: Untagged
@@ -29,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11406300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5820295b418e0147846cb710e74ca76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterXRounds: 1
+  Async: {fileID: 0}
+--- !u!114 &11430720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9a9e8b82341a419aafbab4a8b0ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  step: 3
+  deck: 3
+  fromDeck: 0
+  toDeck: 2
+  numCards: 1
+  takeFromZero: 1
+  Async: {fileID: 0}
 --- !u!114 &11433704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,6 +102,26 @@ Prefab:
       propertyPath: Image
       value: 
       objectReference: {fileID: 2800000, guid: 869c6f74b9b39d04cbcc75d57c624b7a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: step
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deck
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: toDeck
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: numCards
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: afterXRounds
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161014}

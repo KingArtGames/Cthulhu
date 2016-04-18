@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareType: 3
-  compareValue: 15
-  changeToCard: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
+  compareValue: 20
+  changeToCard: {fileID: 186578, guid: 26a2b9b7d96627245994d17500d6442a, type: 2}
   Async: {fileID: 0}
 --- !u!114 &11477930
 MonoBehaviour:
@@ -91,12 +91,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: compareValue
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: changeToCard
       value: 
-      objectReference: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
+      objectReference: {fileID: 186578, guid: 26a2b9b7d96627245994d17500d6442a, type: 2}
     - target: {fileID: 0}
       propertyPath: Title
       value: Investigator
