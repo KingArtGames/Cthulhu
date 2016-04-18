@@ -1,41 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &138584
+--- !u!1 &186578
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 430484}
-  - 114: {fileID: 11477930}
-  - 114: {fileID: 11466742}
-  - 114: {fileID: 11416046}
+  - 4: {fileID: 455700}
+  - 114: {fileID: 11408288}
+  - 114: {fileID: 11491900}
+  - 114: {fileID: 11458412}
+  - 114: {fileID: 11403118}
   m_Layer: 0
-  m_Name: InvestigatorSane
+  m_Name: InvestigatorInsane 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &430484
+--- !u!4 &455700
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138584}
+  m_GameObject: {fileID: 186578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11416046
+--- !u!114 &11403118
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138584}
+  m_GameObject: {fileID: 186578}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f30b37ec320eb2342b13d3f8618393ed, type: 3}
@@ -50,34 +51,49 @@ MonoBehaviour:
   Title: Game Over
   Description: The enemies killed you (health <= 0). Click on card to continue.
   nextScene: scene
---- !u!114 &11466742
+--- !u!114 &11408288
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d35533f31b5d3ae499944d482be4c932, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compareType: 3
-  compareValue: 20
-  changeToCard: {fileID: 186578, guid: 26a2b9b7d96627245994d17500d6442a, type: 2}
-  Async: {fileID: 0}
---- !u!114 &11477930
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138584}
+  m_GameObject: {fileID: 186578}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb2efb89d3f57874280f0eee4558a8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Title: Investigator
-  Image: {fileID: 2800000, guid: 17b3b4b1ff87fc849a14b4b7ffcb11df, type: 3}
+  Title: Scared Investigator
+  Image: {fileID: 2800000, guid: 3e105f6da5b3a26488908aa4b1f56fc9, type: 3}
+--- !u!114 &11458412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35533f31b5d3ae499944d482be4c932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compareType: 5
+  compareValue: 10
+  changeToCard: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
+  Async: {fileID: 0}
+--- !u!114 &11491900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35533f31b5d3ae499944d482be4c932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compareType: 2
+  compareValue: 20
+  changeToCard: {fileID: 138584, guid: 80a2824dbb4b32740a503b43315029af, type: 2}
+  Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -87,33 +103,41 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: compareType
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: compareValue
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: changeToCard
       value: 
-      objectReference: {fileID: 186578, guid: 26a2b9b7d96627245994d17500d6442a, type: 2}
+      objectReference: {fileID: 186578, guid: fb2e91ba1062f6a468d28ec70ea130cd, type: 2}
     - target: {fileID: 0}
       propertyPath: Title
-      value: Investigator
+      value: Scared Investigator
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Image
       value: 
-      objectReference: {fileID: 2800000, guid: 1e0663f3f1491d9409e96d5c21224121, type: 3}
+      objectReference: {fileID: 2800000, guid: 388e3f712af979645a36e47d15dfae85, type: 3}
     - target: {fileID: 0}
-      propertyPath: tokenType
-      value: 1
+      propertyPath: win
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Description
-      value: You went insane (sanity <= 0). Click on card to continue.
+      value: The enemies killed you (health <= 0). Click on card to continue.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nextScene
+      value: scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: InvestigatorInsane1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 138584}
+  m_RootGameObject: {fileID: 186578}
   m_IsPrefabParent: 1
