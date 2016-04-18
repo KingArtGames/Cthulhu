@@ -35,7 +35,7 @@ namespace Assets.Scripts
             float chanceSum = settings.CardsInDeck.Sum(c => c.Chance);
             for (int i = 0; i < numCards; i++)
             {
-                float roll = UnityEngine.Random.Range(0, chanceSum);
+                float roll = UnityEngine.Random.Range(1, chanceSum);
                 foreach (var card in settings.CardsInDeck)
                 {
                     roll -= card.Chance;
@@ -48,6 +48,7 @@ namespace Assets.Scripts
                             op.Complete(createOp.OperationResult);
                             yield break;
                         }
+                        break;
                     }
                 }
             }
