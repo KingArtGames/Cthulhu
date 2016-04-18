@@ -38,6 +38,13 @@ public class TokenService
             _tokens.Add(type, new TokenStack());
         _tokens[type].Add(count);
     }
+
+    public void SetTokens(TokenType type, int count)
+    {
+        if (!_tokens.ContainsKey(type))
+            _tokens.Add(type, new TokenStack());
+        _tokens[type].Set(count);
+    }
 }
 
 public class TokenStack
@@ -47,6 +54,11 @@ public class TokenStack
     public void Add(int count)
     {
         Count.Value += count;
+    }
+
+    public void Set(int count)
+    {
+        Count.Value = count;
     }
 
     public void Remove(int count)
