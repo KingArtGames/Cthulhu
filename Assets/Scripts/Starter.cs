@@ -23,7 +23,6 @@ public class Starter : MonoBehaviour
     [PostInject]
     public void Initialize()
     {
-        GameProcessor.StartNewGame(PlayerDeck, EnemyDeck);
         GameProcessor.PlayerCardsPerRound = PlayerCardsPerRound;
         GameProcessor.EnemyCardsPerRound = EnemyCardsPerRound;
         GameProcessor.PlayerDeckSize = PlayerDeckSize;
