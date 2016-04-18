@@ -462,7 +462,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.887, y: 0.756, z: -0.48}
+  m_LocalPosition: {x: 0, y: 0.758, z: -0.844}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 455096}
@@ -568,7 +568,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190056}
-  m_LocalRotation: {x: -0.000024816802, y: -0.69566196, z: -0.71836936, w: 0.000024359331}
+  m_LocalRotation: {x: 0.5941208, y: -0.00006213371, z: -0.000046518682, w: -0.8043758}
   m_LocalPosition: {x: -0.03, y: -0.68, z: 1.76}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.09999999}
   m_Children:
@@ -1026,7 +1026,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1251,7 +1251,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

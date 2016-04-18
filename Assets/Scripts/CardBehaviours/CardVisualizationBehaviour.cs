@@ -62,7 +62,7 @@ namespace Assets.Scripts.CardBehaviours
         {
             _owner = owner;
 
-            //owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnCardAdded);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnAdded);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnAdded);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnRemoved);
         }
