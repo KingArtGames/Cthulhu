@@ -34,9 +34,9 @@ public class GameProcessor
         _tokens = tokens;
     }
 
-    public void StartNewGame(DeckSettings playerDeck, DeckSettings enemyDeck)
+    public void StartNewGame(DeckSettings playerDeck, DeckSettings enemyDeck, DeckSettings characterDeck, DeckSettings bossDeck)
     {
-        _gameCoroutine = _async.StartCoroutine(StartGame(playerDeck, enemyDeck));
+        _gameCoroutine = _async.StartCoroutine(StartGame(playerDeck, enemyDeck, characterDeck, bossDeck));
     }
 
     public void GameOver()
@@ -72,11 +72,15 @@ public class GameProcessor
         _lifecycleStepEndedListener.Add(listener);
     }
 
-    private IEnumerator StartGame(DeckSettings playerDeck, DeckSettings enemyDeck)
+    private IEnumerator StartGame(DeckSettings playerDeck, DeckSettings enemyDeck, DeckSettings characterDeck, DeckSettings bossDeck)
     {
         yield return null;
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), 10, playerDeck);
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), 10, enemyDeck);
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterPlayer), 1, characterDeck);
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterEnemy), 1, bossDeck);
+
+        CardPreview.ApplyCard(_field.GetDeck(Field.DeckLocation.CharacterEnemy).GetCardAtIndex(0));
 
         _tokens.AddTokens(TokenService.TokenType.health, StartHP);
         _tokens.AddTokens(TokenService.TokenType.sanity, StartSanity);

@@ -9,7 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 429046}
   - 114: {fileID: 11451570}
-  - 114: {fileID: 11432100}
+  - 114: {fileID: 11450756}
+  - 114: {fileID: 11418782}
   m_Layer: 0
   m_Name: Fear
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11432100
+--- !u!114 &11418782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,10 +38,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 161214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
+  m_Script: {fileID: 11500000, guid: 8765612bfa6629d4a872b6f707051f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Comment: missing effect
+  tokenType: 1
+  numTokens: -2
+  executeSteps: 03000000
+  executeLocations: 02000000
+  Async: {fileID: 0}
+--- !u!114 &11450756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76421daca05d52b43a2fe81c3c570c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRounds: 1
+  maxRounds: 3
+  Async: {fileID: 0}
 --- !u!114 &11451570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -62,6 +81,14 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: executeSteps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: executeLocations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: Title
       value: Fear
       objectReference: {fileID: 0}
@@ -69,6 +96,30 @@ Prefab:
       propertyPath: Image
       value: 
       objectReference: {fileID: 2800000, guid: 1e0663f3f1491d9409e96d5c21224121, type: 3}
+    - target: {fileID: 0}
+      propertyPath: tokenType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: numTokens
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: executeSteps.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: executeLocations.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minRounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxRounds
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161214}

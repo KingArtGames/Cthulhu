@@ -107,6 +107,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public void OnRightClick()
         {
+            CardPreview.ApplyCard(_owner);
         }
 
         public void OnAnimationFinished()

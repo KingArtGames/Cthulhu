@@ -7,6 +7,8 @@ public class Starter : MonoBehaviour
 {
     public DeckSettings PlayerDeck;
     public DeckSettings EnemyDeck;
+    public DeckSettings CharacterDeck;
+    public DeckSettings BossDeck;
 
     [Inject]
     public GameProcessor GameProcessor;
@@ -14,6 +16,6 @@ public class Starter : MonoBehaviour
     [PostInject]
     public void Initialize()
     {
-        GameProcessor.StartNewGame(PlayerDeck, EnemyDeck);
+        GameProcessor.StartNewGame(PlayerDeck, EnemyDeck, CharacterDeck, BossDeck);
     }
 }

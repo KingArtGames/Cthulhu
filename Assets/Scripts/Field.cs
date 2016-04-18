@@ -18,7 +18,9 @@ public class Field
         FieldPlayer,
         FieldEnemy,
         DiscardPlayer,
-        DiscardEnemy
+        DiscardEnemy,
+        CharacterPlayer,
+        CharacterEnemy
     }
 
     private Dictionary<DeckLocation, BaseDeck> _decks = new Dictionary<DeckLocation, BaseDeck>();

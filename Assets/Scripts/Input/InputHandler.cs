@@ -16,19 +16,25 @@ public class InputHandler : MonoBehaviour {
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-
-                if (hit.transform != null)
+            if (Physics.Raycast(ray, out hit) && hit.transform != null)
+            {
+                Component clickable = hit.transform.gameObject.GetComponent(typeof(IClickable));
+                if (clickable != null)
                 {
-                    Component clickable = hit.transform.gameObject.GetComponent(typeof(IClickable));
-                    if (clickable != null)
-                    {
-                        if (Input.GetMouseButtonDown(0))
-                            (clickable as IClickable).OnLeftClick();
-                        else
-                            (clickable as IClickable).OnRightClick();
-                    }
+                    if (Input.GetMouseButtonDown(0))
+                        (clickable as IClickable).OnLeftClick();
+                    else
+                        (clickable as IClickable).OnRightClick();
                 }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    CardPreview.SetEnabled(false);
+                }
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                CardPreview.SetEnabled(false);
+            }
         }
     }
 }

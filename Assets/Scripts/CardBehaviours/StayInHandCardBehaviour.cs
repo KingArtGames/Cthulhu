@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Assets.Scripts.CardBehaviours
 {
-    class ExplodesCardBehaviour : AbstractCardBehaviour
+    class StayInHandCardBehaviour : AbstractCardBehaviour
     {
         public int minRounds;
         public int maxRounds;
@@ -16,6 +16,7 @@ namespace Assets.Scripts.CardBehaviours
         private int rounds;
 
         private bool _initialized = false;
+        private BaseCard _card;
 
         [Inject]
         public Field fieldOfPayne;
@@ -28,11 +29,12 @@ namespace Assets.Scripts.CardBehaviours
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundBegin, OnRoundBegin);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnRemove);
             _initialized = true;
+            _card = owner;
         }
 
         private CardOperation OnRemove(Field.DeckLocation loc)
         {
-            if (loc == Field.DeckLocation.HandPlayer)
+            if (loc == Field.DeckLocation.HandPlayer && rounds > 0)
                 return CardOperation.DoneFailure;
             else
                 return CardOperation.DoneSuccess;
@@ -40,14 +42,14 @@ namespace Assets.Scripts.CardBehaviours
 
         private CardOperation OnRoundBegin(Field.DeckLocation loc)
         {
-            if(loc == Field.DeckLocation.HandPlayer)
+            if (loc == Field.DeckLocation.HandPlayer)
             {
                 rounds--;
 
-                if(rounds <= 0)
+                if (rounds <= 0)
                 {
                     CardOperation result = new CardOperation();
-                    Async.RunAsync(Explosion(result));
+                    Async.RunAsync(Destroy(result));
                     return result;
                 }
             }
@@ -55,26 +57,21 @@ namespace Assets.Scripts.CardBehaviours
             return CardOperation.DoneSuccess;
         }
 
-        private IEnumerator Explosion(CardOperation op)
+        private IEnumerator Destroy(CardOperation op)
         {
-            //play animation / SFX
-
-            //Deal DMG
-
-            op.Complete(CardOperation.Result.Failure);
+            fieldOfPayne.MoveCard(_card, Field.DeckLocation.HandPlayer, Field.DeckLocation.DiscardPlayer);
+            op.Complete(CardOperation.Result.Success);
             yield break;
         }
 
         public override string GetDescription()
         {
-            string description = "[" + CardLifecycleStep.RoundBegin.ToString() + ":";
+            string description = "";
+            description += "[" + Field.DeckLocation.HandPlayer + "] ↺ ";
             if (!_initialized)
                 description += minRounds + "-" + maxRounds;
             else
                 description += rounds;
-            description += " in " + Field.DeckLocation.HandPlayer + "]: Explode";
-            description += Environment.NewLine;
-            description += "[" + Field.DeckLocation.HandPlayer + "] ↺";
 
             return description;
         }

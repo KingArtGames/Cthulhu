@@ -21,11 +21,10 @@ namespace Assets.Scripts.CardBehaviours
         public override void Initialize(BaseCard owner)
         {
             _card = owner;
-            //owner.RegisterLivecycleStepExecutor(executeStep, OnEvent);
-           
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundEnd, OnStartTurn);
         }
 
-        private CardOperation OnSanityChanged(Field.DeckLocation loc)
+        private CardOperation OnStartTurn(Field.DeckLocation loc)
         {
             CardOperation result = new CardOperation();
             Async.RunAsync(SanityCheck(result));
@@ -53,7 +52,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string descriptionString = "[Sanity" + ToString(compareType) + compareValue + "]: SanityCheck";
+            string descriptionString = "[" + CardLifecycleStep.RoundEnd + "]: SanityCheck (" + ToString(compareType) + compareValue + ")";
 
             return descriptionString;
         }

@@ -10,7 +10,9 @@ GameObject:
   - 4: {fileID: 417094}
   - 114: {fileID: 11419146}
   - 114: {fileID: 11470010}
+  - 114: {fileID: 11470262}
   - 114: {fileID: 11489868}
+  - 114: {fileID: 11430734}
   m_Layer: 0
   m_Name: HealSpell
   m_TagString: Untagged
@@ -43,6 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Heal Spell
   Image: {fileID: 2800000, guid: 67d7c181ed0402d48903ea0e36ada25f, type: 3}
+--- !u!114 &11430734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6c12d3e9d66d545adb8e8fd125b648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: change color background to spell color
 --- !u!114 &11470010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57,6 +71,22 @@ MonoBehaviour:
   tokenType: 0
   numTokens: 2
   executeSteps: 0100000003000000
+  executeLocations: 03000000
+  Async: {fileID: 0}
+--- !u!114 &11470262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8765612bfa6629d4a872b6f707051f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tokenType: 1
+  numTokens: -2
+  executeSteps: 01000000
   executeLocations: 03000000
   Async: {fileID: 0}
 --- !u!114 &11489868
@@ -81,7 +111,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: executeSteps.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeLocations.Array.size
@@ -89,7 +119,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: numTokens
-      value: 2
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: executeSteps.Array.data[0]
@@ -115,6 +145,10 @@ Prefab:
       propertyPath: Image
       value: 
       objectReference: {fileID: 2800000, guid: 67d7c181ed0402d48903ea0e36ada25f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: tokenType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 197708}

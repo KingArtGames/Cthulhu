@@ -70,6 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDeck: {fileID: 11400000, guid: 3a7531bcf72f33e48b3bcc438c784649, type: 2}
   EnemyDeck: {fileID: 11400000, guid: 53eb05381ece6664c9dad5db149fa756, type: 2}
+  CharacterDeck: {fileID: 11400000, guid: dbc900b344a2e7848bfa8442fb8bd5d5, type: 2}
+  BossDeck: {fileID: 11400000, guid: 68b26d174999bc748bc14629418c05f6, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

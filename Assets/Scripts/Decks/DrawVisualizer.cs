@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UniRx;
 
 namespace Assets.Scripts.Decks
 {
     public class DrawVisualizer : AbstractDeckVisualizer
     {
         public GameObject CardStack;
+
+        protected override void OnCardAdded(CollectionAddEvent<BaseCard> addEvent)
+        {
+        }
 
         public override CardOperation RefreshVisualization()
         {

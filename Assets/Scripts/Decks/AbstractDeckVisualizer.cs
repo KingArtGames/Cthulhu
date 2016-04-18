@@ -22,6 +22,7 @@ namespace Assets.Scripts.Decks
         public Field.DeckLocation DeckLocation;
 
         private IDisposable _countChangedSubscription;
+        private IDisposable _cardAddedSubscription;
         private IDisposable _cardRemovedSubscription;
 
         [PostInject]
@@ -30,6 +31,7 @@ namespace Assets.Scripts.Decks
             Deck = field.GetDeck(DeckLocation);
             Visualization.RegisterDeckVisualizer(this);
             _countChangedSubscription = Deck.Cards.ObserveCountChanged(true).Subscribe(_ => ReArrangeCards());
+            _cardAddedSubscription = Deck.Cards.ObserveAdd().Subscribe(OnCardAdded);
             _cardRemovedSubscription = Deck.Cards.ObserveRemove().Subscribe(OnCardRemoved);
         }
 
@@ -40,6 +42,12 @@ namespace Assets.Scripts.Decks
         }
 
         public abstract CardOperation RefreshVisualization();
+
+        protected virtual void OnCardAdded(CollectionAddEvent<BaseCard> addEvent)
+        {
+            GameObject cardGO = addEvent.Value.Prefab;
+            cardGO.SetActive(true);
+        }
 
         protected virtual void OnCardRemoved(CollectionRemoveEvent<BaseCard> removeEvent)
         {
