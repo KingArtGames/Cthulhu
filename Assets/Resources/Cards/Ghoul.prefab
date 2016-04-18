@@ -95,7 +95,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Ghoul
-  Image: {fileID: 2800000, guid: 5927887709ff557429fe345d211f38a0, type: 3}
+  Image: {fileID: 2800000, guid: 1e0663f3f1491d9409e96d5c21224121, type: 3}
 --- !u!114 &11474050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,10 +200,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Image
       value: 
-      objectReference: {fileID: 2800000, guid: 5927887709ff557429fe345d211f38a0, type: 3}
+      objectReference: {fileID: 2800000, guid: 1e0663f3f1491d9409e96d5c21224121, type: 3}
     - target: {fileID: 0}
       propertyPath: neededTokens.Array.data[0]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
