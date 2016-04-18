@@ -99,13 +99,15 @@ public class GameProcessor
         yield return null;
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawPlayer), PlayerDeckSize, playerDeck);
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.DrawEnemy), EnemyDeckSize, enemyDeck);
-        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterPlayer), 1, characterDeck);
+        
         yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterEnemy), 1, bossDeck);
 
         //CardPreview.ApplyCard(_field.GetDeck(Field.DeckLocation.CharacterEnemy).GetCardAtIndex(0));
 
         _tokens.AddTokens(TokenService.TokenType.health, StartHP);
         _tokens.AddTokens(TokenService.TokenType.sanity, StartSanity);
+
+        yield return _factory.FillDeck(_field.GetDeck(Field.DeckLocation.CharacterPlayer), 1, characterDeck);
 
         while (true)
         {
