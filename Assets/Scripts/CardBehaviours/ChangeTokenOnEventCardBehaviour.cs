@@ -49,10 +49,13 @@ namespace Assets.Scripts.CardBehaviours
             if (AudioClip != null)
             {
                 AudioSource source = GetComponent<AudioSource>();
-                source.clip = AudioClip;
-                source.Play();
-                while (source.isPlaying)
-                    yield return null;
+                if (source != null)
+                {
+                    source.clip = AudioClip;
+                    source.Play();
+                    while (source.isPlaying)
+                        yield return null;
+                }
             }
             //
             tokenService.AddTokens(tokenType, numTokens);
