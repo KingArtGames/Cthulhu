@@ -75,7 +75,8 @@ namespace Assets.Scripts.CardBehaviours
                         Destroy(behaviour);
                 }
 
-                _card.Prefab.transform.position = Camera.main.transform.position + 0.65f * Camera.main.transform.forward;
+                _card.Prefab.transform.parent.position = Camera.main.transform.position + 0.65f * Camera.main.transform.forward;
+                _card.Prefab.transform.parent.rotation = Quaternion.LookRotation(Camera.main.transform.up);
             }
             else
             {
