@@ -9,10 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 490778}
   - 137: {fileID: 13750262}
-  - 95: {fileID: 9557468}
   - 65: {fileID: 6578900}
   - 114: {fileID: 11498718}
   - 82: {fileID: 8289122}
+  - 111: {fileID: 11181728}
   m_Layer: 0
   m_Name: card
   m_TagString: Untagged
@@ -199,23 +199,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!95 &9557468
-Animator:
-  serializedVersion: 3
+--- !u!111 &11181728
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105254}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4115c7af961cffb4db9d19353e69eff7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5dfed33408a0b544c8538a46579c22ee, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 0934ef2e34842dc4cbac34d4ec796d01, type: 2}
+  - {fileID: 7400000, guid: 5d9a554e4b927d042b674ddb83f85da2, type: 2}
+  - {fileID: 7400000, guid: c404954a6a2c30a4f9ab45ccc7553b51, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11403034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,7 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69931b07faa37f74e95b68cf8f6221a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9557468}
+  Async: {fileID: 0}
+  animation: {fileID: 11181728}
   TitleLabel: {fileID: 11422808}
   DescriptionLabel: {fileID: 11403034}
 --- !u!137 &13750262
