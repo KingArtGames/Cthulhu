@@ -100,6 +100,8 @@ namespace Assets.Scripts.CardBehaviours
                     break;
                 case Field.DeckLocation.FieldPlayer:
                 case Field.DeckLocation.FieldEnemy:
+                case Field.DeckLocation.CharacterEnemy:
+                case Field.DeckLocation.CharacterPlayer:
                     processor.UseCard(_owner);
                     break;
             }
