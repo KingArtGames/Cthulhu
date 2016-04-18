@@ -894,7 +894,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1044,7 +1044,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1119,7 +1119,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1269,7 +1269,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1344,7 +1344,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1431,7 +1431,7 @@ MonoBehaviour:
   CardAddedSound: {fileID: 0}
   CardRemovedSound: {fileID: 8300000, guid: 54c8823f88fc4dd47b59528f556e6fa0, type: 3}
   CardStack: {fileID: 156748}
-  UpperCard: {fileID: 0}
+  UpperCard: {fileID: 429594}
 --- !u!114 &11445634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1488,7 +1488,7 @@ MonoBehaviour:
   Async: {fileID: 0}
   DeckLocation: 5
   CardAddedSound: {fileID: 8300000, guid: eb365f9917dbfdc49a9f5157d0ac080d, type: 3}
-  CardRemovedSound: {fileID: 0}
+  CardRemovedSound: {fileID: 8300000, guid: 54c8823f88fc4dd47b59528f556e6fa0, type: 3}
   CardStack: {fileID: 164250}
 --- !u!114 &11464892
 MonoBehaviour:
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   CardAddedSound: {fileID: 0}
   CardRemovedSound: {fileID: 8300000, guid: 54c8823f88fc4dd47b59528f556e6fa0, type: 3}
   CardStack: {fileID: 145046}
-  UpperCard: {fileID: 0}
+  UpperCard: {fileID: 463668}
 --- !u!114 &11473564
 MonoBehaviour:
   m_ObjectHideFlags: 1

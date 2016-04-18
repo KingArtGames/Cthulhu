@@ -25,7 +25,7 @@ namespace Assets.Scripts.Decks
 
         protected override void ReArrangeCards()
         {
-            CardStack.transform.localScale = new Vector3(CardStack.transform.localScale.x,( Deck.CurrentSize / 10f) * 20f, CardStack.transform.localScale.z);
+            CardStack.transform.localScale = new Vector3(CardStack.transform.localScale.x,( Deck.CurrentSize / 10f) * 10f, CardStack.transform.localScale.z);
             CardStack.transform.localPosition = new Vector3(0f, 0.5f * CardStack.transform.localScale.y, 0f);
 
             for (int i = 0; i < Deck.CurrentSize; i++)

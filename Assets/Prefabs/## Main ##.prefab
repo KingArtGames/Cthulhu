@@ -68,6 +68,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8626a1cd22f4eec45987eb3a9423cba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerCardsPerRound: 2
+  EnemyCardsPerRound: 2
+  PlayerDeckSize: 20
+  EnemyDeckSize: 15
+  StartHP: 30
+  StartSanity: 30
   PlayerDeck: {fileID: 11400000, guid: 3a7531bcf72f33e48b3bcc438c784649, type: 2}
   EnemyDeck: {fileID: 11400000, guid: 53eb05381ece6664c9dad5db149fa756, type: 2}
   CharacterDeck: {fileID: 11400000, guid: dbc900b344a2e7848bfa8442fb8bd5d5, type: 2}
