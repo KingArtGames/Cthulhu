@@ -12,6 +12,8 @@ namespace Assets.Scripts.CardBehaviours
         public GameObject changeToCard;
 
         [Inject]
+        public Field fieldOfPayne;
+        [Inject]
         public TokenService tokenService;
         [Inject]
         public CoroutineService Async;
@@ -21,7 +23,7 @@ namespace Assets.Scripts.CardBehaviours
         public override void Initialize(BaseCard owner)
         {
             _card = owner;
-            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundEnd, OnStartTurn);
+            owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundBegin, OnStartTurn);
         }
 
         private CardOperation OnStartTurn(Field.DeckLocation loc)
@@ -40,6 +42,7 @@ namespace Assets.Scripts.CardBehaviours
             if(Check(tokenService.GetTokenStack(TokenService.TokenType.sanity).Count.Value, compareType, compareValue))
             {
                 _card.Replace(changeToCard);
+                fieldOfPayne.MoveCard(_card, _card.CurrentLocation, _card.CurrentLocation);
             }
             else
             {

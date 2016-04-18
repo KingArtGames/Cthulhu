@@ -44,6 +44,7 @@ namespace Assets.Scripts.CardBehaviours
 
             //
             _card.Replace(changeToCard);
+            fieldOfPayne.MoveCard(_card, _card.CurrentLocation, _card.CurrentLocation);
 
             op.Complete(CardOperation.Result.Success);
             yield break;
