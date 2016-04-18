@@ -12,6 +12,7 @@ namespace Assets.Scripts.CardBehaviours
     {
         public int minRounds;
         public int maxRounds;
+        public int Damage = 5;
 
         private int rounds;
 
@@ -21,6 +22,9 @@ namespace Assets.Scripts.CardBehaviours
         public Field fieldOfPayne;
         [Inject]
         public CoroutineService Async;
+        [Inject]
+        public TokenService Tokens;
+        private BaseCard _owner;
 
         public override void Initialize(BaseCard owner)
         {
@@ -28,11 +32,12 @@ namespace Assets.Scripts.CardBehaviours
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.RoundBegin, OnRoundBegin);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnRemove);
             _initialized = true;
+            _owner = owner;
         }
 
         private CardOperation OnRemove(Field.DeckLocation loc)
         {
-            if (loc == Field.DeckLocation.HandPlayer)
+            if (loc == Field.DeckLocation.HandPlayer && rounds > 0)
                 return CardOperation.DoneFailure;
             else
                 return CardOperation.DoneSuccess;
@@ -59,9 +64,19 @@ namespace Assets.Scripts.CardBehaviours
         {
             //play animation / SFX
 
+            Tokens.GetTokenStack(TokenService.TokenType.health).Remove(Damage);
+
             //Deal DMG
 
-            op.Complete(CardOperation.Result.Failure);
+            CardOperation result = fieldOfPayne.MoveCard(_owner, Field.DeckLocation.HandPlayer, Field.DeckLocation.DiscardPlayer);
+            yield return result;
+            if (result.OperationResult != CardOperation.Result.Success)
+            {
+                op.Complete(result.OperationResult);
+                yield break;
+            }
+
+            op.Complete(CardOperation.Result.Success);
             yield break;
         }
 
@@ -72,7 +87,7 @@ namespace Assets.Scripts.CardBehaviours
                 description += minRounds + "-" + maxRounds;
             else
                 description += rounds;
-            description += " in " + Field.DeckLocation.HandPlayer + "]: Explode";
+            description += " in " + Field.DeckLocation.HandPlayer + "]: Explode ( Health -" + Damage + " )";
             description += Environment.NewLine;
             description += "[" + Field.DeckLocation.HandPlayer + "] ↺";
 
