@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Async: {fileID: 0}
   DeckLocation: 4
-  CardAddedSound: {fileID: 8300000, guid: eb365f9917dbfdc49a9f5157d0ac080d, type: 3}
+  CardAddedSound: {fileID: 0}
   CardRemovedSound: {fileID: 0}
   cardSpace: 30
 --- !u!114 &11467240
