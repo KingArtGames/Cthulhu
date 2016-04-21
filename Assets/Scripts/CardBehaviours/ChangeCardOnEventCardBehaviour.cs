@@ -11,6 +11,8 @@ namespace Assets.Scripts.CardBehaviours
         public GameObject changeToCard;
         public CardLifecycleStep executeStep;
         public Field.DeckLocation executeLocation;
+        public bool onlyOneTime = false;
+        private bool _alreadyDone;
 
         [Inject]
         public Field fieldOfPayne;
@@ -43,8 +45,12 @@ namespace Assets.Scripts.CardBehaviours
             //play animation / SFX
 
             //
-            _card.Replace(changeToCard);
-            fieldOfPayne.MoveCard(_card, _card.CurrentLocation, _card.CurrentLocation);
+            if (!_alreadyDone || !onlyOneTime)
+            {
+                _card.Replace(changeToCard);
+                fieldOfPayne.MoveCard(_card, _card.CurrentLocation, _card.CurrentLocation);
+                _alreadyDone = true;
+            }
 
             op.Complete(CardOperation.Result.Success);
             yield break;
@@ -52,7 +58,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string descriptionString = "[" + executeStep.ToString() + " in " + executeLocation.ToString() + "]: Change to " + changeToCard.name;
+            string descriptionString = GetEventDescription(executeStep, executeLocation, onlyOneTime) + ": Change to " + changeToCard.name;
 
             return descriptionString;
         }

@@ -12,6 +12,8 @@ class MoveCardsFromDeckToDeckCardBehaviour : AbstractCardBehaviour
     public Field.DeckLocation deck;
     public Field.DeckLocation fromDeck;
     public Field.DeckLocation toDeck;
+    public bool onlyOneTime;
+    private bool _alreadyDone;
 
     public int numCards;
     public bool takeFromZero = true;
@@ -42,30 +44,33 @@ class MoveCardsFromDeckToDeckCardBehaviour : AbstractCardBehaviour
     {
 
         //play animation / SFX
-        Debug.Log("MoveCards");
         //
-        for (int i = 0; i < numCards; i++)
+        if (!_alreadyDone || !onlyOneTime)
         {
-            if (fieldOfPayne.GetDeck(fromDeck).CurrentSize == 0)
+            for (int i = 0; i < numCards; i++)
             {
-                if (fromDeck == Field.DeckLocation.DrawPlayer)
+                if (fieldOfPayne.GetDeck(fromDeck).CurrentSize == 0)
                 {
-                    CardOperation reshuffleDeckOp = new CardOperation();
-                    Async.RunAsync(ReshufflePlayerDeck(reshuffleDeckOp));
-                    yield return reshuffleDeckOp;
+                    if (fromDeck == Field.DeckLocation.DrawPlayer)
+                    {
+                        CardOperation reshuffleDeckOp = new CardOperation();
+                        Async.RunAsync(ReshufflePlayerDeck(reshuffleDeckOp));
+                        yield return reshuffleDeckOp;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
+                if (fieldOfPayne.GetDeck(fromDeck).CurrentSize > 0)
                 {
-                    break;
+                    Debug.Log("Move");
+                    BaseCard cardToMove = takeFromZero ? fieldOfPayne.GetDeck(fromDeck).GetFirstCard() : fieldOfPayne.GetDeck(fromDeck).GetLastCard();
+                    CardOperation moveOp = fieldOfPayne.MoveCard(cardToMove, fromDeck, toDeck);
+                    yield return moveOp;
                 }
             }
-            if (fieldOfPayne.GetDeck(fromDeck).CurrentSize > 0)
-            {
-                Debug.Log("Move");
-                BaseCard cardToMove = takeFromZero ? fieldOfPayne.GetDeck(fromDeck).GetFirstCard() : fieldOfPayne.GetDeck(fromDeck).GetLastCard();
-                CardOperation moveOp = fieldOfPayne.MoveCard(cardToMove, fromDeck, toDeck);
-                yield return moveOp;
-            }
+            _alreadyDone = true;
         }
         op.Complete(CardOperation.Result.Success);
         yield break;
@@ -89,6 +94,21 @@ class MoveCardsFromDeckToDeckCardBehaviour : AbstractCardBehaviour
 
     public override string GetDescription()
     {
-        return "[" + step.ToString() + "] in [" + deck + "]: Move " + numCards + " cards from " + fromDeck.ToString() + " to " + toDeck;
+        string descriptionString = GetEventDescription(step, deck, onlyOneTime) + ": ";
+        if (fromDeck == Field.DeckLocation.DrawPlayer && toDeck == Field.DeckLocation.HandPlayer)
+            descriptionString += "Draw " + numCards + " cards";
+        else if (fromDeck == Field.DeckLocation.FieldEnemy && toDeck == Field.DeckLocation.DiscardEnemy)
+            if (numCards == 1)
+                descriptionString += "Destroy a random enemy";
+            else
+                descriptionString += "Destroy " + numCards + " random enemies";
+        else if (fromDeck == Field.DeckLocation.DiscardPlayer && toDeck == Field.DeckLocation.HandPlayer)
+            if (numCards == 1)
+                descriptionString += "Draw top card of Discard Pile";
+            else
+                descriptionString += "Draw top " + numCards + " cards of Discard Pile";
+        else
+            descriptionString += "Move " + numCards + " cards from " + GetDeckName(fromDeck) + " to " + GetDeckName(toDeck);
+        return descriptionString;
     }
 }

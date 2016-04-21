@@ -13,6 +13,8 @@ namespace Assets.Scripts.CardBehaviours
         public int numTokens = 0;
         public List<CardLifecycleStep> executeSteps = new List<CardLifecycleStep>();
         public List<Field.DeckLocation> executeLocations = new List<Field.DeckLocation>();
+        public bool onlyOneTime;
+        private bool _alreadyDone;
         public AudioClip AudioClip;
         public string Animation;
 
@@ -60,7 +62,11 @@ namespace Assets.Scripts.CardBehaviours
             while ((source != null && source.isPlaying))// || (animator != null && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1))
                 yield return null;
             //
-            tokenService.AddTokens(tokenType, numTokens);
+            if (!_alreadyDone || !onlyOneTime)
+            {
+                tokenService.AddTokens(tokenType, numTokens);
+                _alreadyDone = true;
+            }
 
             op.Complete(CardOperation.Result.Success);
             yield break;
@@ -68,21 +74,32 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string descriptionString = "[";
+            string descriptionString = "";
             for (int i = 0; i < executeSteps.Count; i++)
             {
-                if(i != 0)
-                    descriptionString += ",";
-                descriptionString += executeSteps[i].ToString();
+                for (int j = 0; j < executeLocations.Count; j++)
+                {
+                    if(i != 0 || j != 0)
+                        descriptionString += ",";
+                    descriptionString += GetEventDescription(executeSteps[i], executeLocations[j], onlyOneTime);
+                }
             }
-            descriptionString += "] in [";
-            for (int i = 0; i < executeLocations.Count; i++)
+            if (tokenType == TokenService.TokenType.health && numTokens < 0)
             {
-                if (i != 0)
-                    descriptionString += ",";
-                descriptionString += executeLocations[i].ToString();
+                descriptionString += ": Player gets " + Mathf.Abs(numTokens) + " damage";
             }
-            descriptionString += "]: " + tokenType.ToString() + numTokens.ToString("+#;-#;0");
+            else
+            {
+                if (numTokens > 0)
+                {
+                    descriptionString += ": Get " + numTokens;
+                }
+                else if (numTokens < 0)
+                {
+                    descriptionString += ": Lose " + Mathf.Abs(numTokens);
+                }
+                descriptionString += " " + GetTokenName(tokenType, Mathf.Abs(numTokens) != 1);
+            }
 
             return descriptionString;
         }

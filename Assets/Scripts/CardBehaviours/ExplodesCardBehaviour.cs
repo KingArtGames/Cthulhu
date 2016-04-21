@@ -87,14 +87,14 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string description = "[" + CardLifecycleStep.RoundBegin.ToString() + ":";
+            string description = "After ";
             if (!_initialized)
                 description += minRounds + "-" + maxRounds;
             else
                 description += rounds;
-            description += " in " + Field.DeckLocation.HandPlayer + "]: Explode ( Health -" + Damage + " )";
-            description += Environment.NewLine;
-            description += "[" + Field.DeckLocation.HandPlayer + "] ↺";
+            description += " turns in Hand: Player takes " + Damage + " damage";
+            //description += Environment.NewLine;
+            //description += "Cannot be played";
 
             return description;
         }

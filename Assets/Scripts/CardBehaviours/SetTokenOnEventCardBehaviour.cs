@@ -56,24 +56,17 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string descriptionString = "[";
+            string descriptionString = "";
             for (int i = 0; i < executeSteps.Count; i++)
             {
-                if(i != 0)
-                    descriptionString += ",";
-                descriptionString += executeSteps[i].ToString();
-            }
-            if (!hideExecuteLocation)
-            {
-                descriptionString += "] in [";
-                for (int i = 0; i < executeLocations.Count; i++)
+                for (int j = 0; j < executeLocations.Count; j++)
                 {
-                    if (i != 0)
+                    if (i != 0 || j != 0)
                         descriptionString += ",";
-                    descriptionString += executeLocations[i].ToString();
+                    descriptionString += GetEventDescription(executeSteps[i], executeLocations[j], false);
                 }
             }
-            descriptionString += "]: " + tokenType.ToString() + " = " + numTokens.ToString();
+            descriptionString += ": Set " + GetTokenName(tokenType, true) + " to " + numTokens;
 
             return descriptionString;
         }

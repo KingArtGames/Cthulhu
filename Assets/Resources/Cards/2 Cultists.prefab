@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: 2 Cultists
   Image: {fileID: 2800000, guid: f8f39ded8b9ef3e418864216ccf29bf8, type: 3}
+  Async: {fileID: 0}
 --- !u!114 &11454026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +135,7 @@ MonoBehaviour:
   changeToCard: {fileID: 153450, guid: ee6c4caa2110d5a42b875ee65c488103, type: 2}
   executeStep: 3
   executeLocation: 4
+  onlyOneTime: 1
   Async: {fileID: 0}
 --- !u!114 &11467092
 MonoBehaviour:
@@ -150,7 +152,9 @@ MonoBehaviour:
   numTokens: -2
   executeSteps: 04000000
   executeLocations: 04000000
+  onlyOneTime: 0
   AudioClip: {fileID: 8300000, guid: 708ea34de2a8ea14399d6354d0478da8, type: 3}
+  Animation: 
   Async: {fileID: 0}
 --- !u!114 &11471860
 MonoBehaviour:
@@ -227,6 +231,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: onlyOneTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -66,12 +66,12 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string description = "";
-            description += "[" + Field.DeckLocation.HandPlayer + "] ↺ ";
+            string description = "Stays in hand for ";
             if (!_initialized)
                 description += minRounds + "-" + maxRounds;
             else
                 description += rounds;
+            description += " rounds";
 
             return description;
         }

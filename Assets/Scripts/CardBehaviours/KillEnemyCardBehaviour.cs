@@ -9,6 +9,7 @@ namespace Assets.Scripts.CardBehaviours
     class KillEnemyCardBehaviour : AbstractCardBehaviour
     {
         public List<TokenService.TokenType> neededTokens = new List<TokenService.TokenType>();
+        private Dictionary<TokenService.TokenType, int> neededTokensCount = new Dictionary<TokenService.TokenType, int>();
 
         [Inject]
         public Field fieldOfPayne;
@@ -19,10 +20,21 @@ namespace Assets.Scripts.CardBehaviours
 
         BaseCard _card;
 
+        private void InitNeededTokensCount()
+        {
+            foreach (TokenService.TokenType token in neededTokens)
+            {
+                if (!neededTokensCount.ContainsKey(token))
+                    neededTokensCount.Add(token, 0);
+                neededTokensCount[token] = neededTokensCount[token] + 1;
+            }
+        }
+
         public override void Initialize(BaseCard owner)
         {
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Use, OnUse);
             _card = owner;
+            InitNeededTokensCount();
         }
 
         private CardOperation OnUse(Field.DeckLocation loc)
@@ -43,13 +55,7 @@ namespace Assets.Scripts.CardBehaviours
             //play animation / SFX
 
             //
-            Dictionary<TokenService.TokenType, int> neededTokensCount = new Dictionary<TokenService.TokenType, int>();
-            foreach (TokenService.TokenType token in neededTokens)
-            {
-                if (!neededTokensCount.ContainsKey(token))
-                    neededTokensCount.Add(token, 0);
-                neededTokensCount[token] = neededTokensCount[token] + 1;
-            }
+            
             foreach (KeyValuePair<TokenService.TokenType, int> keyval in neededTokensCount)
             {
                 if (tokenService.GetTokenStack(keyval.Key).Count.Value < keyval.Value)
@@ -75,14 +81,15 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string descriptionString = "[Use:";
-            for (int i = 0; i < neededTokens.Count; i++)
+            string descriptionString = "Kill enemy with ";
+            bool firstToken = true;
+            foreach (KeyValuePair<TokenService.TokenType, int> keyval in neededTokensCount)
             {
-                if (i != 0)
-                    descriptionString += ",";
-                descriptionString += neededTokens[i].ToString();
+                if (!firstToken)
+                    descriptionString += " and ";
+                descriptionString += keyval.Value + " " + GetTokenName(keyval.Key, keyval.Value != 1);
+                firstToken = false;
             }
-            descriptionString += "]: Destroy";
 
             return descriptionString;
         }

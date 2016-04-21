@@ -115,17 +115,25 @@ namespace Assets.Scripts.CardBehaviours
             }
             else
             {
-                string descriptionString = "[";
-                foreach (Field.DeckLocation loc in noCardLocations)
+                
+                    
+                string descriptionString = (win ? "Win Condition" : "Lose Condition") + ": ";
+                if (noCardLocations.Count == 2 && noCardLocations.Contains(Field.DeckLocation.DrawEnemy) && noCardLocations.Contains(Field.DeckLocation.FieldEnemy))
                 {
-                    descriptionString += loc.ToString();
-                    descriptionString += ", ";
+                    descriptionString += "Enemy has no cards left";
                 }
-                descriptionString = descriptionString.TrimEnd(new char[] { ',', ' ' }) + "] empty: ";
-                if (win)
-                    descriptionString += "Win game";
                 else
-                    descriptionString += "Loose game";
+                {
+                    descriptionString += " no cards in ";
+                    bool firstLocation = true;
+                    foreach (Field.DeckLocation loc in noCardLocations)
+                    {
+                        if (!firstLocation)
+                            descriptionString += ", ";
+                        descriptionString += GetDeckName(loc, true);
+                        firstLocation = false;
+                    }
+                }
 
                 return descriptionString;
             }

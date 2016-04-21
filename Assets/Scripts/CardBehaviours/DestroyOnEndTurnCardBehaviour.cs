@@ -63,14 +63,12 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string description = "[" + CardLifecycleStep.RoundEnd.ToString() + ":";
             if (card == null)
-                description += afterXRounds;
+                rounds = afterXRounds;
+            if (rounds == 0)
+                return "Will be destroyed at end of turn";
             else
-                description += rounds;
-            description += "]: DestroyCard";
-
-            return description;
+            return "Will be destroyed in " + rounds + " turns";
         }
     }
 }

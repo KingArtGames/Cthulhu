@@ -117,7 +117,7 @@ namespace Assets.Scripts.CardBehaviours
                     descriptionString += "WinCondition: ";
                 else
                     descriptionString += "LooseCondition: ";
-                descriptionString += tokenType.ToString() + ToString(compareType) + compareValue;
+                descriptionString += GetTokenName(tokenType, true) + ToString(compareType) + compareValue;
 
                 return descriptionString;
             }

@@ -55,7 +55,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public override string GetDescription()
         {
-            string descriptionString = "[" + CardLifecycleStep.RoundEnd + "]: SanityCheck (" + ToString(compareType) + compareValue + ")";
+            string descriptionString = "SanityCheck (" + ToString(compareType) + compareValue + ")";
 
             return descriptionString;
         }
