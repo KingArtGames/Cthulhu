@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: 2 Cultists
-  Image: {fileID: 2800000, guid: f8f39ded8b9ef3e418864216ccf29bf8, type: 3}
+  Image: {fileID: 2800000, guid: 04f5ad81d5f84d74d9e507a6ca96ccd9, type: 3}
   Async: {fileID: 0}
 --- !u!114 &11454026
 MonoBehaviour:
@@ -235,6 +235,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: onlyOneTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
