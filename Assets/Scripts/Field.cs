@@ -60,6 +60,7 @@ public class Field
 
     public CardOperation MoveCard(BaseCard card, DeckLocation from, DeckLocation to)
     {
+        card.Executing = true;
         CardOperation op = new CardOperation();
         Coroutines.RunAsync(MoveCardAsync(card, from, to, op));
         return op;
@@ -78,11 +79,13 @@ public class Field
             yield return addOp;
 
             op.Complete(addOp.OperationResult);
+            card.Executing = false;
             yield break;
         }
         else
         {
             op.Complete(removeOp.OperationResult);
+            card.Executing = false;
             yield break;
         }
     }

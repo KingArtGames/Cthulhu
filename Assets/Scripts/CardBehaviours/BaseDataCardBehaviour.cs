@@ -4,12 +4,15 @@ using System;
 using Zenject;
 using Assets.Scripts.Services;
 using Assets.Scripts.Decks;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.CardBehaviours
 {
     class BaseDataCardBehaviour : AbstractCardBehaviour
     {
         public string Title;
+        public string Description;
+        
         public Texture2D Image;
         [Inject]
         public CoroutineService Async;
@@ -27,14 +30,14 @@ namespace Assets.Scripts.CardBehaviours
 
             _card = owner;
             _card.Title = Title;
-            _card.Description = _card.GetDescription();
+            _card.Description = String.IsNullOrEmpty(Description) ? _card.GetDescription() : Description;
             _card.Image = Image;
         }
 
         private CardOperation OnEvent(Field.DeckLocation loc)
         {
             _card.Title = Title;
-            _card.Description = _card.GetDescription();
+            _card.Description = String.IsNullOrEmpty(Description) ? _card.GetDescription() : Description;
             _card.Image = Image;
             return CardOperation.DoneSuccess;
         }

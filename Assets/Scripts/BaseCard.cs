@@ -32,11 +32,27 @@ public class BaseCard
 
     public Field.DeckLocation CurrentLocation { get; set; }
 
+    public bool Executing
+    {
+        get
+        {
+            return _executing;
+        }
+
+        set
+        {
+            _executing = value;
+        }
+    }
+
+    private bool _executing;
+
     public BaseCard(CardFactory cardFactory, CoroutineService coroutines, WaitForEndOfLifecycleStep.Factory waitForEndOfLifecycleStepFactory)
     {
         _cardFactory = cardFactory;
         _coroutines = coroutines;
         _waitForEndOfLifecycleStepFactory = waitForEndOfLifecycleStepFactory;
+        Executing = false;
     }
 
     public void RegisterLivecycleStepExecutor(CardLifecycleStep step, Func<Field.DeckLocation, CardOperation> func)

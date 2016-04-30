@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Heal Spell
+  Description: Gain 2 health at the start of your turn, lasts two rounds.
   Image: {fileID: 2800000, guid: 67d7c181ed0402d48903ea0e36ada25f, type: 3}
+  Async: {fileID: 0}
 --- !u!114 &11430734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +74,7 @@ MonoBehaviour:
   numTokens: 2
   executeSteps: 0100000003000000
   executeLocations: 03000000
+  onlyOneTime: 0
   AudioClip: {fileID: 0}
   Animation: 
   Async: {fileID: 0}
@@ -90,6 +93,7 @@ MonoBehaviour:
   numTokens: -2
   executeSteps: 01000000
   executeLocations: 03000000
+  onlyOneTime: 0
   AudioClip: {fileID: 0}
   Animation: 
   Async: {fileID: 0}
@@ -152,6 +156,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: tokenType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Description
+      value: Gain 2 health at the start of your turn, lasts two rounds.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

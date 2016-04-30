@@ -20,7 +20,7 @@ public class GameProcessor
 
     public int PlayerCardsPerRound = 2;
     public int EnemyCardsPerRound = 2;
-    public int PlayerDeckSize = 10;
+    public int PlayerDeckSize = 20;
     public int EnemyDeckSize = 10;
     public int StartHP = 30;
     public int StartSanity = 30;
@@ -62,6 +62,7 @@ public class GameProcessor
 
     public CardOperation UseCard(BaseCard card)
     {
+        card.Executing = true;
         CardOperation op = new CardOperation();
         _async.RunAsync(UseCardAsync(card, op));
         return op;
@@ -75,10 +76,12 @@ public class GameProcessor
             if (item.OperationResult != CardOperation.Result.Success)
             {
                 op.Complete(item.OperationResult);
+                card.Executing = false;
                 yield break;
             }
         }
         op.Complete(CardOperation.Result.Success);
+        card.Executing = false;
         yield break;
     }
 

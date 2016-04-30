@@ -8,6 +8,7 @@ using Zenject;
 using UnityEngine.UI;
 using System.Collections;
 using Assets.Scripts.Decks;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.CardBehaviours
 {
@@ -33,12 +34,24 @@ namespace Assets.Scripts.CardBehaviours
 
         public Text TitleLabel;
         public Text DescriptionLabel;
+        public CardTokenVisualgroup CardTokens;
+
+        public TokenComponent HealthModifier;
+        public TokenComponent SanityModiifier;
 
         public void Update()
         {
             UpdateTitle();
             UpdateDescription();
             UpdateImage();
+            
+        }
+
+        public void UpdateTokens()
+        {
+            CardTokens.Card = _owner;
+            HealthModifier.Card = _owner;
+            SanityModiifier.Card = _owner;
         }
 
         public void UpdateTitle()
@@ -61,7 +74,7 @@ namespace Assets.Scripts.CardBehaviours
         public override void Initialize(BaseCard owner)
         {
             _owner = owner;
-
+            UpdateTokens();
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Create, OnAdded);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Add, OnAdded);
             owner.RegisterLivecycleStepExecutor(CardLifecycleStep.Remove, OnRemoved);
@@ -109,7 +122,7 @@ namespace Assets.Scripts.CardBehaviours
 
         public void OnLeftClick()
         {
-            if (!PlayerInput.HasControl) return;
+            if (!PlayerInput.HasControl || _owner.Executing) return;
 
             switch (_owner.CurrentLocation)
             {

@@ -45,6 +45,7 @@ MonoBehaviour:
   numTokens: 1
   executeSteps: 0100000003000000
   executeLocations: 03000000
+  onlyOneTime: 0
   AudioClip: {fileID: 0}
   Animation: 
   Async: {fileID: 0}
@@ -60,7 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Revolver
+  Description: Gain 1 BLUE at the start of your turn, lasts two rounds.
   Image: {fileID: 2800000, guid: 9f79c73af1a330b4badec92e1ce5280c, type: 3}
+  Async: {fileID: 0}
 --- !u!114 &11464210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +124,10 @@ Prefab:
       propertyPath: Image
       value: 
       objectReference: {fileID: 2800000, guid: 9f79c73af1a330b4badec92e1ce5280c, type: 3}
+    - target: {fileID: 0}
+      propertyPath: Description
+      value: Gain 1 BLUE at the start of your turn, lasts two rounds.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163858}

@@ -37,6 +37,11 @@ namespace Assets.Scripts.CardBehaviours
             InitNeededTokensCount();
         }
 
+        public override Dictionary<TokenService.TokenType, int> GetCardTokens()
+        {
+            return neededTokensCount;
+        }
+
         private CardOperation OnUse(Field.DeckLocation loc)
         {
             if (loc == Field.DeckLocation.FieldEnemy)

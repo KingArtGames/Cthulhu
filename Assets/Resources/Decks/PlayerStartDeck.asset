@@ -13,36 +13,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Scripts:DeckSettings
   CardsInDeck:
   - Prefab: {fileID: 161014, guid: 5e16244b295c4c243afb1dd5a3d6dea5, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 111776, guid: 7da95b35ca8ed104a80590e262dfadae, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 143372, guid: a6ce1c3fbbb32484782c3206b0baf606, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 161608, guid: 900927db6a150b449a6dfbe2de0c1250, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 155138, guid: 99940f3f8c7fc7d429aca30a8851f9c9, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 162286, guid: 0676e9474742f2d419a4df68f6c314ce, type: 2}
     Chance: 1
   - Prefab: {fileID: 197708, guid: a82a54b2f771ee24695a3af34598502c, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 163576, guid: 4f5c184934ce3d947a1cc4b9ece5e73b, type: 2}
     Chance: 1
   - Prefab: {fileID: 110864, guid: 1961187e6453074419350260836d6f57, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 151676, guid: 5646d18759e0d1043980dd19b2387d35, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 178162, guid: 9c260546b4383ed41839a972639a12a9, type: 2}
     Chance: 1
   - Prefab: {fileID: 163858, guid: 4d34f94f91cc7c74486d40eb6be41cac, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 127034, guid: d029e854fad15c740ab78db93ba28bf3, type: 2}
     Chance: 1
   - Prefab: {fileID: 153286, guid: 2b4a036ae07d7e94980d71735d2f7c3b, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 144688, guid: e8e5f04de04992848ac0801aeaec466b, type: 2}
     Chance: 1
   - Prefab: {fileID: 161214, guid: cdb82f162133a9948b0b6ef0d9bcacf2, type: 2}
-    Chance: 1
+    Chance: 2
   - Prefab: {fileID: 128232, guid: e7811c32f39585349a236360d00805bb, type: 2}
     Chance: 1

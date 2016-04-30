@@ -25,6 +25,11 @@ namespace Assets.Scripts.CardBehaviours
             return null;
         }
 
+        public virtual Dictionary<TokenService.TokenType, int> GetCardTokens()
+        {
+            return new Dictionary<TokenService.TokenType, int>();
+        }
+
         public static bool Check(int value1, CompareType compareType, int value2)
         {
             switch (compareType)

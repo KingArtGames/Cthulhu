@@ -46,6 +46,7 @@ MonoBehaviour:
   deck: 3
   fromDeck: 5
   toDeck: 2
+  onlyOneTime: 0
   numCards: 1
   takeFromZero: 1
   Async: {fileID: 0}
@@ -64,7 +65,9 @@ MonoBehaviour:
   numTokens: -5
   executeSteps: 01000000
   executeLocations: 03000000
+  onlyOneTime: 0
   AudioClip: {fileID: 0}
+  Animation: 
   Async: {fileID: 0}
 --- !u!114 &11471230
 MonoBehaviour:
@@ -91,7 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Necronomicon
+  Description: Move the topmost card from your discard pile to your hand.
   Image: {fileID: 2800000, guid: 7560b4dcb9279c742a87dc46fcdfc954, type: 3}
+  Async: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -154,6 +159,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: takeFromZero
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Description
+      value: Move the topmost card from your discard pile to your hand.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

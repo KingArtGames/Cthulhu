@@ -63,7 +63,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Crazy Investigator
+  Description: Losing too much sanity may cause severe hallucinations. If your health
+    runs out, you're dead!
   Image: {fileID: 2800000, guid: 15b121b2a813b824bbc26a671ff3ad63, type: 3}
+  Async: {fileID: 0}
 --- !u!114 &11481236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,7 +85,8 @@ MonoBehaviour:
   win: 0
   Image: {fileID: 2800000, guid: 1e0663f3f1491d9409e96d5c21224121, type: 3}
   Title: Game Over
-  Description: You went insane (sanity <= 0). Click on card to continue.
+  Description: Due to your rising madness you could no longer resist the Call of Cthulhu.
+    Your lose!
   nextScene: scene
 --- !u!114 &11491900
 MonoBehaviour:
@@ -132,7 +136,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Description
-      value: The enemies killed you (health <= 0). Click on card to continue.
+      value: Due to your rising madness you could no longer resist the Call of Cthulhu.
+        Your lose!
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: nextScene

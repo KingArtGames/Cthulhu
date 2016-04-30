@@ -32,6 +32,12 @@ namespace Assets.Scripts.CardBehaviours
                 owner.RegisterLivecycleStepExecutor(step, OnEvent);
             }
         }
+        public override Dictionary<TokenService.TokenType, int> GetCardTokens()
+        {
+            Dictionary<TokenService.TokenType, int> cardTokens = new Dictionary<TokenService.TokenType, int>() ;
+            cardTokens[tokenType] = numTokens;
+            return cardTokens;
+        }
 
         private CardOperation OnEvent(Field.DeckLocation loc)
         {

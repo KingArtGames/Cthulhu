@@ -55,7 +55,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: Brass knuckles
+  Description: Gain 1 GREEN at the start of your turn, lasts three rounds.
   Image: {fileID: 2800000, guid: d7c35603f71cd6f4d8343057a1833d94, type: 3}
+  Async: {fileID: 0}
 --- !u!114 &11489586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,6 +73,7 @@ MonoBehaviour:
   numTokens: 1
   executeSteps: 0100000003000000
   executeLocations: 03000000
+  onlyOneTime: 0
   AudioClip: {fileID: 0}
   Animation: 
   Async: {fileID: 0}
@@ -121,6 +124,10 @@ Prefab:
       propertyPath: Image
       value: 
       objectReference: {fileID: 2800000, guid: d7c35603f71cd6f4d8343057a1833d94, type: 3}
+    - target: {fileID: 0}
+      propertyPath: Description
+      value: Gain 1 GREEN at the start of your turn, lasts three rounds.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161608}
