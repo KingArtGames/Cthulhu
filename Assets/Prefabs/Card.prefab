@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f786571034fa9f84fa2d1e1c2a02e353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TokenType: 1
+  TokenType: 0
   TokenValueText: {fileID: 11498128}
 --- !u!114 &11452592
 MonoBehaviour:
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f786571034fa9f84fa2d1e1c2a02e353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TokenType: 0
+  TokenType: 1
   TokenValueText: {fileID: 11442168}
 --- !u!114 &11498128
 MonoBehaviour:
